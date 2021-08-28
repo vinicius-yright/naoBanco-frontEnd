@@ -7,7 +7,6 @@ export function FirstAccess() {
 
     return (
         <View style={styles.container}>
-
             <View>
                 <Text style={styles.title}>
                     Bem Vindo {`\n`}
