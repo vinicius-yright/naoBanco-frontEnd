@@ -3,10 +3,12 @@ import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        
+        width: '70%',
         height: 56,
         backgroundColor: theme.colors.primary,
         borderRadius: 8,
+        marginBottom: 500,
         flexDirection: 'row',
         alignItems: 'center'
     },
@@ -16,16 +18,4 @@ export const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center'
     },
-    iconWrapper: {
-        width: 56,
-        height: 56,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRightWidth: 1,
-        borderColor: theme.colors.line
-    },
-    icon: {
-        width: 24,
-        height: 18
-    }
 })

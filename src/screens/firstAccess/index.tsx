@@ -14,8 +14,11 @@ export function FirstAccess() {
                     ao {`\n`}
                     NãoBanco !$
                 </Text>
+            </View>
+
+            <View>
                 <ButtonIcon
-                    title="Criar sua Conta"
+                     title="Criar sua Conta"
                     activeOpacity={0.7} />
             </View>
         </View>
