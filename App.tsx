@@ -12,7 +12,7 @@ export default function App() {
         <StatusBar style="auto" />
       </View>
 
-      <FirstAccess></FirstAccess>
+      <CreateUser></CreateUser>
     </Background>
   );
 }
