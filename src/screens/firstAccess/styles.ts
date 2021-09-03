@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../global/styles/theme'
 
-
 export const styles = StyleSheet.create({
     container: {
-        marginTop: 450,
+        marginTop: 240,
+        marginBottom: 225,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+       
     },
     content: {
         marginTop: -40,

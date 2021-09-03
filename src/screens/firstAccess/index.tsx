@@ -3,6 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 
+
 export function FirstAccess() {
 
     return (
@@ -15,11 +16,8 @@ export function FirstAccess() {
                 </Text>
             </View>
 
-            <View>
-                <ButtonIcon
-                     title="Criar sua Conta"
-                    activeOpacity={0.7} />
-            </View>
+            <ButtonIcon title="Criar sua Conta" activeOpacity={0.7}/>
+            
         </View>
     );
 }
