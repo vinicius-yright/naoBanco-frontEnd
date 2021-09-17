@@ -9,9 +9,9 @@ import { useNavigation } from '@react-navigation/core';
 export function FirstAccess() {
 
     const navigation = useNavigation();
-
+    
     function handleFirstAccess(){
-        navigation.navigate('CreateUser')
+        navigation.navigate('CreateUser');
     }
 
     return (
