@@ -6,6 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Background } from './src/components/Background';
 import AppLoading from 'expo-app-loading';
 import { Routes } from './src/routes';
+import { Login } from './src/screens/login';
 
 //import { CreateUser } from './src/screens/createUser';
 //import { FirstAccess } from './src/screens/firstAccess';
@@ -27,7 +28,6 @@ export default function App() {
         <View>
           <StatusBar style="auto" />
         </View>
-
         <Routes />
       </Background>
     );
