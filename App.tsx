@@ -1,21 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Background } from './src/components/Background';
+import { Routes } from './src/routes';
+
+//import { CreateUser } from './src/screens/createUser';
+//import { FirstAccess } from './src/screens/firstAccess';
+import { TesteModal } from './src/screens/testeModal';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Background>
+      <View>
+        <StatusBar style="auto" />
+      </View>
+
+      <Routes />
+    </Background>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

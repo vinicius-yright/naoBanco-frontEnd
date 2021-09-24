@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "naoBanco-frontEnd",
-    "slug": "naoBanco-frontEnd",
+    "name": "naoBanco",
+    "slug": "naoBanco",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Logotipo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#13C2AD"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
