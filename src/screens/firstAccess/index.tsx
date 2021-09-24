@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/core';
 export function FirstAccess() {
 
     const navigation = useNavigation();
-    
+
     function handleFirstAccess(){
         navigation.navigate('CreateUser');
     }
@@ -26,9 +26,9 @@ export function FirstAccess() {
                 </View>
 
                 <ButtonIcon 
-                title="Iniciar" 
-                activeOpacity={0.7} 
-                onPress = {handleFirstAccess}
+                    title="Iniciar" 
+                    activeOpacity={0.7} 
+                    onPress = {handleFirstAccess}
                 />
 
             </View>
