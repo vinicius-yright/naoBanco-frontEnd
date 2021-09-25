@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { styles } from './styles';
 import { Modal } from '../Modal';
 import { useState } from 'react';
 import { Background } from '../../components/Background';
 
-
 export function TesteModal() {
-  const [modal, setModal] = useState(false);
 
+  const [modal, setModal] = useState(false);
+  
   return(
     <Background>
       <View style={styles.container}>
@@ -19,7 +20,7 @@ export function TesteModal() {
             
         <Modal 
           show={modal}
-          close={() => setModal(false)}
+          close={setModal(false)}
         />
       
       </View>
@@ -27,27 +28,3 @@ export function TesteModal() {
     </Background>
   );
 }
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#9b59b6',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  title: {
-    color: '#fff',
-    fontSize: 22
-  },
-  button: {
-    height: 50,
-    borderRadius: 10,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-    marginTop: 20
-  }
-})

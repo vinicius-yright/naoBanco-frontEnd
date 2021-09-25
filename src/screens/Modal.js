@@ -1,3 +1,5 @@
+//npm install
+
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions } from 'react-native'
 
