@@ -3,7 +3,20 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions } from 'react-native'
 
+//teste chamar screen com modal
+import { useNavigation } from '@react-navigation/core';
+
 export const Modal = ({ show, close }) => {
+
+
+  //teste inicio
+  const navigation = useNavigation();
+
+  function handleFirstAccess(){
+    closeModal();
+    navigation.navigate('Login');
+  }
+  //teste fim
 
   const { height } = Dimensions.get('window')
 
@@ -61,7 +74,7 @@ export const Modal = ({ show, close }) => {
 
         <TouchableOpacity 
           style={styles.btn} 
-          onPress={closeModal}
+          onPress={handleFirstAccess}
         >
           <Text style={{ color: '#fff' }}>Close</Text>
         </TouchableOpacity>
