@@ -1,11 +1,12 @@
-//npm install
+//npm install --save react-animated-modal
 
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions } from 'react-native'
 
-const { height } = Dimensions.get('window')
-
 export const Modal = ({ show, close }) => {
+
+  const { height } = Dimensions.get('window')
+
   const [state, setState] = useState({
     opacity: new Animated.Value(0),
     container: new Animated.Value(height),
@@ -14,8 +15,8 @@ export const Modal = ({ show, close }) => {
 
   const openModal = () => {
     Animated.sequence([
-      Animated.timing(state.container, { toValue: 0, duration: 100 }),
-      Animated.timing(state.opacity, { toValue: 1, duration: 300 }),
+      Animated.timing(state.container, { toValue: 0, duration: 100, useNativeDriver: true }),
+      Animated.timing(state.opacity, { toValue: 1, duration: 300, useNativeDriver: true }),
       Animated.spring(state.modal, { toValue: 0, bounciness: 5, useNativeDriver: true })
     ]).start()
   }
@@ -23,8 +24,8 @@ export const Modal = ({ show, close }) => {
   const closeModal = () => {
     Animated.sequence([
       Animated.timing(state.modal, { toValue: height, duration: 250, useNativeDriver: true }),
-      Animated.timing(state.opacity, { toValue: 0, duration: 300 }),
-      Animated.timing(state.container, { toValue: height, duration: 100 })
+      Animated.timing(state.opacity, { toValue: 0, duration: 300, useNativeDriver: true }),
+      Animated.timing(state.container, { toValue: height, duration: 100, useNativeDriver: true }),
     ]).start()
   }
 
@@ -58,7 +59,10 @@ export const Modal = ({ show, close }) => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae massa odio. Quisque ante sem, tempor eget massa vel, mollis tincidunt metus. Ut sed felis lectus. Nam semper molestie urna, quis ultricies quam semper ut. Maecenas aliquet id urna a convallis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas leo lectus, dictum vitae erat eget, luctus dapibus sapien. Integer at hendrerit quam. Vivamus tempor, arcu non fringilla laoreet, enim nibh porttitor enim, eget pellentesque eros nulla congue neque. Suspendisse et lobortis enim, nec fermentum est. Aliquam accumsan viverra vehicula. Proin tempus sagittis auctor. Vivamus quam ligula, laoreet eget eros et, hendrerit iaculis risus. Nam a nulla in purus fermentum rhoncus eu et erat. Aliquam tempus felis lorem, id hendrerit tortor vestibulum ac.
         </Text>
 
-        <TouchableOpacity style={styles.btn} onPress={closeModal}>
+        <TouchableOpacity 
+          style={styles.btn} 
+          onPress={closeModal}
+        >
           <Text style={{ color: '#fff' }}>Close</Text>
         </TouchableOpacity>
       </Animated.View>

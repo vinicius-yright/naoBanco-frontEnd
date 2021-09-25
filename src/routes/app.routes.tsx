@@ -25,13 +25,6 @@ export function AppRoutes() {
               }
              }}*/
             >
-                <Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name="TesteModal"
-                    component={TesteModal}
-                />
 
                 <Screen
                     options={{
@@ -48,6 +41,15 @@ export function AppRoutes() {
                     name="CreateUser"
                     component={CreateUser}
                 />
+
+                <Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                    name="TesteModal"
+                    component={TesteModal}
+                />
+                
             </Navigator>
        
 

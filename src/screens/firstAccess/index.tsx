@@ -11,7 +11,7 @@ export function FirstAccess() {
     const navigation = useNavigation();
 
     function handleFirstAccess(){
-        navigation.navigate('CreateUser');
+        navigation.navigate('TesteModal');
     }
 
     return (
