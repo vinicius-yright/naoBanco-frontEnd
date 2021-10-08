@@ -10,8 +10,8 @@ export function FirstAccess() {
 
     const navigation = useNavigation();
 
-    function handleFirstAccess(){
-        navigation.navigate('TesteModal');
+    function handleFirstAccess() {
+        navigation.navigate('CreateUser');
     }
 
     return (
@@ -25,12 +25,11 @@ export function FirstAccess() {
                     </Text>
                 </View>
 
-                <ButtonIcon 
-                    title="Iniciar" 
-                    activeOpacity={0.7} 
-                    onPress = {handleFirstAccess}
+                <ButtonIcon
+                    title="Iniciar"
+                    activeOpacity={0.7}
+                    onPress={handleFirstAccess}
                 />
-
             </View>
         </Background>
     );

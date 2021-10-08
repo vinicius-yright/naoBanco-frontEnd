@@ -13,10 +13,8 @@ export function Login() {
         console.log(response);
     }
 
-    const [txtName, setName] = useState('');
     const [txtEmail, setEmail] = useState('');
     const [txtPassword, setPassword] = useState('');
-    const [txtPasswordC, setPasswordC] = useState('');
 
     return (
         <Background>

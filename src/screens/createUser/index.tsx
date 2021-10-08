@@ -1,18 +1,27 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Image } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
 import { useState } from 'react';
 import api from '../../services/api';
+import { useNavigation } from '@react-navigation/core';
 import { Modal } from '../Modal';
 
+
 export function CreateUser() {
+
+    const navigation = useNavigation();
 
     async function consulta() {
         const response = await api.get('')
         console.log(response);
     }
+
+    function handleCreateBankAccount(){
+        navigation.navigate('CreateBankAccount');
+    }
+
 
     const [txtName, setName] = useState('');
     const [txtEmail, setEmail] = useState('');
@@ -66,7 +75,10 @@ export function CreateUser() {
 
                 <View>
                     <ButtonIcon title="Criar sua Conta"
-                        onPress={consulta}
+                        onPress={() => {
+                            consulta()
+                            handleCreateBankAccount()
+                        }}        
                     />
                 </View>
             </View>
