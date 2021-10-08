@@ -5,6 +5,7 @@ import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
 import { useState } from 'react';
 import api from '../../services/api';
+import { Modal } from '../Modal';
 
 export function CreateUser() {
 

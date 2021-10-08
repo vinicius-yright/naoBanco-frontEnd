@@ -9,9 +9,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { FirstAccess } from '../screens/firstAccess';
 import { CreateUser } from '../screens/createUser';
+import { TesteModal } from '../screens/testeModal';
+import { Login } from '../screens/login';
 //import { theme } from '../global/styles/theme';
-
-
 
 
 const { Navigator, Screen } = createStackNavigator();
@@ -19,7 +19,6 @@ const { Navigator, Screen } = createStackNavigator();
 export function AppRoutes() {
     return (
 
-        
             <Navigator
              /* screenOptions={{
                  cardStyle: { 
@@ -42,6 +41,22 @@ export function AppRoutes() {
                     }}
                     name="CreateUser"
                     component={CreateUser}
+                />
+
+                <Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                    name="TesteModal"
+                    component={TesteModal}
+                />
+
+                <Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                    name="Login"
+                    component={Login}
                 />
 
             </Navigator>
