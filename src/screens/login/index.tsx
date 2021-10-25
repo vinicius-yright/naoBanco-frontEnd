@@ -23,8 +23,6 @@ export function Login() {
           });
     }
 
-
-
     const [txtEmail, setEmail] = useState('');
     const [txtPassword, setPassword] = useState('');
 

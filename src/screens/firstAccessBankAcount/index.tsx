@@ -9,9 +9,8 @@ import { useNavigation } from '@react-navigation/core';
 export function FirstAccessBankAccount() {
 
     
-    const navigation = useNavigation();
+   // const navigation = useNavigation();
 
-    
 
    /*  function handleCreateBankAccount(){
         navigation.navigate('TesteModal');
@@ -19,7 +18,9 @@ export function FirstAccessBankAccount() {
 
     return (
         <Background>
-            
+            <Image
+            source={require('../../../assets/Logotipo.png')}
+            style={styles.logoApp}/>
             <View style={styles.container}>
             <Text style={styles.nomeApp}>
                         NãoBanco 
@@ -35,7 +36,7 @@ export function FirstAccessBankAccount() {
                 <View>
                     <ButtonIcon title="Criar 1ª Conta Bancária!"
                         onPress={() => {
-                            consulta()
+                            
                             /* handleCreateBankAccount() */
                         }}        
                     />

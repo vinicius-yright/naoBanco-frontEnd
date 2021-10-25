@@ -27,6 +27,13 @@ export function AppRoutes() {
               }
              }}*/
             >
+                 <Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                    name="FirstAccessBankAccount"
+                    component={FirstAccessBankAccount}
+                />
 
                 <Screen
                     options={{
@@ -52,13 +59,7 @@ export function AppRoutes() {
                     component={TesteModal}
                 />
 
-                <Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name="FirstAccessBankAccount"
-                    component={FirstAccessBankAccount}
-                />
+               
 
                 <Screen
                     options={{
