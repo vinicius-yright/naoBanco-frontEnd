@@ -11,10 +11,7 @@ export function FirstAccessBankAccount() {
     
     const navigation = useNavigation();
 
-    async function consulta() {
-        const response = await api.get('')
-        console.log(response);
-    }
+    
 
    /*  function handleCreateBankAccount(){
         navigation.navigate('TesteModal');
@@ -22,6 +19,7 @@ export function FirstAccessBankAccount() {
 
     return (
         <Background>
+            
             <View style={styles.container}>
             <Text style={styles.nomeApp}>
                         NãoBanco 

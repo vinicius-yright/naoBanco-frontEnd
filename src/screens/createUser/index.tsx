@@ -13,13 +13,21 @@ export function CreateUser() {
 
     const navigation = useNavigation();
 
-    async function consulta() {
-        const response = await api.get('')
-        console.log(response);
+    async function enviaInformacoes() {
+        const response = await api.post("/user", 
+            {name: txtName,
+            email: txtEmail,
+            admin: true,
+            password: txtPassword})
+        .then((response) => {
+            console.log(response);
+          }, (error) => {
+            console.log(error);
+          });
     }
 
     function handleCreateBankAccount(){
-        navigation.navigate('CreateBankAccount');
+        navigation.navigate('Login');
     }
 
 
@@ -76,7 +84,7 @@ export function CreateUser() {
                 <View>
                     <ButtonIcon title="Criar sua Conta"
                         onPress={() => {
-                            consulta()
+                            enviaInformacoes()
                             handleCreateBankAccount()
                         }}        
                     />
