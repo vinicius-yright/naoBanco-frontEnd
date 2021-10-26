@@ -12,22 +12,17 @@ import { CreateUser } from '../screens/createUser';
 import { TesteModal } from '../screens/testeModal';
 import { Login } from '../screens/login';
 import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
-//import { theme } from '../global/styles/theme';
+import { CreateBankAccount } from '../screens/createBankAccount'
 
+//import { theme } from '../global/styles/theme';
+//CreateBankAccount
 
 const { Navigator, Screen } = createStackNavigator();
 
 export function AppRoutes() {
     return (
 
-        <Navigator
-        /* screenOptions={{
-            cardStyle: { 
-               backgroundColor: theme.colors.secondary100,
-         }
-        }}*/
-        >
-
+        <Navigator>
 
             <Screen
                 options={{
@@ -60,15 +55,20 @@ export function AppRoutes() {
                 name="TesteModal"
                 component={TesteModal}
             />
-
-
-
             <Screen
                 options={{
                     headerShown: false,
                 }}
                 name="Login"
                 component={Login}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="CreateBankAccount"
+                component={CreateBankAccount}
             />
 
         </Navigator>
