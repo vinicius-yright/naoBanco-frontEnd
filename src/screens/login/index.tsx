@@ -4,19 +4,27 @@ import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/core';
 import api from '../../services/api';
 
 export function Login() {
 
-    async function consulta() {
-        const response = await api.get('')
-        console.log(response);
+    const navigation = useNavigation();
+
+    async function login() {
+        const response = await api.post("/login", 
+            {email: txtEmail,
+            password: txtPassword})
+        .then((response) => {
+            console.log(response);
+            navigation.navigate('FirstAccessBankAccount');
+          }, (error) => {
+            console.log(error);
+          });
     }
 
-    const [txtName, setName] = useState('');
     const [txtEmail, setEmail] = useState('');
     const [txtPassword, setPassword] = useState('');
-    const [txtPasswordC, setPasswordC] = useState('');
 
     return (
         <Background>
@@ -29,7 +37,7 @@ export function Login() {
                         style={styles.input}
                         keyboardType='default'
                         maxLength={30}
-                        onChangeText={setName}
+                        onChangeText={setEmail}
                     />
                     <Text style={styles.subtitle}>
                         Senha
@@ -38,14 +46,14 @@ export function Login() {
                         style={styles.input}
                         keyboardType='default'
                         maxLength={50}
-                        onChangeText={setEmail}
+                        onChangeText={setPassword}
                     />
                    
                 </View>
 
                 <View>
                     <ButtonIcon title="Entrar"
-                        onPress={consulta}
+                        onPress={login}
                     />
                 </View>
             </View>

@@ -11,6 +11,7 @@ import { FirstAccess } from '../screens/firstAccess';
 import { CreateUser } from '../screens/createUser';
 import { TesteModal } from '../screens/testeModal';
 import { Login } from '../screens/login';
+import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
 //import { theme } from '../global/styles/theme';
 
 
@@ -26,6 +27,13 @@ export function AppRoutes() {
               }
              }}*/
             >
+                 <Screen
+                    options={{
+                        headerShown: false,
+                    }}
+                    name="FirstAccessBankAccount"
+                    component={FirstAccessBankAccount}
+                />
 
                 <Screen
                     options={{
@@ -50,6 +58,8 @@ export function AppRoutes() {
                     name="TesteModal"
                     component={TesteModal}
                 />
+
+               
 
                 <Screen
                     options={{

@@ -1,36 +1,18 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../global/styles/theme'
+import {theme} from '../../global/styles/theme'
+
 
 export const styles = StyleSheet.create({
     container: {
-        marginTop: 240,
-        marginBottom: 225,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-       
-    },
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'absolute'
+    }, 
     content: {
         marginTop: -40,
         paddingHorizontal: 50
     },
-    title: {
-        flex: 1,
-        color: theme.colors.heading,
-        fontSize: 60,
-        textAlign: 'center',
-        alignContent: 'center',
-        fontFamily: theme.fonts.title700,
-        lineHeight: 60
-    },
-    subtitle: {
-        color: theme.colors.heading,
-        fontSize: 15,
-        textAlign: 'center',
-        marginBottom: 64,
-        fontFamily: theme.fonts.title500,
-        lineHeight: 25
-    }, 
     nomeApp: {
         color: theme.colors.heading,
         fontSize: 28,
@@ -44,6 +26,14 @@ export const styles = StyleSheet.create({
         height:200,
         
     },
+    subtitle: { 
+        color: theme.colors.heading,
+        fontSize: 25,
+        textAlign: 'center',
+        fontFamily: theme.fonts.text400,
+        lineHeight: 25,
+        fontWeight: 'bold'
+    },
     logoApp: {
         justifyContent:'center',
         alignContent: 'center',
@@ -56,4 +46,4 @@ export const styles = StyleSheet.create({
         position:'absolute',
         
     }
-});
+  });

@@ -26,5 +26,17 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: theme.fonts.title500,
         lineHeight: 25
+    },
+    logoApp: {
+        justifyContent:'center',
+        alignContent: 'center',
+        marginTop: 50,
+        width:51,
+        height:54,
+        marginHorizontal:125,
+        top: 1,
+        bottom:20,
+        position:'absolute',
+        
     }
   });

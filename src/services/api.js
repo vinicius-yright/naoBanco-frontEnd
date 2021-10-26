@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL:'https://jsonplaceholder.typicode.com/users/1/albums'
+    baseURL:'http://10.0.2.2:3000'
 });
 
 export default api;
