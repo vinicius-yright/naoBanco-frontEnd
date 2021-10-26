@@ -20,57 +20,59 @@ const { Navigator, Screen } = createStackNavigator();
 export function AppRoutes() {
     return (
 
-            <Navigator
-             /* screenOptions={{
-                 cardStyle: { 
-                    backgroundColor: theme.colors.secondary100,
-              }
-             }}*/
-            >
-                 <Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name="FirstAccessBankAccount"
-                    component={FirstAccessBankAccount}
-                />
+        <Navigator
+        /* screenOptions={{
+            cardStyle: { 
+               backgroundColor: theme.colors.secondary100,
+         }
+        }}*/
+        >
 
-                <Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name="FirstAccess"
-                    component={FirstAccess}
-                />
 
-                <Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name="CreateUser"
-                    component={CreateUser}
-                />
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="FirstAccess"
+                component={FirstAccess}
+            />
 
-                <Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name="TesteModal"
-                    component={TesteModal}
-                />
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="FirstAccessBankAccount"
+                component={FirstAccessBankAccount}
+            />
 
-               
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="CreateUser"
+                component={CreateUser}
+            />
 
-                <Screen
-                    options={{
-                        headerShown: false,
-                    }}
-                    name="Login"
-                    component={Login}
-                />
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="TesteModal"
+                component={TesteModal}
+            />
 
-            </Navigator>
-       
+
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="Login"
+                component={Login}
+            />
+
+        </Navigator>
+
 
     )
 }

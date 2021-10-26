@@ -6,12 +6,23 @@ import { Background } from '../../components/Background';
 import { useState } from 'react';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Modal } from '../Modal';
 
 
 export function CreateUser() {
 
     const navigation = useNavigation();
+
+    async function persisteInformacoesUsuario() {  
+        try {    
+            await AsyncStorage.setItem('@name', txtName)  
+            await AsyncStorage.setItem('@email', txtEmail)
+            await AsyncStorage.setItem('@password', txtPassword)
+        } catch (error) {   
+             console.log(error);
+        }
+    }
 
     async function enviaInformacoes() {
         const response = await api.post("/user", 
@@ -21,6 +32,7 @@ export function CreateUser() {
             password: txtPassword})
         .then((response) => {
             console.log(response);
+            persisteInformacoesUsuario();
           }, (error) => {
             console.log(error);
           });
@@ -35,6 +47,8 @@ export function CreateUser() {
     const [txtEmail, setEmail] = useState('');
     const [txtPassword, setPassword] = useState('');
     const [txtPasswordC, setPasswordC] = useState('');
+
+    
 
     return (
         <Background>
