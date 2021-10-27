@@ -8,13 +8,11 @@ import { useNavigation } from '@react-navigation/core';
 
 export function FirstAccessBankAccount() {
 
-    
-   // const navigation = useNavigation();
+    const navigation = useNavigation();
 
-
-   /*  function handleCreateBankAccount(){
-        navigation.navigate('TesteModal');
-    } */
+     function handleCreateBankAccount(){
+        navigation.navigate('CreateBankAccount');
+     }
 
     return (
         <Background>
@@ -36,8 +34,7 @@ export function FirstAccessBankAccount() {
                 <View>
                     <ButtonIcon title="Criar 1ª Conta Bancária!"
                         onPress={() => {
-                            
-                            /* handleCreateBankAccount() */
+                             handleCreateBankAccount() 
                         }}        
                     />
                 </View>

@@ -32,7 +32,7 @@ export function Login() {
         .then((response) => {
             console.log(response);
             pegaInformacoesSalvasUsuario();
-            //navigation.navigate('FirstAccessBankAccount');
+            navigation.navigate('FirstAccessBankAccount');
           }, (error) => {
             console.log(error);
           });

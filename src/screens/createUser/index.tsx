@@ -13,12 +13,15 @@ import { Modal } from '../Modal';
 export function CreateUser() {
 
     const navigation = useNavigation();
+    var userId = ''
 
     async function persisteInformacoesUsuario() {  
         try {    
-            await AsyncStorage.setItem('@name', txtName)  
-            await AsyncStorage.setItem('@email', txtEmail)
-            await AsyncStorage.setItem('@password', txtPassword)
+            await AsyncStorage.setItem('@name', JSON.stringify(txtName))  
+            await AsyncStorage.setItem('@email', JSON.stringify(txtEmail))
+            await AsyncStorage.setItem('@password', JSON.stringify(txtPassword))
+            await AsyncStorage.setItem('userId', (userId))
+            await AsyncStorage.setItem('firstAccessOk', JSON.stringify("true"))
         } catch (error) {   
              console.log(error);
         }
@@ -32,6 +35,7 @@ export function CreateUser() {
             password: txtPassword})
         .then((response) => {
             console.log(response);
+            userId = response.data.id
             persisteInformacoesUsuario();
           }, (error) => {
             console.log(error);

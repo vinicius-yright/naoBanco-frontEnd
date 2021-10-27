@@ -3,6 +3,7 @@
 //npm install @react-navigation/native-stack
 //npm install @react-navigation/stack
 //npm install react-native-gesture-handler
+//npm install @react-native-async-storage/async-storage
 
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,16 +14,30 @@ import { TesteModal } from '../screens/testeModal';
 import { Login } from '../screens/login';
 import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
 import { CreateBankAccount } from '../screens/createBankAccount'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
 
 const { Navigator, Screen } = createStackNavigator();
+var firstScreen = ''
 
+async function checkFirstAccess() {
+
+    if (await (AsyncStorage.getItem('firstAccessOk')) == "true") {
+        firstScreen = 'Login'
+    } else {
+        firstScreen = 'FirstAccess'
+    }
+
+
+}
 export function AppRoutes() {
+    checkFirstAccess()
     return (
 
         <Navigator>
+
 
             <Screen
                 options={{
@@ -30,6 +45,13 @@ export function AppRoutes() {
                 }}
                 name="FirstAccess"
                 component={FirstAccess}
+            />
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="CreateBankAccount"
+                component={CreateBankAccount}
             />
 
             <Screen
@@ -63,13 +85,7 @@ export function AppRoutes() {
                 component={Login}
             />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="CreateBankAccount"
-                component={CreateBankAccount}
-            />
+
 
         </Navigator>
 
