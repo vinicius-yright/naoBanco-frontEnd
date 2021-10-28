@@ -5,37 +5,37 @@ import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/core';
+import { LogoPlusName } from '../../components/LogoPlusName';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../../services/api';
 
 export function Login() {
 
     const navigation = useNavigation();
-    
-    async function pegaInformacoesSalvasUsuario() {  
-        try {    
-            const nomeUsuario = await AsyncStorage.getItem('@name')  
+
+    async function pegaInformacoesSalvasUsuario() {
+        try {
+            const nomeUsuario = await AsyncStorage.getItem('@name')
             const emailUsuario = await AsyncStorage.getItem('@email')
             const senhaUsuario = await AsyncStorage.getItem('@password')
-            console.log("INFORMACOES GUARDADAS:" + nomeUsuario, emailUsuario, senhaUsuario)
-        } catch (error) {   
-             console.log(error);
+        } catch (error) {
+            console.log(error);
         }
     }
 
-
-
     async function login() {
-        const response = await api.post("/login", 
-            {email: txtEmail,
-            password: txtPassword})
-        .then((response) => {
-            console.log(response);
-            pegaInformacoesSalvasUsuario();
-            navigation.navigate('FirstAccessBankAccount');
-          }, (error) => {
-            console.log(error);
-          });
+        const response = await api.post("/login",
+            {
+                email: txtEmail,
+                password: txtPassword
+            })
+            .then((response) => {
+                console.log(response);
+                pegaInformacoesSalvasUsuario();
+                navigation.navigate('FirstAccessBankAccount');
+            }, (error) => {
+                console.log(error);
+            });
     }
 
     const [txtEmail, setEmail] = useState('');
@@ -43,6 +43,10 @@ export function Login() {
 
     return (
         <Background>
+
+            <LogoPlusName>
+
+            </LogoPlusName>
             <View style={styles.container}>
                 <View>
                     <Text style={styles.subtitle}>
@@ -63,7 +67,7 @@ export function Login() {
                         maxLength={50}
                         onChangeText={setPassword}
                     />
-                   
+
                 </View>
 
                 <View>

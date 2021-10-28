@@ -5,37 +5,34 @@ import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/core';
+import { LogoPlusName } from '../../components/LogoPlusName';
 
 export function FirstAccessBankAccount() {
 
     const navigation = useNavigation();
 
-     function handleCreateBankAccount(){
+    function handleCreateBankAccount() {
         navigation.navigate('CreateBankAccount');
-     }
+    }
 
     return (
         <Background>
-            <Image
-            source={require('../../../assets/Logotipo.png')}
-            style={styles.logoApp}/>
+            <LogoPlusName>
+
+            </LogoPlusName>
             <View style={styles.container}>
-            <Text style={styles.nomeApp}>
-                        NãoBanco 
-                    </Text>
-            
-                <View> 
-                    
+
+                <View>
                     <Text style={styles.subtitle}>
-                    Você ainda não possui uma conta bancária. Clique no botão abaixo para criar a sua primeira!{`\n`}
+                        Você ainda não possui uma conta bancária. Clique no botão abaixo para criar a sua primeira!{`\n`}
                     </Text>
                 </View>
 
                 <View>
                     <ButtonIcon title="Criar 1ª Conta Bancária!"
                         onPress={() => {
-                             handleCreateBankAccount() 
-                        }}        
+                            handleCreateBankAccount()
+                        }}
                     />
                 </View>
             </View>

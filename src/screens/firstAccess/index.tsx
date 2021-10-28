@@ -24,7 +24,7 @@ export function FirstAccess() {
                         NãoBanco !$
                     </Text>
                 </View>
-                   
+
                 <ButtonIcon
                     title="Iniciar"
                     activeOpacity={0.7}
@@ -32,11 +32,11 @@ export function FirstAccess() {
                 />
             </View>
             <ModalFirstAccess
-                        show={modal}
-                        close={() => setModal(false)}
-                        
-                    />
+                show={modal}
+                close={() => setModal(false)}
+
+            />
         </Background>
-        
+
     );
 }

@@ -7,10 +7,7 @@ export const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-    },
-    content: {
-        marginTop: -40,
-        paddingHorizontal: 50
+      marginBottom: 100
     },
     input: {
         fontSize: 17,
