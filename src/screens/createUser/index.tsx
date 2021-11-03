@@ -6,27 +6,45 @@ import { Background } from '../../components/Background';
 import { useState } from 'react';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Modal } from '../Modal';
-
+import { LogoPlusName } from '../../components/LogoPlusName';
 
 export function CreateUser() {
 
     const navigation = useNavigation();
+    var userId = ''
 
-    async function enviaInformacoes() {
-        const response = await api.post("/user", 
-            {name: txtName,
-            email: txtEmail,
-            admin: true,
-            password: txtPassword})
-        .then((response) => {
-            console.log(response);
-          }, (error) => {
+    async function persisteInformacoesUsuario() {
+        try {
+            await AsyncStorage.setItem('@name', txtName)
+            await AsyncStorage.setItem('@email', JSON.stringify(txtEmail))
+            await AsyncStorage.setItem('@password', JSON.stringify(txtPassword))
+            await AsyncStorage.setItem('userId', (userId))
+            await AsyncStorage.setItem('firstAccessOk', JSON.stringify("true"))
+        } catch (error) {
             console.log(error);
-          });
+        }
     }
 
-    function handleCreateBankAccount(){
+    async function enviaInformacoes() {
+        const response = await api.post("/user",
+            {
+                name: txtName,
+                email: txtEmail,
+                admin: true,
+                password: txtPassword
+            })
+            .then((response) => {
+                console.log(response);
+                userId = response.data.id
+                persisteInformacoesUsuario();
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
+    function handleCreateBankAccount() {
         navigation.navigate('Login');
     }
 
@@ -36,8 +54,13 @@ export function CreateUser() {
     const [txtPassword, setPassword] = useState('');
     const [txtPasswordC, setPasswordC] = useState('');
 
+
+
     return (
         <Background>
+            <LogoPlusName>
+
+            </LogoPlusName>
             <View style={styles.container}>
                 <View>
                     <Text style={styles.subtitle}>
@@ -86,7 +109,7 @@ export function CreateUser() {
                         onPress={() => {
                             enviaInformacoes()
                             handleCreateBankAccount()
-                        }}        
+                        }}
                     />
                 </View>
             </View>

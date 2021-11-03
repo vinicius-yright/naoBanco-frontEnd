@@ -1,21 +1,21 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
 import { useNavigation } from '@react-navigation/core';
+import { ModalFirstAccess } from './Modal';
+import { useState } from 'react';
 
 
 export function FirstAccess() {
 
     const navigation = useNavigation();
-
-    function handleFirstAccess() {
-        navigation.navigate('CreateUser');
-    }
+    const [modal, setModal] = useState(false);
 
     return (
         <Background>
+            
             <View style={styles.container}>
                 <View>
                     <Text style={styles.title}>
@@ -28,9 +28,15 @@ export function FirstAccess() {
                 <ButtonIcon
                     title="Iniciar"
                     activeOpacity={0.7}
-                    onPress={handleFirstAccess}
+                    onPress={() => setModal(true)}
                 />
             </View>
+            <ModalFirstAccess
+                show={modal}
+                close={() => setModal(false)}
+
+            />
         </Background>
+
     );
 }
