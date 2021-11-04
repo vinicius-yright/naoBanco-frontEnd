@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Image} from 'react-native';
+import { View, Text, TextInput, Image } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
 import { useState } from 'react';
-import api from '../../services/api';
 import { useNavigation } from '@react-navigation/core';
-import { Modal } from '../Modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogoPlusName } from '../../components/LogoPlusName';
 
-export function SelectBankAccount() {
+export function Home() {
 
     recebeInformacoes();
     const navigation = useNavigation();
     var userIdForPayload = '';
-    var nomePessoa = '';
+    var nomePessoa = ' Nome da conta';
     var nomeConta = '';
 
     async function recebeInformacoes() {
@@ -44,40 +42,44 @@ export function SelectBankAccount() {
         //navigation.navigate('Login'); //mudar para ir para Home quando estiver pronta
     }
 
-    const [txtName, setApelido] = useState('');
-    const [txtSenhaBancaria, setSenhaBancaria] = useState('');
-    const [txtSenhaBancariaC, setSenhaBancariaC] = useState('');
-
     return (
-        
+
         <Background>
             <LogoPlusName>
 
             </LogoPlusName>
-            <Text style={styles.title}>
+
+            <View style={styles.container}>
+                <Text style={styles.saudacoes}>
                     Olá,
-                    <Text>
+                    <Text style={styles.saudacoes}>
                         {nomePessoa}
                     </Text>
+
                 </Text>
-            <View style={styles.container}> 
-                
+
+                <Text style={styles.linha}>
+                    ______________________________________________________________
+                </Text>
 
                 <Text style={styles.title2}>
-                    Apelido da conta
+                    Meu saldo
                 </Text>
 
                 <Text style={styles.subtitle}>
-                    Agência XXXX Conta XXXXX-X
+                    R$ ********
                 </Text>
 
-                
-                    <ButtonIcon title="Acessar Conta Bancária"
-                        onPress={() => {
-                            
-                            handleHome()
-                        }}
-                    />
+                <Text style={styles.subtitle}>
+                    Resumo da conta ->
+                </Text>
+
+                <ButtonIcon title="Acessar Conta Bancária"
+                    onPress={() => {
+
+                        handleHome()
+                    }}
+                />
             </View>
         </Background>
     )

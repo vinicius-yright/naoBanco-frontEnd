@@ -17,6 +17,9 @@ import { CreateBankAccount } from '../screens/createBankAccount'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PixTransfer } from '../screens/pixTransfer';
 import { PixSelectOperation } from '../screens/pixSelectOperation';
+import { Home } from '../screens/homeScreen';
+import { SelectBankAccount } from '../screens/selectBankAccount';
+
 
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
@@ -47,7 +50,7 @@ export function AppRoutes() {
                 name="PixSelectOperation"
                 component={PixSelectOperation}
             />
-            
+        
             <Screen
                 options={{
                     headerShown: false,
@@ -62,6 +65,30 @@ export function AppRoutes() {
                 }}
                 name="FirstAccess"
                 component={FirstAccess}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="Home"
+                component={Home}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="SelectBankAccount"
+                component={SelectBankAccount}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="Login"
+                component={Login}
             />
             <Screen
                 options={{
@@ -93,13 +120,6 @@ export function AppRoutes() {
                 }}
                 name="TesteModal"
                 component={TesteModal}
-            />
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="Login"
-                component={Login}
             />
 
 
