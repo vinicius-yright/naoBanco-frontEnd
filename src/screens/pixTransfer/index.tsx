@@ -1,7 +1,7 @@
 //apenas design da pagina, falta conexão com api
 
 import React, { Component } from 'react';
-import { View, Text, TextInput, Image} from 'react-native';
+import { View, Text, TextInput, Image } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
@@ -11,8 +11,9 @@ import { useNavigation } from '@react-navigation/core';
 import { Modal } from '../Modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogoPlusName } from '../../components/LogoPlusName';
+import { ScreenTitle } from '../../components/ScreenTitle';
 
-export function PixTransferencia() {
+export function PixTransfer() {
 
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
@@ -28,11 +29,11 @@ export function PixTransferencia() {
 
 
             <View style={styles.container}>
-                <View>
-                    <Text style={styles.title}>
-                       Transferências PIX
-                    </Text>
+                
+                <ScreenTitle title="Transferências PIX">
+                </ScreenTitle>
 
+                <View>
                     <Text style={styles.title2}>
                         Para realizar uma transferencia com PIX {'\n'}
                         Preecha os campos a seguir:
@@ -87,7 +88,7 @@ export function PixTransferencia() {
                     onPress={() => setModal(true)}
                 />
             </View>
-            
+
         </Background>
 
     );

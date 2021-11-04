@@ -15,7 +15,8 @@ import { Login } from '../screens/login';
 import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
 import { CreateBankAccount } from '../screens/createBankAccount'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { PixTransferencia } from '../screens/pixTransferencia';
+import { PixTransfer } from '../screens/pixTransfer';
+import { PixSelectOperation } from '../screens/pixSelectOperation';
 
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
@@ -38,15 +39,23 @@ export function AppRoutes() {
     return (
 
         <Navigator>
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixSelectOperation"
+                component={PixSelectOperation}
+            />
             
             <Screen
                 options={{
                     headerShown: false,
                 }}
-                name="PixTransferencia"
-                component={PixTransferencia}
+                name="PixTransfer"
+                component={PixTransfer}
             />
-
+            
             <Screen
                 options={{
                     headerShown: false,
@@ -94,7 +103,7 @@ export function AppRoutes() {
             />
 
 
-        </Navigator>
+        </Navigator >
 
 
     )

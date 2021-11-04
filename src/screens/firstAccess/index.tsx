@@ -10,7 +10,6 @@ import { useState } from 'react';
 
 export function FirstAccess() {
 
-    const navigation = useNavigation();
     const [modal, setModal] = useState(false);
 
     return (
