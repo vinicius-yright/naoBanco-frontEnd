@@ -14,8 +14,8 @@ import { TesteModal } from '../screens/testeModal';
 import { Login } from '../screens/login';
 import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
 import { CreateBankAccount } from '../screens/createBankAccount'
-import { SelectBankAccount } from '../screens/selectBankAccount'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { PixTransferencia } from '../screens/pixTransferencia';
 
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
@@ -38,13 +38,15 @@ export function AppRoutes() {
     return (
 
         <Navigator>
+            
             <Screen
                 options={{
                     headerShown: false,
                 }}
-                name="SelectBankAccount"
-                component={SelectBankAccount}
+                name="PixTransferencia"
+                component={PixTransferencia}
             />
+
             <Screen
                 options={{
                     headerShown: false,
@@ -52,15 +54,6 @@ export function AppRoutes() {
                 name="FirstAccess"
                 component={FirstAccess}
             />
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="Login"
-                component={Login}
-            />
-
             <Screen
                 options={{
                     headerShown: false,
@@ -92,8 +85,13 @@ export function AppRoutes() {
                 name="TesteModal"
                 component={TesteModal}
             />
-
-
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="Login"
+                component={Login}
+            />
 
 
         </Navigator>
