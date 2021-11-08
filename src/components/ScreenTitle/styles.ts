@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         width:'90%',
         fontFamily: theme.fonts.title700,
-        fontSize: 50,
+        fontSize: 40,
         marginTop: -40,
         marginBottom: 20,
         color: 'white'

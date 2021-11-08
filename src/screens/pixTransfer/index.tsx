@@ -36,7 +36,7 @@ export function PixTransfer() {
                 <View>
                     <Text style={styles.title2}>
                         Para realizar uma transferencia com PIX {'\n'}
-                        Preecha os campos a seguir:
+                        preecha os campos a seguir:
                     </Text>
                 </View>
 

@@ -12,6 +12,7 @@ import { TesteModal } from './src/screens/testeModal';
 //import { CreateUser } from './src/screens/createUser';
 //import { FirstAccess } from './src/screens/firstAccess';
 
+
 export default function App() {
 
   let [fontsLoaded] = useFonts({

@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import {theme} from '../../global/styles/theme'
 
+
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -19,14 +20,15 @@ export const styles = StyleSheet.create({
     input: {
         fontSize: 17,
         height: 50,
-        width: 300,
+        width: 400,
         margin: 11,
         padding: 10,
+        marginBottom: 15,
         backgroundColor:theme.colors.heading
     },
     title:{
         color: theme.colors.heading,
-        fontSize: 35,
+        fontSize: 50,
         textAlign: 'center',
         fontFamily: theme.fonts.title700,
         lineHeight: 68,
@@ -35,23 +37,21 @@ export const styles = StyleSheet.create({
     },
     title2:{
         color: theme.colors.heading,
-        fontSize: 20,
+        fontSize: 25,
         textAlign: 'center',
         fontFamily: theme.fonts.title700,
-        lineHeight: 20,
-        margin:10,
-        marginTop: -20,
-        marginBottom: -10
+        lineHeight: 30,
+        margin:10
     },
     subtitle: {
         color: theme.colors.heading,
-        fontSize: 17,
-        textAlign: 'center',
+        fontSize: 22,
+        textAlign: 'left',
         fontFamily: theme.fonts.title500,
         lineHeight: 25,
         marginLeft: 5,
-        marginTop: 10,
-        marginBottom: -10
+        marginTop: 25,
+        marginBottom: 0
     },
     logoApp: {
         justifyContent:'center',

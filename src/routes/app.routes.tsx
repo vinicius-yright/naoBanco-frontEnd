@@ -20,7 +20,6 @@ import { PixSelectOperation } from '../screens/pixSelectOperation';
 import { Home } from '../screens/homeScreen';
 import { SelectBankAccount } from '../screens/selectBankAccount';
 
-
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
 
@@ -47,17 +46,18 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="PixSelectOperation"
-                component={PixSelectOperation}
+                name="PixTransfer"
+                component={PixTransfer}
             />
-        
+
             <Screen
                 options={{
                     headerShown: false,
                 }}
-                name="PixTransfer"
-                component={PixTransfer}
+                name="PixSelectOperation"
+                component={PixSelectOperation}
             />
+
             
             <Screen
                 options={{
@@ -121,7 +121,6 @@ export function AppRoutes() {
                 name="TesteModal"
                 component={TesteModal}
             />
-
 
         </Navigator >
 
