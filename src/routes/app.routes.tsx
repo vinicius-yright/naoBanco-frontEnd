@@ -19,6 +19,7 @@ import { PixTransfer } from '../screens/pixTransfer';
 import { PixSelectOperation } from '../screens/pixSelectOperation';
 import { Home } from '../screens/homeScreen';
 import { SelectBankAccount } from '../screens/selectBankAccount';
+import { MyPixKeys } from '../screens/myPixKeys';
 
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
@@ -41,6 +42,14 @@ export function AppRoutes() {
     return (
 
         <Navigator>
+            
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="MyPixKeys"
+                component={MyPixKeys}
+            />
             
             <Screen
                 options={{
