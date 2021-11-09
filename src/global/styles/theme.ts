@@ -12,6 +12,7 @@ export const theme = {
       secondary40: '#1D2766', 
       secondary30: '#495BCC', 
       purpleButton: '#342686',
+      purpleGay: '#4A4085',
      
       overlay: 'rgba(0,0,0,0.7)',
       highlight: '#ABB1CC',

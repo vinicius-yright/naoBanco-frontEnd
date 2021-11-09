@@ -41,7 +41,7 @@ export function AppRoutes() {
     return (
 
         <Navigator>
-
+            
             <Screen
                 options={{
                     headerShown: false,
@@ -54,18 +54,20 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="PixSelectOperation"
-                component={PixSelectOperation}
+                name="FirstAccess"
+                component={FirstAccess}
             />
 
-            
+
+
             <Screen
                 options={{
                     headerShown: false,
                 }}
-                name="FirstAccess"
-                component={FirstAccess}
+                name="PixSelectOperation"
+                component={PixSelectOperation}
             />
+
 
             <Screen
                 options={{

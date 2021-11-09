@@ -31,29 +31,19 @@ export const styles = StyleSheet.create({
         fontFamily: theme.fonts.title500,
         lineHeight: 25
     }, 
-    nomeApp: {
-        color: theme.colors.heading,
-        fontSize: 28,
-        textAlign: 'center',
-        alignContent: 'center',
-        fontFamily: theme.fonts.title500,
-        fontWeight:'bold',
-        marginTop: 56,
-        marginLeft: 81,
-        width:190,
-        height:200,
-        
+    botao: {
+        width: '60%',
+        height: 50,
+        marginTop: 15,
+        backgroundColor: theme.colors.purpleGay,
+        borderRadius: 14,
+        flexDirection: 'row',
+        alignItems: 'center'
     },
-    logoApp: {
-        justifyContent:'center',
-        alignContent: 'center',
-        marginTop: 50,
-        width:51,
-        height:54,
-        marginHorizontal:125,
-        top: 1,
-        bottom:20,
-        position:'absolute',
-        
+    tituloBotao: {
+        flex: 1,
+        color: theme.colors.heading,
+        fontSize: 17,
+        textAlign: 'center'
     }
 });
