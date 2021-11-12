@@ -46,6 +46,14 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
+                name="Home"
+                component={Home}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
                 name="PixTransfer"
                 component={PixTransfer}
             />
@@ -67,13 +75,6 @@ export function AppRoutes() {
                 component={FirstAccess}
             />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="Home"
-                component={Home}
-            />
 
             <Screen
                 options={{

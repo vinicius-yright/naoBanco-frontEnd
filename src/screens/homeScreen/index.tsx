@@ -8,6 +8,9 @@ import { useNavigation } from '@react-navigation/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogoPlusName } from '../../components/LogoPlusName';
 
+import { theme } from '../../global/styles/theme';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 export function Home() {
 
     recebeInformacoes();
@@ -46,7 +49,6 @@ export function Home() {
 
         <Background>
             <LogoPlusName>
-
             </LogoPlusName>
 
             <View style={styles.container}>
@@ -71,16 +73,71 @@ export function Home() {
                 </Text>
 
                 <Text style={styles.subtitle}>
-                    Resumo da conta ->
+                    Resumo da conta
                 </Text>
+            </View>
 
-                <ButtonIcon title="Acessar Conta Bancária"
+            <View style={styles.bodyMainButton}>
+                <TouchableOpacity
                     onPress={() => {
-
                         handleHome()
                     }}
-                />
+                    style={styles.btnPrincipal}
+                >
+                    <Text style={styles.btnTxt}>
+                        Transferência
+                    </Text>
+                </TouchableOpacity>
+                
+                <View >
+                    <TouchableOpacity
+                        onPress={() => {
+                            handleHome()
+                        }}
+                        style={styles.btnPrincipal}
+                    >
+                        <Text style={styles.btnTxt}>
+                            Pagamentos
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => {
+                            handleHome()
+                        }}
+                        style={styles.btnPrincipal}
+                    >
+                        <Text style={styles.btnTxt}>
+                            Cartão
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
+                <TouchableOpacity
+                    onPress={() => {
+                        handleHome()
+                    }}
+                    style={styles.btnPrincipal}
+                >
+                    <Text style={styles.btnTxt}>
+                        PIX
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => {
+                        handleHome()
+                    }}
+                    style={styles.btnPrincipal}
+                >
+                    <Text style={styles.btnTxt}>
+                        Tutoriais
+                    </Text>
+                </TouchableOpacity>
+                
             </View>
+
+            <View></View>
         </Background>
     )
 
