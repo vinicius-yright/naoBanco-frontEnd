@@ -73,7 +73,8 @@ export function Home() {
                 </Text>
 
                 <Text style={styles.subtitle}>
-                    Resumo da conta
+                    Resumo da conta 
+
                 </Text>
             </View>
 
