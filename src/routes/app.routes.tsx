@@ -20,6 +20,7 @@ import { PixSelectOperation } from '../screens/pixSelectOperation';
 import { Home } from '../screens/homeScreen';
 import { SelectBankAccount } from '../screens/selectBankAccount';
 import { MyPixKeys } from '../screens/myPixKeys';
+import { PixTransferConfirmation } from '../screens/pixTransferConfirmation';
 
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
@@ -42,7 +43,31 @@ export function AppRoutes() {
     return (
 
         <Navigator>
-            
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixTransfer"
+                component={PixTransfer}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixTransferConfirmation"
+                component={PixTransferConfirmation}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixSelectOperation"
+                component={PixSelectOperation}
+            />
+
             <Screen
                 options={{
                     headerShown: false,
@@ -63,26 +88,8 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="PixTransfer"
-                component={PixTransfer}
-            />
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
                 name="FirstAccess"
                 component={FirstAccess}
-            />
-
-
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="PixSelectOperation"
-                component={PixSelectOperation}
             />
 
             <Screen

@@ -13,7 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { ScreenTitle } from '../../components/ScreenTitle';
 
-export function PixTransfer() {
+export function PixTransferConfirmation() {
 
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
@@ -22,10 +22,6 @@ export function PixTransfer() {
     const [txtValor, setValor] = useState('');
     const [txtDescricao, setDescricao] = useState('');
     const [txtData, setData] = useState('');
-
-    function handleFirstAccess() {
-        navigation.navigate('PixTransferConfirmation');
-      }
 
     return (
         <Background>
@@ -39,57 +35,50 @@ export function PixTransfer() {
 
                 <View>
                     <Text style={styles.title2}>
-                        Para realizar uma transferencia com PIX {'\n'}
-                        preecha os campos a seguir:
+                        Confirme as informações de quem vai receber:
                     </Text>
                 </View>
 
                 <View>
                     <Text style={styles.subtitle}>
-                        Chave:
+                        Nome:
+                        <Text style={styles.subtitle2}> </Text>
                     </Text>
-                    <TextInput
-                        style={styles.input}
-                        keyboardType='default'
-                        maxLength={30}
-                        onChangeText={setChave}
-                    />
+
+                    <Text style={styles.subtitle}>
+                        Instituição:
+                        <Text style={styles.subtitle2}>  Não Banco !$</Text>
+                    </Text>
+                    
+                    <Text style={styles.subtitle}>
+                        Chave:
+                        <Text style={styles.subtitle2}>
+                        </Text>
+                    </Text>
 
                     <Text style={styles.subtitle}>
                         Valor:
+                        <Text style={styles.subtitle2}> </Text>
                     </Text>
-                    <TextInput
-                        style={styles.input}
-                        keyboardType='default'
-                        maxLength={30}
-                        onChangeText={setValor}
-                    />
 
                     <Text style={styles.subtitle}>
-                        Descrição:
+                        Data do débito:
+                        <Text style={styles.subtitle2}> </Text>
                     </Text>
-                    <TextInput
-                        style={styles.input}
-                        keyboardType='default'
-                        maxLength={30}
-                        onChangeText={setDescricao}
-                    />
-
-                    <Text style={styles.subtitle}>
-                        Data:
-                    </Text>
-                    <TextInput
-                        style={styles.input}
-                        keyboardType='default'
-                        maxLength={30}
-                        onChangeText={setData}
-                    />
                 </View>
+
+                <ButtonIcon
+                    title="Cancelar"
+                    activeOpacity={0.7}
+                    onPress={() => setModal(true)}
+                    style={styles.btnBoxCancelar}
+                />
 
                 <ButtonIcon
                     title="Continuar"
                     activeOpacity={0.7}
-                    onPress={handleFirstAccess}
+                    onPress={() => setModal(true)}
+                    style={styles.btnBoxContinuar}
                 />
             </View>
 
