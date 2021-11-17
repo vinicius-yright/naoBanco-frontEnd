@@ -17,15 +17,45 @@ export function PixTransfer() {
 
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
-
+    var userIdForPayload = '';
     const [txtChave, setChave] = useState('');
     const [txtValor, setValor] = useState('');
     const [txtDescricao, setDescricao] = useState('');
     const [txtData, setData] = useState('');
 
-    function handleFirstAccess() {
-        navigation.navigate('PixTransferConfirmation');
-      }
+    async function pegarIdDaConta() {
+        try {
+            const userId = await AsyncStorage.getItem("userId");
+            if (userId != null) {
+                userIdForPayload = userId
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function pegaNumeroContaUsuario() {
+        const response = await api.get(`/accounts/user/${userIdForPayload}`)
+        return response.data.user.id;
+    }
+
+    async function transferirViaPix() {
+        pegarIdDaConta();
+        const response = await api.post("/transfers/pix",
+            {
+                sender: pegaNumeroContaUsuario(),
+                receiver: txtChave,
+                value: txtValor,
+                message: txtDescricao
+            })
+            .then((response) => {
+                console.log(response);
+                pegaInformacoesSalvasUsuario();
+                //     navigation.navigate('TelaDeConfirmacaoPIX');
+            }, (error) => {
+                console.log(error);
+            });
+    }
 
     return (
         <Background>
@@ -33,7 +63,7 @@ export function PixTransfer() {
 
 
             <View style={styles.container}>
-                
+
                 <ScreenTitle title="Transferências PIX">
                 </ScreenTitle>
 
@@ -75,21 +105,12 @@ export function PixTransfer() {
                         onChangeText={setDescricao}
                     />
 
-                    <Text style={styles.subtitle}>
-                        Data:
-                    </Text>
-                    <TextInput
-                        style={styles.input}
-                        keyboardType='default'
-                        maxLength={30}
-                        onChangeText={setData}
-                    />
                 </View>
 
                 <ButtonIcon
                     title="Continuar"
                     activeOpacity={0.7}
-                    onPress={handleFirstAccess}
+                    onPress={transferirViaPix}
                 />
             </View>
 

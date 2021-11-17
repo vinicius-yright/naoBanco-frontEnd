@@ -45,6 +45,10 @@ export function Home() {
         //navigation.navigate('Login'); //mudar para ir para Home quando estiver pronta
     }
 
+    function handlePix() {
+        navigation.navigate('PixSelectOperation'); //mudar para ir para Home quando estiver pronta
+    }
+
     return (
 
         <Background>
@@ -116,7 +120,7 @@ export function Home() {
 
                 <TouchableOpacity
                     onPress={() => {
-                        handleHome()
+                        handlePix()
                     }}
                     style={styles.btnPrincipal}
                 >

@@ -13,11 +13,29 @@ export function Login() {
 
     const navigation = useNavigation();
 
-    async function pegaInformacoesSalvasUsuario() {
+    var userId = ''
+
+    async function navegacaoInteligente() {
+        const response = await api.get(`accounts/user/${userId}`)
+            .then((response) => {
+                console.log(response);
+                if(response.data.length) {
+                    navigation.navigate('SelectBankAccount');
+                } else {
+                    navigation.navigate('FirstAccessBankAccount');
+                }
+            }, (error) => {
+                console.log(error);
+            });
+        
+    }
+
+    async function persisteInformacoesUsuario() {
         try {
-            const nomeUsuario = await AsyncStorage.getItem('@name')
-            const emailUsuario = await AsyncStorage.getItem('@email')
-            const senhaUsuario = await AsyncStorage.getItem('@password')
+            const idUsuario = await AsyncStorage.getItem('userId')
+            if (idUsuario == null) {
+                await AsyncStorage.setItem('userId', (userId))
+            }
         } catch (error) {
             console.log(error);
         }
@@ -31,8 +49,10 @@ export function Login() {
             })
             .then((response) => {
                 console.log(response);
-                pegaInformacoesSalvasUsuario();
-                navigation.navigate('FirstAccessBankAccount');
+                userId = response.data.user.id
+                persisteInformacoesUsuario();
+                console.log(userId);
+                navegacaoInteligente();
             }, (error) => {
                 console.log(error);
             });

@@ -10,15 +10,14 @@ import { Modal } from '../Modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogoPlusName } from '../../components/LogoPlusName';
 
-export function SelectBankAccount() {
+export function PixConfirmTransfer() {
 
-    //recebeInformacoes();
+    recebeInformacoes();
     const navigation = useNavigation();
     var userIdForPayload = '';
     var nomePessoa = '';
     var nomeConta = '';
 
-   /*
     async function recebeInformacoes() {
         try {
             const userId = await AsyncStorage.getItem("userId");
@@ -31,17 +30,16 @@ export function SelectBankAccount() {
             }
         } catch (error) {
             console.log(error)
-        } 
-         const response = await api.get("/accounts/user/" + userIdForPayload)
+        }
+        /* const response = await api.get("/accounts/user/" + userIdForPayload)
             .then((response) => {
                 nomePessoa = response.data[0].nick;
                 console.log(response);
             }, (error) => {
                 console.log(error);
                 console.log(userIdForPayload, txtName, txtSenhaBancaria)
-            }); 
+            }); */
     }
-    */
     function handleHome() {
         navigation.navigate('Home'); //mudar para ir para Home quando estiver pronta
     }
