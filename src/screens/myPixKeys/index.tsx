@@ -57,6 +57,7 @@ export function MyPixKeys() {
                 <View style={styles.botaoContainer}>
                     <TouchableOpacity style={styles.botao1}
                         onPress={() => {
+                            navigation.navigate("PixCreateEmailKey");
                         }}>
                         <Text style={styles.tituloBotao}>
                             Email

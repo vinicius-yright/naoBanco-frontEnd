@@ -28,7 +28,7 @@ export function PixSelectOperation() {
 
                 <ButtonIcon title="Minhas chaves"
                     onPress={() => {
-                        // navigation.navigate('MyPixKeys')
+                         navigation.navigate('MyPixKeys')
                     }}
                 />
 

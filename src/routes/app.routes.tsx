@@ -21,6 +21,7 @@ import { Home } from '../screens/homeScreen';
 import { SelectBankAccount } from '../screens/selectBankAccount';
 import { MyPixKeys } from '../screens/myPixKeys';
 import { PixTransferConfirmation } from '../screens/pixTransferConfirmation';
+import { PixCreateEmailKey } from '../screens/pixCreateEmailKey';
 
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
@@ -84,6 +85,14 @@ export function AppRoutes() {
                 component={MyPixKeys}
             />
 
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixCreateEmailKey"
+                component={PixCreateEmailKey}
+            />
+            
             <Screen
                 options={{
                     headerShown: false,
