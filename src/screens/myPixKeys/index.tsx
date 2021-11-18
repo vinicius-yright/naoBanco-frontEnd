@@ -34,7 +34,10 @@ export function MyPixKeys() {
                 } else {
                     content = "Você ainda não possui chaves cadastradas."
                 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                 setContent(content)
             }).catch(err => console.log(err));
 

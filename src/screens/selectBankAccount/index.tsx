@@ -1,6 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/core';
 import { Text, View } from 'react-native';
 import { Background } from '../../components/Background';
 import { ButtonIcon } from '../../components/ButtonIcon';
@@ -9,37 +8,45 @@ import api from '../../services/api';
 import { styles } from './styles';
 
 export function SelectBankAccount() {
-    
+
     const navigation = useNavigation();
 
-    const [ name, setUser ] = useState("")
-    const [ id, setUserId ] = useState("")
-    const [ nick, setNick ] = useState("")
-    const [ account, setAccount ] = useState("")
-    
+    let accounts: string[] = [];
+
+    const [nameState, setUser] = useState("")
+    const [idState, setUserId] = useState("")
+    const [accountsState, setAccounts] = useState(accounts)
+
+    recebeInformacoes()
+
     useEffect(() => {
-        recebeInformacoes()
+        if (!accounts.length) {
+            setAccounts(accounts)
+            console.log("Ta entrando aqui")
+        }
     })
 
     async function recebeInformacoes() {
         try {
-            const userId = await AsyncStorage.getItem("userId");
-            const userName = await AsyncStorage.getItem("@name");
+            const userId = "540d4ca6-2347-454c-9b81-8cda67ab629d" //await AsyncStorage.getItem("userId");
+            const userName = "Teste"//await AsyncStorage.getItem("@name");
             if (userId != null && userName != null) {
-                setUser(userName)
-                setUserId(userId)
-                console.log(name, id)
+                // setUser(userName)
+                // setUserId(userId)
+                console.log("Ta repetindo essa merda")
             }
         } catch (error) {
             console.log(error)
-        } 
-        await api.get(`/accounts/user/${id}`)
+        }
+        await api.get(`/accounts/user/${idState}`)
             .then((response) => {
-                setNick(response.data[0].nick);
-                setAccount(response.data[0].accountNumber)
+                response.data.forEach((account: string) => {
+                    accounts.push(account)
+                })
             }, (error) => {
-                console.log(error);
-            }); 
+                console.log(error + " Deu ruim");
+                accounts.push("Teste")
+            });
     }
 
     function handleHome() {
@@ -47,35 +54,41 @@ export function SelectBankAccount() {
     }
 
     return (
-        
+
         <Background>
             <LogoPlusName>
 
             </LogoPlusName>
             <Text style={styles.title}>
-                    Olá, 
-                    <Text>
-                        {name}
-                    </Text>
+                Olá,
+                <Text>
+                    {nameState}
                 </Text>
-            <View style={styles.container}> 
-                
+            </Text>
+            <View style={styles.container}>
 
-                <Text style={styles.title2}>
-                    {nick}
-                </Text>
+                {
+                    accountsState.map((account) => {
+                        return (
+                            <Text style={styles.title2}>
+                                {account.nick.toString()}
+                                {account.accountNumber.toString()}
+                            </Text>
+                        )
+                    })
+                }
 
                 <Text style={styles.subtitle}>
-                    Agência 0001 Conta {account}
+                    Agência 0001 Conta
                 </Text>
 
-                
-                    <ButtonIcon title="Acessar Conta Bancária"
-                        onPress={() => {
-                            
-                            handleHome()
-                        }}
-                    />
+
+                <ButtonIcon title="Acessar Conta Bancária"
+                    onPress={() => {
+
+                        handleHome()
+                    }}
+                />
             </View>
         </Background>
     )
