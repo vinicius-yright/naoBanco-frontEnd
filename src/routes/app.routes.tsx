@@ -48,6 +48,13 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
+                name="SelectBankAccount"
+                component={SelectBankAccount}
+            />
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
                 name="MyPixKeys"
                 component={MyPixKeys}
             />
@@ -84,7 +91,7 @@ export function AppRoutes() {
                 component={PixSelectOperation}
             />
 
-            
+
             <Screen
                 options={{
                     headerShown: false,
@@ -92,7 +99,7 @@ export function AppRoutes() {
                 name="PixCreateEmailKey"
                 component={PixCreateEmailKey}
             />
-            
+
             <Screen
                 options={{
                     headerShown: false,
@@ -101,13 +108,6 @@ export function AppRoutes() {
                 component={Home}
             />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="SelectBankAccount"
-                component={SelectBankAccount}
-            />
 
             <Screen
                 options={{
