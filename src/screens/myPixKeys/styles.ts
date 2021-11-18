@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
     },
     subtitle: {
         color: theme.colors.heading,
@@ -36,7 +36,9 @@ export const styles = StyleSheet.create({
     botaoContainer: {
         flex: 1,
         flexDirection: 'row',
-        bottom: -120
+        top: 200,
+        justifyContent: 'space-between',
+        marginHorizontal: 40
     },
     tituloBotao: {
         flex: 1,

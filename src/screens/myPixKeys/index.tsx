@@ -1,37 +1,47 @@
-import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
+import { useNavigation } from '@react-navigation/core';
+import React, { useEffect, useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Background } from '../../components/Background';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { ScreenTitle } from '../../components/ScreenTitle';
-import { useNavigation } from '@react-navigation/core';
-import { ButtonIcon } from '../../components/ButtonIcon';
 import api from '../../services/api';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { styles } from './styles';
 
 export function MyPixKeys() {
 
     const navigation = useNavigation();
 
-    async function getPixKeys() {
+    const [ content, setContent ] = useState("Carregando...")
 
-        const account = AsyncStorage.getItem("bankAccount");
-        const res = await api.get(`/pixKeys/account/${account}`)
-                        .then((res) => {
-                            return new Array(JSON.parse(res.toString()))
-                        }).catch(err => console.log(err));
+    useEffect(() => {
+        getPixKeys()
+    })
+    
+    function getPixKeys() {
+        // const account = AsyncStorage.getItem("bankAccount");
+        const account = "5"
+
+        const res = api.get(`/pixKeys/account/${account}`)
+            .then((res) => {
+                let pixKeys = res.data
+                let content = ""
+
+                if(pixKeys.length){
+                    for (let i = 0; i < pixKeys.length; i++) {
+                        content += `Chave ${i + 1} (${pixKeys[i].type == 'random' ? 'aleatória' : 'email'}) \n`
+                        content += `${pixKeys[i].key} \n\n`
+                    }
+                } else {
+                    content = "Você ainda não possui chaves cadastradas."
+                }
+
+                setContent(content)
+            }).catch(err => console.log(err));
 
         return res;
     }
 
-    // useEffect(() => {
-    //     const pixKeys = getPixKeys();
-
-    //     if(pixKeys.length)
-    // }) 
-
     return (
-
         <Background>
             <LogoPlusName />
             <View style={styles.container}>
@@ -45,15 +55,11 @@ export function MyPixKeys() {
 
                 <View style={{ paddingVertical: 60 }} >
                     <Text style={styles.subtitle}>
-                        Chave 1 (email): {`\n`}
-                        XXXXXXXXXXXXXXXXX{`\n\n`}
-
-                        Chave 2 (Aleatória): {`\n`}
-                        XXXXXXXXXXXXXXXX{`\n`}XXXXXXXXXXXXXXXXX{`\n`}XXXXXXXXXXXXXXXXXX
-
+                        {content}
                     </Text>
                 </View>
 
+            </View>
                 <View style={styles.botaoContainer}>
                     <TouchableOpacity style={styles.botao1}
                         onPress={() => {
@@ -74,7 +80,6 @@ export function MyPixKeys() {
                         </Text>
                     </TouchableOpacity>
                 </View>
-            </View>
         </Background>
     )
 

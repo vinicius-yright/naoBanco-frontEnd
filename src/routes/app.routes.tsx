@@ -44,6 +44,13 @@ export function AppRoutes() {
     return (
 
         <Navigator>
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="MyPixKeys"
+                component={MyPixKeys}
+            />
 
             <Screen
                 options={{
@@ -77,14 +84,7 @@ export function AppRoutes() {
                 component={PixSelectOperation}
             />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="MyPixKeys"
-                component={MyPixKeys}
-            />
-
+            
             <Screen
                 options={{
                     headerShown: false,
