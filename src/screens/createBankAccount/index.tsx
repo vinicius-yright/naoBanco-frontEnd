@@ -29,6 +29,7 @@ export function CreateBankAccount() {
                 nick: txtName,
                 password: txtSenhaBancaria,
                 user: userIdForPayload})
+                
             .then((response) => {
                 console.log(response);
             }, (error) => {
@@ -37,7 +38,7 @@ export function CreateBankAccount() {
             });
     }
     function handleHome() {
-        //navigation.navigate('Login'); //mudar para ir para Home quando estiver pronta
+        navigation.navigate('Home');
     }
 
     const [txtName, setApelido] = useState('');

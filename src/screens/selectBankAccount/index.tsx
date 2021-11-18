@@ -1,51 +1,50 @@
-import React, { Component } from 'react';
-import { View, Text, TextInput, Image} from 'react-native';
-import { styles } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
-import { Background } from '../../components/Background';
-import { useState } from 'react';
-import api from '../../services/api';
-import { useNavigation } from '@react-navigation/core';
-import { Modal } from '../Modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/core';
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
+import { Background } from '../../components/Background';
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { LogoPlusName } from '../../components/LogoPlusName';
+import api from '../../services/api';
+import { styles } from './styles';
 
 export function SelectBankAccount() {
-    recebeInformacoes();
+    
     const navigation = useNavigation();
-    var userIdForPayload = '';
-    var nomePessoa = '';
-    var nomeConta = '';
+
+    const [ name, setUser ] = useState("")
+    const [ id, setUserId ] = useState("")
+    const [ nick, setNick ] = useState("")
+    const [ account, setAccount ] = useState("")
+    
+    useEffect(() => {
+        recebeInformacoes()
+    })
 
     async function recebeInformacoes() {
         try {
             const userId = await AsyncStorage.getItem("userId");
             const userName = await AsyncStorage.getItem("@name");
             if (userId != null && userName != null) {
-                nomePessoa = userName
-                userIdForPayload = userId
-                console.log(nomePessoa, userIdForPayload)
-                window.location.reload();
+                setUser(userName)
+                setUserId(userId)
+                console.log(name, id)
             }
         } catch (error) {
             console.log(error)
-        }
-        /* const response = await api.get("/accounts/user/" + userIdForPayload)
+        } 
+        await api.get(`/accounts/user/${id}`)
             .then((response) => {
-                nomePessoa = response.data[0].nick;
-                console.log(response);
+                setNick(response.data[0].nick);
+                setAccount(response.data[0].accountNumber)
             }, (error) => {
                 console.log(error);
-                console.log(userIdForPayload, txtName, txtSenhaBancaria)
-            }); */
-    }
-    function handleHome() {
-        //navigation.navigate('Login'); //mudar para ir para Home quando estiver pronta
+            }); 
     }
 
-    const [txtName, setApelido] = useState('');
-    const [txtSenhaBancaria, setSenhaBancaria] = useState('');
-    const [txtSenhaBancariaC, setSenhaBancariaC] = useState('');
+    function handleHome() {
+        navigation.navigate('Home'); //mudar para ir para Home quando estiver pronta
+    }
 
     return (
         
@@ -54,20 +53,20 @@ export function SelectBankAccount() {
 
             </LogoPlusName>
             <Text style={styles.title}>
-                    Olá,
+                    Olá, 
                     <Text>
-                        {nomePessoa}
+                        {name}
                     </Text>
                 </Text>
             <View style={styles.container}> 
                 
 
                 <Text style={styles.title2}>
-                    Apelido da conta
+                    {nick}
                 </Text>
 
                 <Text style={styles.subtitle}>
-                    Agência XXXX Conta XXXXX-X
+                    Agência 0001 Conta {account}
                 </Text>
 
                 
