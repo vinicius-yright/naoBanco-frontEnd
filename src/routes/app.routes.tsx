@@ -57,8 +57,8 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="FirstAccessBankAccount"
-                component={FirstAccessBankAccount}
+                name="Login"
+                component={Login}
             />
 
             <Screen
@@ -68,8 +68,6 @@ export function AppRoutes() {
                 name="CreateUser"
                 component={CreateUser}
             />
-
- 
 
             <Screen
                 options={{
@@ -127,21 +125,13 @@ export function AppRoutes() {
                 name="Home"
                 component={Home}
             />
-
-
             <Screen
                 options={{
                     headerShown: false,
                 }}
-                name="Login"
-                component={Login}
+                name="FirstAccessBankAccount"
+                component={FirstAccessBankAccount}
             />
-
-
-
-
-
-
             <Screen
                 options={{
                     headerShown: false,

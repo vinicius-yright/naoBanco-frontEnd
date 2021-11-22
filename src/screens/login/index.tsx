@@ -84,6 +84,7 @@ export function Login() {
                     <TextInput
                         style={styles.input}
                         keyboardType='default'
+                        secureTextEntry={true}
                         maxLength={50}
                         onChangeText={setPassword}
                     />
