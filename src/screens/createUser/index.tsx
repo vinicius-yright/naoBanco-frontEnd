@@ -7,13 +7,20 @@ import { useState } from 'react';
 import api from '../../services/api';
 import { useNavigation } from '@react-navigation/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Modal } from '../Modal';
+import { Tutorial } from '../../components/Modal/Tutorial.js';
 import { LogoPlusName } from '../../components/LogoPlusName';
 
 export function CreateUser() {
 
+    const [tutorial, setTutorial] = useState(true);
+
     const navigation = useNavigation();
     var userId = ''
+
+    const [txtName, setName] = useState('');
+    const [txtEmail, setEmail] = useState('');
+    const [txtPassword, setPassword] = useState('');
+    const [txtPasswordC, setPasswordC] = useState('');
 
     async function persisteInformacoesUsuario() {
         try {
@@ -47,14 +54,6 @@ export function CreateUser() {
     function handleCreateBankAccount() {
         navigation.navigate('Login');
     }
-
-
-    const [txtName, setName] = useState('');
-    const [txtEmail, setEmail] = useState('');
-    const [txtPassword, setPassword] = useState('');
-    const [txtPasswordC, setPasswordC] = useState('');
-
-
 
     return (
         <Background>
@@ -113,6 +112,12 @@ export function CreateUser() {
                     />
                 </View>
             </View>
+            <Tutorial
+                show={tutorial}
+                close={() => setTutorial(false)}
+                textTutorial = {"Crie uma conta nova inserindo nome, e-mail e senha."}
+                redirect=''
+            />
         </Background>
     );
 }

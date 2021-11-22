@@ -44,6 +44,33 @@ export function AppRoutes() {
     return (
 
         <Navigator>
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="FirstAccess"
+                component={FirstAccess}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="FirstAccessBankAccount"
+                component={FirstAccessBankAccount}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="CreateUser"
+                component={CreateUser}
+            />
+
+ 
+
             <Screen
                 options={{
                     headerShown: false,
@@ -59,13 +86,6 @@ export function AppRoutes() {
                 component={MyPixKeys}
             />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="FirstAccess"
-                component={FirstAccess}
-            />
 
             <Screen
                 options={{
@@ -118,21 +138,9 @@ export function AppRoutes() {
             />
 
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="FirstAccessBankAccount"
-                component={FirstAccessBankAccount}
-            />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="CreateUser"
-                component={CreateUser}
-            />
+
+
 
             <Screen
                 options={{
