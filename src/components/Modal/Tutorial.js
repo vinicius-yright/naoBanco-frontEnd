@@ -1,9 +1,5 @@
-//npm install --save react-animated-modal
-
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions, ScrollView } from 'react-native'
-
-//teste chamar screen com modal
 import { useNavigation } from '@react-navigation/core';
 
 export const Tutorial = ({ show, close, textTutorial, redirect}) => {

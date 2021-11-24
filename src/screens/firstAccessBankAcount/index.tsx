@@ -16,7 +16,6 @@ export function FirstAccessBankAccount() {
     const [tutorial, setTutorial] = useState(false);
     const [firstView, setFirstView] = useState(true);
 
-
     function handleCreateBankAccount() {
         if (firstView){
             setTutorial(true) 

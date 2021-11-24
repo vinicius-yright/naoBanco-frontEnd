@@ -49,6 +49,14 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
+                name="CreateBankAccount"
+                component={CreateBankAccount}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
                 name="FirstAccess"
                 component={FirstAccess}
             />
@@ -140,13 +148,7 @@ export function AppRoutes() {
                 component={TesteModal}
             />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="CreateBankAccount"
-                component={CreateBankAccount}
-            />
+
 
         </Navigator >
 
