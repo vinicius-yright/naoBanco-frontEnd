@@ -6,10 +6,12 @@ import { LogoPlusName } from '../../components/LogoPlusName';
 import { ScreenTitle } from '../../components/ScreenTitle';
 import api from '../../services/api';
 import { styles } from './styles';
+import { Tutorial } from '../../components/Modal/Tutorial.js';
 
 export function MyPixKeys() {
 
     const navigation = useNavigation();
+    const [tutorial, setTutorial] = useState(true);
 
     const [ content, setContent ] = useState("Carregando...")
 
@@ -79,6 +81,21 @@ export function MyPixKeys() {
                         </Text>
                     </TouchableOpacity>
                 </View>
+
+                <Tutorial
+                show={tutorial}
+                close={() => setTutorial(false)}
+                textTutorial = {
+                    "As tão faladas chaves PIX são definidas pelo Banco Central como 'apelidos' utilizados para identificar a sua conta.\n"+
+                    "\nExistem 4 tipos de chaves PIX possíveis:\n"+
+                    "• CPF ou CNPJ\n"+
+                    "• E-mail\n"+
+                    "• Número de telefone celular\n"+
+                    "• Chave aleatória\n"+
+                    "\nNo caso do nosso aplicativo usaremos apenas as chaves do tipo: e-mail ou aleatória"
+                }
+                redirect=''
+            />
         </Background>
     )
 
