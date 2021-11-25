@@ -20,6 +20,7 @@ export function Home() {
     var nomeConta = '';
 
     async function recebeInformacoes() {
+        console.log("Conta logada: " + await AsyncStorage.getItem("loggedAccount"))
         try {
             const userId = await AsyncStorage.getItem("userId");
             const userName = await AsyncStorage.getItem("@name");

@@ -8,7 +8,21 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         /* justifyContent: 'center',
         position: 'absolute', */
-      }, 
+    },
+    scrollContainer: {
+        flex: 1,
+        backgroundColor: theme.colors.secondary100,
+        borderRadius: 14,
+        marginHorizontal: 20,
+        marginBottom: 10,
+        borderStyle: 'solid',
+        borderColor: theme.colors.heading,
+        borderWidth: 1,
+        alignContent: 'center'
+    },
+    contentScrollContainer: {
+        paddingVertical: 10,
+    },
     inputSenha: {
         fontSize: 17,
         height: 50,
@@ -19,19 +33,19 @@ export const styles = StyleSheet.create({
         backgroundColor:theme.colors.heading,
     },
     title:{
-        color: theme.colors.heading,
+        color: "white",
         fontSize: 25,
         textAlign: 'left',
-        fontFamily: theme.fonts.title700,
+        fontFamily: theme.fonts.roboto700,
         lineHeight: 68,
-        margin:10,
+        margin: 10,
         marginLeft:30,
     },
     title2:{
         color: theme.colors.heading,
         fontSize: 25,
         textAlign: 'center',
-        fontFamily: theme.fonts.title700,
+        fontFamily: theme.fonts.roboto400,
         lineHeight: 55,
         marginRight:171
     },

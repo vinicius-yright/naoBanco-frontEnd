@@ -1,52 +1,84 @@
-import React, { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
-import { Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, Alert } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { AccountButtom } from '../../components/AccountButtom';
 import { Background } from '../../components/Background';
-import { ButtonIcon } from '../../components/ButtonIcon';
+import { InsertPasswordModal } from '../../components/InsertPasswordModal';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import api from '../../services/api';
 import { styles } from './styles';
+
+interface IAccount {
+    accountNumber: number,
+    nick: string,
+    user: string,
+    balance: number
+}
+
+interface IUser {
+    id: string,
+    name: string
+}
 
 export function SelectBankAccount() {
 
     const navigation = useNavigation();
 
-    let accounts: string[] = [];
-
-    const [nameState, setUser] = useState("")
-    const [idState, setUserId] = useState("")
-    const [accountsState, setAccounts] = useState(accounts)
-
-    recebeInformacoes()
+    const [accounts, setAccounts] = useState<IAccount[]>([])
+    const [user, setUser] = useState<IUser>({ id: "", name: "" })
+    const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false)
+    const [selectedAccount, setSelectedAccount] = useState("")
 
     useEffect(() => {
-        if (!accounts.length) {
-            setAccounts(accounts)
-            console.log("Ta entrando aqui")
+        console.log("Accounts length: " + accounts.length)
+        if (user.name == "") {
+            setUserInfo()
         }
-    })
-
-    async function recebeInformacoes() {
-        try {
-            const userId = "540d4ca6-2347-454c-9b81-8cda67ab629d" //await AsyncStorage.getItem("userId");
-            const userName = "Teste"//await AsyncStorage.getItem("@name");
-            if (userId != null && userName != null) {
-                // setUser(userName)
-                // setUserId(userId)
-                console.log("Ta repetindo essa merda")
-            }
-        } catch (error) {
-            console.log(error)
-        }
-        await api.get(`/accounts/user/${idState}`)
-            .then((response) => {
-                response.data.forEach((account: string) => {
-                    accounts.push(account)
+        if (accounts.length == 0) {
+            api.get(`/accounts/user/${user.id}`)
+                .then((response) => {
+                    setAccounts(response.data)
+                    console.log(response.data)
                 })
-            }, (error) => {
-                console.log(error + " Deu ruim");
-                accounts.push("Teste")
-            });
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }, [user])
+
+    async function setUserInfo(){
+        const userId = await AsyncStorage.getItem("userId")
+        const userName = await AsyncStorage.getItem("userName")
+
+        if(userId != null && userName != null){
+            setUser({
+                id: userId,
+                name: userName
+            })
+        } else {
+            Alert.alert("Erro", "Não foi possível recuperar as informações do usuário")
+            navigation.navigate('Login')
+        }
+    }
+
+    async function authenticateAccount() {
+
+        const password = await AsyncStorage.getItem("accountPassword")
+
+        api.post(`/accounts/authenticate`,
+        {
+            accountNumber: `${selectedAccount}`,
+            password: `${password}`
+        })
+                .then(async (response) => {
+                    await AsyncStorage.setItem("loggedAccount", selectedAccount)
+                    handleHome()
+                })
+                .catch(err => {
+                    Alert.alert("Ops!", "A senha que você inseriu estava errada!\nTente novamente")
+                })
     }
 
     function handleHome() {
@@ -56,40 +88,54 @@ export function SelectBankAccount() {
     return (
 
         <Background>
-            <LogoPlusName>
+            <LogoPlusName />
 
-            </LogoPlusName>
             <Text style={styles.title}>
                 Olá,
-                <Text>
-                    {nameState}
+                <Text style={styles.title2}>
+                    {" " + user.name}
                 </Text>
             </Text>
-            <View style={styles.container}>
 
-                {
-                    accountsState.map((account) => {
-                        return (
-                            <Text style={styles.title2}>
-                                {account.nick.toString()}
-                                {account.accountNumber.toString()}
+            <ScrollView
+                style={styles.scrollContainer}
+                contentContainerStyle={styles.contentScrollContainer}
+                alwaysBounceVertical={true}
+            > 
+                <View style={styles.container}>
+
+                    {
+                        accounts.length > 0 ?
+                            accounts.map(account => {
+                                let accountStr = account.accountNumber.toString().padStart(5, "0")
+
+                                return (
+                                    <AccountButtom
+                                        key={account.accountNumber}
+                                        account={accountStr}
+                                        nick={account.nick}
+                                        agency="00001"
+                                        onPress={() => {
+                                            setShowPasswordModal(true)
+                                            setSelectedAccount(account.accountNumber.toString())
+                                        }}
+                                    />
+                                )
+                            }) :
+                            <Text style={styles.title}>
+                                Carregando...
                             </Text>
-                        )
-                    })
-                }
+                    }
+                </View>
+            </ScrollView>
 
-                <Text style={styles.subtitle}>
-                    Agência 0001 Conta
-                </Text>
-
-
-                <ButtonIcon title="Acessar Conta Bancária"
-                    onPress={() => {
-
-                        handleHome()
-                    }}
-                />
-            </View>
+            <InsertPasswordModal 
+                show={showPasswordModal}
+                callback={() => {
+                    setShowPasswordModal(false)
+                    authenticateAccount()
+                }}
+            />
         </Background>
     )
 

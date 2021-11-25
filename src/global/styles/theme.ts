@@ -13,6 +13,7 @@ export const theme = {
       secondary30: '#495BCC', 
       purpleButton: '#342686',
       purpleGay: '#4A4085',
+      turquoiseButtom: "#48D1CC",
      
       overlay: 'rgba(0,0,0,0.7)',
       highlight: '#ABB1CC',
@@ -25,6 +26,9 @@ export const theme = {
       title700: 'Rajdhani_700Bold',
       title500: 'Rajdhani_500Medium',
       text400: 'Inter_400Regular',
-      text500: 'Inter_500Medium'
+      text500: 'Inter_500Medium',
+      roboto300: "Roboto_300Light",
+      roboto400: "Roboto_400Regular", 
+      roboto700: "Roboto_700Bold"
     }
   };

@@ -13,7 +13,8 @@ export function Login() {
 
     const navigation = useNavigation();
 
-    var userId = ''
+    let userId = ''
+    let userName = ''
 
     async function navegacaoInteligente() {
         const response = await api.get(`accounts/user/${userId}`)
@@ -32,10 +33,8 @@ export function Login() {
 
     async function persisteInformacoesUsuario() {
         try {
-            const idUsuario = await AsyncStorage.getItem('userId')
-            if (idUsuario == null) {
-                await AsyncStorage.setItem('userId', (userId))
-            }
+            await AsyncStorage.setItem('userId', (userId))
+            await AsyncStorage.setItem('userName', (userName))
         } catch (error) {
             console.log(error);
         }
@@ -50,6 +49,7 @@ export function Login() {
             .then((response) => {
                 console.log(response);
                 userId = response.data.user.id
+                userName = response.data.user.name
                 persisteInformacoesUsuario();
                 console.log(userId);
                 navegacaoInteligente();

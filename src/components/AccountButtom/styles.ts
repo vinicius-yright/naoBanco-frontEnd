@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     },
     info: {
         width: "100%",
-        height: 25,
+        height: 26,
         flexDirection: "row"
     },
     title: {

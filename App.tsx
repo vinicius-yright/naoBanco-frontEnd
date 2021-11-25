@@ -1,7 +1,7 @@
 import React from 'react';
 import { Inter_400Regular, Inter_500Medium, useFonts } from '@expo-google-fonts/inter';
 import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhani';
-import { Roboto_300Light, Roboto_500Medium } from "@expo-google-fonts/roboto"
+import { Roboto_300Light, Roboto_400Regular, Roboto_700Bold } from "@expo-google-fonts/roboto"
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
@@ -19,8 +19,9 @@ export default function App() {
     Rajdhani_500Medium,
     Inter_400Regular,
     Inter_500Medium,
-    Roboto_300Light, 
-    Roboto_500Medium
+    Roboto_300Light,
+    Roboto_400Regular, 
+    Roboto_700Bold
   });
 
   if (!fontsLoaded) {
