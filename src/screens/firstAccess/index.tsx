@@ -61,9 +61,9 @@ export function FirstAccess() {
                 show={tutorial}
                 close={() => setTutorial(false)}
                 textTutorial = {
-                    "Toda vez que uma pop-up como esta aparecer, significa que é uma mensagem com informações importantes!\n\n"+
-                    "Para que você compreenda, é necessário que leia com muita atenção!\n\n"+
-                    "E se mesmo após vê-lâ você continuar com dúvidas, poderá acessar as configurações e reve-lás quando quiser!!\n\n"
+                    "Toda vez que uma mensagem como esta aparecer, leia com muita atenção!\n\n"+
+                    "Isso significa que são informações importântes sobre os procedimentos bancários, ou sobre o aplicativo.\n\n"+
+                    "Esse aplicativo (App 'NãoBanco') tem como objetivo ajudar as pessoas que tem dúvidas sobre bancos digitais, além de trazer informações relevantes, será possível fazer simulações de procedimentos bancários, como fazer um PIX.\n\n"
                 }
                 redirect='CreateUser'
             />
