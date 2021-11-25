@@ -49,6 +49,14 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
+                name="Home"
+                component={Home}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
                 name="CreateBankAccount"
                 component={CreateBankAccount}
             />
@@ -60,6 +68,14 @@ export function AppRoutes() {
                 name="FirstAccess"
                 component={FirstAccess}
             />
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixTransfer"
+                component={PixTransfer}
+            />
+
 
             <Screen
                 options={{
@@ -92,15 +108,6 @@ export function AppRoutes() {
                 component={MyPixKeys}
             />
 
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="PixTransfer"
-                component={PixTransfer}
-            />
-
             <Screen
                 options={{
                     headerShown: false,
@@ -126,13 +133,6 @@ export function AppRoutes() {
                 component={PixCreateEmailKey}
             />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="Home"
-                component={Home}
-            />
             <Screen
                 options={{
                     headerShown: false,
