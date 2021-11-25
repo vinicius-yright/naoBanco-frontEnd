@@ -51,6 +51,38 @@ export function AppRoutes() {
                 name="Login"
                 component={Login}
             />
+        
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="Home"
+                component={Home}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="CreateBankAccount"
+                component={CreateBankAccount}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="FirstAccess"
+                component={FirstAccess}
+            />
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixTransfer"
+                component={PixTransfer}
+            />
+
             <Screen
                 options={{
                     headerShown: false,
@@ -83,7 +115,7 @@ export function AppRoutes() {
                 name="MyPixKeys"
                 component={MyPixKeys}
             />
-
+        
             <Screen
                 options={{
                     headerShown: false,
@@ -121,13 +153,6 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="Home"
-                component={Home}
-            />
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
                 name="FirstAccessBankAccount"
                 component={FirstAccessBankAccount}
             />
@@ -137,14 +162,6 @@ export function AppRoutes() {
                 }}
                 name="TesteModal"
                 component={TesteModal}
-            />
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="CreateBankAccount"
-                component={CreateBankAccount}
             />
 
         </Navigator >

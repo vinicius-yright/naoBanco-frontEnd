@@ -115,7 +115,11 @@ export function CreateUser() {
             <Tutorial
                 show={tutorial}
                 close={() => setTutorial(false)}
-                textTutorial = {"Crie uma conta nova inserindo nome, e-mail e senha."}
+                textTutorial = {
+                    "Para continuar você precisará criar uma conta de usuário usando um nome de usuário e um e-mail real, pois será através dele que você acessará o seu perfil, onde serão seus dados 'bancários' da conta 'NãoBanco'.\n\n"+
+                    "Mas lembre-se todos os processos bancários desse aplicativo são simulações e não tem valor real.\n\n"+
+                    "Buscamos oferecer um exemplo interativo, assim será possível interagir com outras pessoas que também tenham uma conta 'NãoBanco'.\n\n"
+                }
                 redirect=''
             />
         </Background>
