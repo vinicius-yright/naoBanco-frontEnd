@@ -12,6 +12,7 @@ import { Modal } from '../Modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { ScreenTitle } from '../../components/ScreenTitle';
+import { Tutorial } from '../../components/Modal/Tutorial.js';
 
 export function PixTransfer() {
 
@@ -22,6 +23,7 @@ export function PixTransfer() {
     const [txtValor, setValor] = useState('');
     const [txtDescricao, setDescricao] = useState('');
     const [txtData, setData] = useState('');
+    const [tutorial, setTutorial] = useState(true);
 
     async function pegarIdDaConta() {
         try {
@@ -50,7 +52,6 @@ export function PixTransfer() {
             })
             .then((response) => {
                 console.log(response);
-                pegaInformacoesSalvasUsuario();
                 //     navigation.navigate('TelaDeConfirmacaoPIX');
             }, (error) => {
                 console.log(error);
@@ -76,7 +77,7 @@ export function PixTransfer() {
 
                 <View>
                     <Text style={styles.subtitle}>
-                        Chave:
+                        Chave do Destinatário:
                     </Text>
                     <TextInput
                         style={styles.input}
@@ -96,7 +97,7 @@ export function PixTransfer() {
                     />
 
                     <Text style={styles.subtitle}>
-                        Descrição:
+                        Descrição (opcional):
                     </Text>
                     <TextInput
                         style={styles.input}
@@ -113,6 +114,17 @@ export function PixTransfer() {
                     onPress={transferirViaPix}
                 />
             </View>
+            <Tutorial
+                show={tutorial}
+                close={() => setTutorial(false)}
+                textTutorial={
+                    "Transferências via sistema PIX são bem diferentes das transferências convencionais: Não possuem nenhuma taxa e são feitas INSTANTÂNEAMENTE!\n" +
+                    "Para realizar uma, são necessários os seguintes campos: [Chave do Destinatário], [Valor], [Descrição].\n" +
+                    "No campo chave se insere a chave do destinatário que receberá sua transferência; " +
+                    "No campo valor se insere a quantia que será transferida e na Descrição se insere uma mensagem opcional que será lida pela pessoa que receber sua transferência.\n"
+                }
+                redirect=''
+            />
 
         </Background>
 
