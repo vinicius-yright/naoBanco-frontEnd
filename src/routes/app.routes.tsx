@@ -84,7 +84,6 @@ export function AppRoutes() {
                 component={FirstAccess}
             />
 
-
             <Screen
                 options={{
                     headerShown: false,
