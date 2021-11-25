@@ -1,45 +1,84 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Alert } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { AccountButtom } from '../../components/AccountButtom';
 import { Background } from '../../components/Background';
-import { ButtonIcon } from '../../components/ButtonIcon';
+import { InsertPasswordModal } from '../../components/InsertPasswordModal';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import api from '../../services/api';
 import { styles } from './styles';
 
+interface IAccount {
+    accountNumber: number,
+    nick: string,
+    user: string,
+    balance: number
+}
+
+interface IUser {
+    id: string,
+    name: string
+}
+
 export function SelectBankAccount() {
-    
+
     const navigation = useNavigation();
 
-    const [ name, setUser ] = useState("")
-    const [ id, setUserId ] = useState("")
-    const [ nick, setNick ] = useState("")
-    const [ account, setAccount ] = useState("")
-    
-    useEffect(() => {
-        recebeInformacoes()
-    })
+    const [accounts, setAccounts] = useState<IAccount[]>([])
+    const [user, setUser] = useState<IUser>({ id: "", name: "" })
+    const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false)
+    const [selectedAccount, setSelectedAccount] = useState("")
 
-    async function recebeInformacoes() {
-        try {
-            const userId = await AsyncStorage.getItem("userId");
-            const userName = await AsyncStorage.getItem("@name");
-            if (userId != null && userName != null) {
-                setUser(userName)
-                setUserId(userId)
-                console.log(name, id)
-            }
-        } catch (error) {
-            console.log(error)
-        } 
-        await api.get(`/accounts/user/${id}`)
-            .then((response) => {
-                setNick(response.data[0].nick);
-                setAccount(response.data[0].accountNumber)
-            }, (error) => {
-                console.log(error);
-            }); 
+    useEffect(() => {
+        console.log("Accounts length: " + accounts.length)
+        if (user.name == "") {
+            setUserInfo()
+        }
+        if (accounts.length == 0) {
+            api.get(`/accounts/user/${user.id}`)
+                .then((response) => {
+                    setAccounts(response.data)
+                    console.log(response.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }, [user])
+
+    async function setUserInfo(){
+        const userId = await AsyncStorage.getItem("userId")
+        const userName = await AsyncStorage.getItem("userName")
+
+        if(userId != null && userName != null){
+            setUser({
+                id: userId,
+                name: userName
+            })
+        } else {
+            Alert.alert("Erro", "Não foi possível recuperar as informações do usuário")
+            navigation.navigate('Login')
+        }
+    }
+
+    async function authenticateAccount() {
+
+        const password = await AsyncStorage.getItem("accountPassword")
+
+        api.post(`/accounts/authenticate`,
+        {
+            accountNumber: `${selectedAccount}`,
+            password: `${password}`
+        })
+                .then(async (response) => {
+                    await AsyncStorage.setItem("loggedAccount", selectedAccount)
+                    handleHome()
+                })
+                .catch(err => {
+                    Alert.alert("Ops!", "A senha que você inseriu estava errada!\nTente novamente")
+                })
     }
 
     function handleHome() {
@@ -47,36 +86,56 @@ export function SelectBankAccount() {
     }
 
     return (
-        
+
         <Background>
-            <LogoPlusName>
+            <LogoPlusName />
 
-            </LogoPlusName>
             <Text style={styles.title}>
-                    Olá, 
-                    <Text>
-                        {name}
-                    </Text>
-                </Text>
-            <View style={styles.container}> 
-                
-
+                Olá,
                 <Text style={styles.title2}>
-                    {nick}
+                    {" " + user.name}
                 </Text>
+            </Text>
 
-                <Text style={styles.subtitle}>
-                    Agência 0001 Conta {account}
-                </Text>
+            <ScrollView
+                style={styles.scrollContainer}
+                contentContainerStyle={styles.contentScrollContainer}
+                alwaysBounceVertical={true}
+            > 
+                <View style={styles.container}>
 
-                
-                    <ButtonIcon title="Acessar Conta Bancária"
-                        onPress={() => {
-                            
-                            handleHome()
-                        }}
-                    />
-            </View>
+                    {
+                        accounts.length > 0 ?
+                            accounts.map(account => {
+                                let accountStr = account.accountNumber.toString().padStart(5, "0")
+
+                                return (
+                                    <AccountButtom
+                                        key={account.accountNumber}
+                                        account={accountStr}
+                                        nick={account.nick}
+                                        agency="00001"
+                                        onPress={() => {
+                                            setShowPasswordModal(true)
+                                            setSelectedAccount(account.accountNumber.toString())
+                                        }}
+                                    />
+                                )
+                            }) :
+                            <Text style={styles.title}>
+                                Carregando...
+                            </Text>
+                    }
+                </View>
+            </ScrollView>
+
+            <InsertPasswordModal 
+                show={showPasswordModal}
+                callback={() => {
+                    setShowPasswordModal(false)
+                    authenticateAccount()
+                }}
+            />
         </Background>
     )
 

@@ -34,7 +34,6 @@ export function MyPixKeys() {
                 } else {
                     content = "Você ainda não possui chaves cadastradas."
                 }
-
                 setContent(content)
             }).catch(err => console.log(err));
 
