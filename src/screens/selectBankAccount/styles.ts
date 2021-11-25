@@ -13,14 +13,16 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     newAccountButton: {
-        width: 120,
-        height: 50,
+        width: 130,
+        height: 53,
+        alignItems: 'center',
         backgroundColor: theme.colors.purpleButton,
         borderRadius: 14,
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginLeft: 120,
-        fontSize: 50
+        marginLeft: 110,
+        borderColor: "black",
+        borderStyle: 'solid',
+        borderWidth: 1,
+        paddingTop: 10
     },
     scrollContainer: {
         flex: 1,
@@ -62,51 +64,10 @@ export const styles = StyleSheet.create({
         lineHeight: 55,
         marginRight:171
     },
-    subtitle: {
-        color: theme.colors.heading,
+    btnTxt: {
+        color: "white",
         fontSize: 22,
         textAlign: 'center',
-        fontFamily: theme.fonts.title500,
-        lineHeight: 25,
-        marginLeft: -80,
-        marginBottom: 15
-    },
-    logoApp: {
-        justifyContent:'center',
-        alignContent: 'center',
-        marginTop: 50,
-        width:51,
-        height:54,
-        marginHorizontal:125,
-        top: 1,
-        bottom:20,
-        position:'absolute',
-        
-    },
-    nomeApp: {
-        color: theme.colors.heading,
-        fontSize: 28,
-        textAlign: 'center',
-        alignContent: 'center',
-        fontFamily: theme.fonts.title500,
-        fontWeight:'bold',
-        marginTop: 56,
-        marginLeft: 81,
-        width:190,
-        height:100,
-    },
-    btnBox: {
-        width: '60%',
-        height: 56,
-        backgroundColor: theme.colors.purpleButton,
-        borderRadius: 14,
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    btnTxt: {
-        flex: 1,
-        color: theme.colors.heading,
-        fontSize: 17,
-        textAlign: 'center'
+        fontFamily: theme.fonts.roboto700
     },
   });

@@ -89,14 +89,6 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="SelectBankAccount"
-                component={SelectBankAccount}
-            />
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
                 name="PixTransferConfirmation"
                 component={PixTransferConfirmation}
             />

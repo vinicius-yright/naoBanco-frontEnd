@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import { Text, View, Alert } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { AccountButtom } from '../../components/AccountButtom';
 import { Background } from '../../components/Background';
 import { ButtonIcon } from '../../components/ButtonIcon';
@@ -96,10 +96,16 @@ export function SelectBankAccount() {
                         {" " + user.name}
                     </Text>
                 </Text>
-                <ButtonIcon
-                    title="Nova conta"
+                <TouchableOpacity 
                     style={styles.newAccountButton}
-                />
+                    onPress={() => {
+                        navigation.navigate('CreateBankAccount')
+                    }}
+                >
+                    <Text style={styles.btnTxt}>
+                        Nova conta
+                    </Text>
+                </TouchableOpacity>
             </View>
 
             <ScrollView
