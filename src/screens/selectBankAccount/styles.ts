@@ -9,6 +9,19 @@ export const styles = StyleSheet.create({
         /* justifyContent: 'center',
         position: 'absolute', */
     },
+    header: {
+        flexDirection: 'row',
+    },
+    newAccountButton: {
+        width: 120,
+        height: 50,
+        backgroundColor: theme.colors.purpleButton,
+        borderRadius: 14,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 120,
+        fontSize: 50
+    },
     scrollContainer: {
         flex: 1,
         backgroundColor: theme.colors.secondary100,

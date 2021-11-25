@@ -72,21 +72,6 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="FirstAccess"
-                component={FirstAccess}
-            />
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="PixTransfer"
-                component={PixTransfer}
-            />
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
                 name="SelectBankAccount"
                 component={SelectBankAccount}
             />
@@ -140,7 +125,6 @@ export function AppRoutes() {
                 component={PixSelectOperation}
             />
 
-
             <Screen
                 options={{
                     headerShown: false,
@@ -165,7 +149,5 @@ export function AppRoutes() {
             />
 
         </Navigator >
-
-
     )
 }

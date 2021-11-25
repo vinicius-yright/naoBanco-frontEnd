@@ -5,6 +5,7 @@ import { Text, View, Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { AccountButtom } from '../../components/AccountButtom';
 import { Background } from '../../components/Background';
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { InsertPasswordModal } from '../../components/InsertPasswordModal';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import api from '../../services/api';
@@ -32,15 +33,13 @@ export function SelectBankAccount() {
     const [selectedAccount, setSelectedAccount] = useState("")
 
     useEffect(() => {
-        console.log("Accounts length: " + accounts.length)
         if (user.name == "") {
             setUserInfo()
         }
-        if (accounts.length == 0) {
+        if (accounts.length == 0 && user.id != "") {
             api.get(`/accounts/user/${user.id}`)
                 .then((response) => {
                     setAccounts(response.data)
-                    console.log(response.data)
                 })
                 .catch(err => {
                     console.log(err)
@@ -48,11 +47,11 @@ export function SelectBankAccount() {
         }
     }, [user])
 
-    async function setUserInfo(){
+    async function setUserInfo() {
         const userId = await AsyncStorage.getItem("userId")
         const userName = await AsyncStorage.getItem("userName")
 
-        if(userId != null && userName != null){
+        if (userId != null && userName != null) {
             setUser({
                 id: userId,
                 name: userName
@@ -68,17 +67,17 @@ export function SelectBankAccount() {
         const password = await AsyncStorage.getItem("accountPassword")
 
         api.post(`/accounts/authenticate`,
-        {
-            accountNumber: `${selectedAccount}`,
-            password: `${password}`
-        })
-                .then(async (response) => {
-                    await AsyncStorage.setItem("loggedAccount", selectedAccount)
-                    handleHome()
-                })
-                .catch(err => {
-                    Alert.alert("Ops!", "A senha que você inseriu estava errada!\nTente novamente")
-                })
+            {
+                accountNumber: `${selectedAccount}`,
+                password: `${password}`
+            })
+            .then(async (response) => {
+                await AsyncStorage.setItem("loggedAccount", selectedAccount)
+                handleHome()
+            })
+            .catch(err => {
+                Alert.alert("Ops!", "A senha que você inseriu estava errada!\nTente novamente")
+            })
     }
 
     function handleHome() {
@@ -90,18 +89,24 @@ export function SelectBankAccount() {
         <Background>
             <LogoPlusName />
 
-            <Text style={styles.title}>
-                Olá,
-                <Text style={styles.title2}>
-                    {" " + user.name}
+            <View style={styles.header}>
+                <Text style={styles.title}>
+                    Olá,
+                    <Text style={styles.title2}>
+                        {" " + user.name}
+                    </Text>
                 </Text>
-            </Text>
+                <ButtonIcon
+                    title="Nova conta"
+                    style={styles.newAccountButton}
+                />
+            </View>
 
             <ScrollView
                 style={styles.scrollContainer}
                 contentContainerStyle={styles.contentScrollContainer}
                 alwaysBounceVertical={true}
-            > 
+            >
                 <View style={styles.container}>
 
                     {
@@ -129,7 +134,7 @@ export function SelectBankAccount() {
                 </View>
             </ScrollView>
 
-            <InsertPasswordModal 
+            <InsertPasswordModal
                 show={showPasswordModal}
                 callback={() => {
                     setShowPasswordModal(false)
