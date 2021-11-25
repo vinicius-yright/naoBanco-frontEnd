@@ -52,7 +52,7 @@ export function CreateUser() {
     }
 
     function handleCreateBankAccount() {
-        navigation.navigate('Login');
+        navigation.navigate('CreateBankAccount');
     }
 
     return (

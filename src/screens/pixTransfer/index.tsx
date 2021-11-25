@@ -19,6 +19,7 @@ export function PixTransfer() {
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
     var userIdForPayload = '';
+    var loggedAccountForPayload = '';
     const [txtChave, setChave] = useState('');
     const [txtValor, setValor] = useState('');
     const [txtDescricao, setDescricao] = useState('');
@@ -27,25 +28,20 @@ export function PixTransfer() {
 
     async function pegarIdDaConta() {
         try {
-            const userId = await AsyncStorage.getItem("userId");
-            if (userId != null) {
-                userIdForPayload = userId
+            const loggedAccount = await AsyncStorage.getItem("loggedAccount");
+            if (loggedAccount != null) {
+                loggedAccountForPayload = loggedAccount
             }
         } catch (error) {
             console.log(error)
         }
     }
 
-    async function pegaNumeroContaUsuario() {
-        const response = await api.get(`/accounts/user/${userIdForPayload}`)
-        return response.data.user.id;
-    }
-
     async function transferirViaPix() {
         pegarIdDaConta();
         const response = await api.post("/transfers/pix",
             {
-                sender: pegaNumeroContaUsuario(),
+                sender: loggedAccountForPayload,
                 receiver: txtChave,
                 value: txtValor,
                 message: txtDescricao
@@ -61,7 +57,6 @@ export function PixTransfer() {
     return (
         <Background>
             <LogoPlusName />
-
 
             <View style={styles.container}>
 
