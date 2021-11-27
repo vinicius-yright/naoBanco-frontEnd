@@ -10,6 +10,7 @@ import { InsertPasswordModal } from '../../components/InsertPasswordModal';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import api from '../../services/api';
 import { styles } from './styles';
+import { Tutorial } from '../../components/Modal/Tutorial'
 
 interface IAccount {
     accountNumber: number,
@@ -26,6 +27,8 @@ interface IUser {
 export function SelectBankAccount() {
 
     const navigation = useNavigation();
+
+    const [tutorial, setTutorial] = useState(true);
 
     const [accounts, setAccounts] = useState<IAccount[]>([])
     const [user, setUser] = useState<IUser>({ id: "", name: "" })
@@ -146,6 +149,17 @@ export function SelectBankAccount() {
                     setShowPasswordModal(false)
                     authenticateAccount()
                 }}
+            />
+
+            <Tutorial
+            show={tutorial}
+                close={() => setTutorial(false)}
+                textTutorial = {
+                    "Aqui temos a tela de seleção de conta bancária, onde você pode escolher entre as contas que possui.\n"+
+                    "\nPara ser possível identificar a conta que você deseja selecionar, é possível ter uma prévia de algumas informações, tais como: [AGÊNCIA], [CONTA] e [APELIDO].\n"+
+                    "\nAo selecionar a conta que você deseja acessar, poderá realizar as funcionalidades das contas bancárias como transferências baseadas exclsuivamente nas informações da conta escolida."                    
+                }
+                redirect=''
             />
         </Background>
     )

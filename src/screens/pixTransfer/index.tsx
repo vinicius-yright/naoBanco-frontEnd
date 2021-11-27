@@ -18,40 +18,21 @@ export function PixTransfer() {
 
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
-    var userIdForPayload = '';
-    var loggedAccountForPayload = '';
     const [txtChave, setChave] = useState('');
     const [txtValor, setValor] = useState('');
     const [txtDescricao, setDescricao] = useState('');
     const [txtData, setData] = useState('');
     const [tutorial, setTutorial] = useState(true);
+    
 
-    async function pegarIdDaConta() {
-        try {
-            const loggedAccount = await AsyncStorage.getItem("loggedAccount");
-            if (loggedAccount != null) {
-                loggedAccountForPayload = loggedAccount
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    async function transferirViaPix() {
-        pegarIdDaConta();
-        const response = await api.post("/transfers/pix",
-            {
-                sender: loggedAccountForPayload,
-                receiver: txtChave,
-                value: txtValor,
-                message: txtDescricao
-            })
-            .then((response) => {
-                console.log(response);
-                //     navigation.navigate('TelaDeConfirmacaoPIX');
-            }, (error) => {
-                console.log(error);
-            });
+    function handleTransferConfirm() {
+        
+        navigation.navigate('PixTransferConfirmation', {
+            chave: txtChave,
+            valor: txtValor,
+            mensagem: txtDescricao
+            
+        }); 
     }
 
     return (
@@ -106,7 +87,7 @@ export function PixTransfer() {
                 <ButtonIcon
                     title="Continuar"
                     activeOpacity={0.7}
-                    onPress={transferirViaPix}
+                    onPress={handleTransferConfirm}
                 />
             </View>
             <Tutorial

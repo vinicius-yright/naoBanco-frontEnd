@@ -46,18 +46,34 @@ export function AppRoutes() {
         <Navigator>
             <Screen
                 options={{
-                    headerShown: false,
+                    headerShown: false
+                }}
+                name="FirstAcess"
+                component={FirstAccess}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false
                 }}
                 name="Login"
                 component={Login}
             />
-        
+
+            <Screen
+                options={{
+                    headerShown: false
+                }}
+                name="Home"
+                component={Home}
+            />
+
             <Screen
                 options={{
                     headerShown: false,
                 }}
-                name="Home"
-                component={Home}
+                name="PixTransferConfirmation"
+                component={PixTransferConfirmation}
             />
 
             <Screen
@@ -68,14 +84,6 @@ export function AppRoutes() {
                 component={CreateBankAccount}
             />
 
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="FirstAccess"
-                component={FirstAccess}
-            />
-            
             <Screen
                 options={{
                     headerShown: false,
@@ -112,14 +120,6 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="PixTransferConfirmation"
-                component={PixTransferConfirmation}
-            />
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
                 name="PixSelectOperation"
                 component={PixSelectOperation}
             />
@@ -138,13 +138,6 @@ export function AppRoutes() {
                 }}
                 name="FirstAccessBankAccount"
                 component={FirstAccessBankAccount}
-            />
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="TesteModal"
-                component={TesteModal}
             />
 
         </Navigator >
