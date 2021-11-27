@@ -26,6 +26,13 @@ export function PixTransfer() {
     const [txtData, setData] = useState('');
     const [tutorial, setTutorial] = useState(true);
 
+    function handleTransferConfirm() {
+        navigation.navigate('PixTransferConfirmation', {
+            param1: "valor1",
+            param2: "valor2"
+        }); 
+    }
+
     async function pegarIdDaConta() {
         try {
             const loggedAccount = await AsyncStorage.getItem("loggedAccount");
@@ -106,7 +113,7 @@ export function PixTransfer() {
                 <ButtonIcon
                     title="Continuar"
                     activeOpacity={0.7}
-                    onPress={transferirViaPix}
+                    onPress={handleTransferConfirm}
                 />
             </View>
             <Tutorial

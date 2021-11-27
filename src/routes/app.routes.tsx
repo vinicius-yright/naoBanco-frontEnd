@@ -51,7 +51,15 @@ export function AppRoutes() {
                 name="Login"
                 component={Login}
             />
-        
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="FirstAccess"
+                component={FirstAccess}
+            />  
+            
             <Screen
                 options={{
                     headerShown: false,
@@ -75,7 +83,7 @@ export function AppRoutes() {
                 name="FirstAccess"
                 component={FirstAccess}
             />
-            
+
             <Screen
                 options={{
                     headerShown: false,
@@ -139,12 +147,21 @@ export function AppRoutes() {
                 name="FirstAccessBankAccount"
                 component={FirstAccessBankAccount}
             />
+
             <Screen
                 options={{
                     headerShown: false,
                 }}
-                name="TesteModal"
-                component={TesteModal}
+                name="Login"
+                component={Login}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="Home"
+                component={Home}
             />
 
         </Navigator >
