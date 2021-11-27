@@ -1,7 +1,7 @@
 //apenas design da pagina, falta conexão com api
 
-import React, { Component } from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
+import React, { Component, FC } from 'react';
+import { View, Text, TextInput, Image, Route } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
@@ -13,7 +13,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { ScreenTitle } from '../../components/ScreenTitle';
 
+
+
 export function PixTransferConfirmation() {
+
+    
 
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
@@ -41,7 +45,7 @@ export function PixTransferConfirmation() {
 
                 <View>
                     <Text style={styles.subtitle}>
-                        Nome:
+                        Nome: 
                         <Text style={styles.subtitle2}> </Text>
                     </Text>
 
