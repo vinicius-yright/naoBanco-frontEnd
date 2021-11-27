@@ -111,7 +111,6 @@ export function PixTransfer() {
             </View>
             <Tutorial
                 show={tutorial}
-                close={() => setTutorial(false)}
                 textTutorial={
                     "Transferências via sistema PIX são bem diferentes das transferências convencionais: Não possuem nenhuma taxa e são feitas INSTANTÂNEAMENTE!\n" +
                     "Para realizar uma, são necessários os seguintes campos: [Chave do Destinatário], [Valor], [Descrição].\n" +

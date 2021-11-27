@@ -149,19 +149,18 @@ export function Home() {
             <View></View>
             <Tutorial
                 show={tutorial}
-                close={() => setTutorial(false)}
                 textTutorial = {
                     "Aqui na tela 'Home' ficarão as informações básicas sobre a conta bancária selecionada.\n\n"+
                     "Por exemplo:\n"+
                     "Na parte superior da tela você encontra o campo 'Meu Saldo', ele Mostra o saldo atual da sua conta 'NãoBanco', para vizualizar ou ocultar basta clicar no ícone em formato de olho.\n\n"+
                     "Você terá acessos rápidos para as funcionalidades abaixo de forma simplificada.\n\n"+ 
-                    "Menu de Acessos Rápidos:\n"+
-                    "-Depósitos e Cobrança\n"+
-                    "-Transferencias\n"+
-                    "-Pagamentos\n"+
-                    "-Extratos\n"+
-                    "-Cartões\n"+
-                    "-PIX\n"                    
+                    "Menu de Acessos Rápidos: 🏧 \n"+
+                    "📥 Depósitos e Cobrança\n"+
+                    "📤 Transferencias\n"+
+                    "💸 Pagamentos\n"+
+                    "🧾 Extratos\n"+
+                    "💳 Cartões\n"+
+                    "💵 PIX\n"                    
                 }
                 redirect=''
             />

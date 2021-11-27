@@ -12,6 +12,7 @@ import { LogoPlusName } from '../../components/LogoPlusName';
 
 export function CreateUser() {
 
+    const [firstView, setFirstView] = useState(true);
     const [tutorial, setTutorial] = useState(true);
 
     const navigation = useNavigation();
@@ -53,6 +54,13 @@ export function CreateUser() {
 
     function handleCreateBankAccount() {
         navigation.navigate('CreateBankAccount');
+    }
+
+    function redirectToPage() {
+        if (firstView){
+            setTutorial(true) 
+            setFirstView(false)
+        }
     }
 
     return (
@@ -107,6 +115,7 @@ export function CreateUser() {
                     <ButtonIcon title="Criar sua Conta"
                         onPress={() => {
                             enviaInformacoes()
+                            setFirstView(false)
                             handleCreateBankAccount()
                         }}
                     />
@@ -114,7 +123,6 @@ export function CreateUser() {
             </View>
             <Tutorial
                 show={tutorial}
-                close={() => setTutorial(false)}
                 textTutorial = {
                     "Para continuar você precisará criar uma conta de usuário usando um nome de usuário e um e-mail real, pois será através dele que você acessará o seu perfil, onde serão seus dados 'bancários' da conta 'NãoBanco'.\n\n"+
                     "Mas lembre-se todos os processos bancários desse aplicativo são simulações e não tem valor real.\n\n"+

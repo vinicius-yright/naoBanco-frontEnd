@@ -42,6 +42,7 @@ export function CreateBankAccount() {
                 console.log(error);
                 console.log(userIdForPayload, txtName, txtSenhaBancaria)
             });
+
     }
 
     function redirectToPage() {
@@ -118,7 +119,6 @@ export function CreateBankAccount() {
             </View>
             <Tutorial
                 show={tutorial}
-                close={() => setTutorial(false)}
                 textTutorial = {
                     "Agora você deverá criar uma Conta Bancária, com esta conta você poderá simular as transações e aprender mais sobre cada uma.\n\n"+
                     "Voce devera criar para a sua conta:\n"+
@@ -138,5 +138,4 @@ export function CreateBankAccount() {
             />
         </Background>
     )
-
 }

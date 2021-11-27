@@ -84,7 +84,6 @@ export function MyPixKeys() {
 
                 <Tutorial
                 show={tutorial}
-                close={() => setTutorial(false)}
                 textTutorial = {
                     "As tão faladas chaves PIX são definidas pelo Banco Central como 'apelidos' utilizados para identificar a sua conta.\n"+
                     "\nExistem 4 tipos de chaves PIX possíveis:\n"+

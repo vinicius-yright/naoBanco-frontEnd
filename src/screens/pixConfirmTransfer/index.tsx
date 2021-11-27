@@ -74,7 +74,6 @@ export function PixConfirmTransfer() {
                 
                     <ButtonIcon title="Acessar Conta Bancária"
                         onPress={() => {
-                            
                             handleHome()
                         }}
                     />

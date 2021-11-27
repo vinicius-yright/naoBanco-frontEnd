@@ -48,7 +48,6 @@ export function FirstAccessBankAccount() {
             </View>
             <Tutorial
                 show={tutorial}
-                close={() => setTutorial(false)}
                 textTutorial = {
                     "Crie sua primeira conta bancária. \n\nVai ser um sucesso."
                 }

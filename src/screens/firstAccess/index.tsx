@@ -59,7 +59,6 @@ export function FirstAccess() {
             </View>
             <Tutorial
                 show={tutorial}
-                close={() => setTutorial(false)}
                 textTutorial = {
                     "Toda vez que uma mensagem como esta aparecer, leia com muita atenção!\n\n"+
                     "Isso significa que são informações importântes sobre os procedimentos bancários, ou sobre o aplicativo.\n\n"+
