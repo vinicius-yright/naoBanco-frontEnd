@@ -60,17 +60,6 @@ export function AppRoutes() {
                 component={Login}
             />
 
-<<<<<<< HEAD
-=======
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="FirstAccess"
-                component={FirstAccess}
-            />  
-            
->>>>>>> c7c26b200d7978ef996ae775f8a2743030e77a8f
             <Screen
                 options={{
                     headerShown: false
@@ -149,22 +138,6 @@ export function AppRoutes() {
                 }}
                 name="FirstAccessBankAccount"
                 component={FirstAccessBankAccount}
-            />
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="Login"
-                component={Login}
-            />
-
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="Home"
-                component={Home}
             />
 
         </Navigator >

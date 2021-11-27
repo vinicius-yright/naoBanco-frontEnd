@@ -15,17 +15,53 @@ import { ScreenTitle } from '../../components/ScreenTitle';
 
 
 
-export function PixTransferConfirmation() {
+export function PixTransferConfirmation({ route }: { route: any }) {
 
-    
 
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
-
     const [txtChave, setChave] = useState('');
     const [txtValor, setValor] = useState('');
     const [txtDescricao, setDescricao] = useState('');
-    const [txtData, setData] = useState('');
+    var userNameForScreen = '';
+    var loggedAccountForPayload = '';
+    let newDate = new Date().toDateString();
+    console.log(newDate);
+
+    function cancelarTransferencia() {
+        navigation.navigate('PixTransfer',); 
+    }
+
+    async function pegarIdDaConta() {
+        try {
+            const loggedAccount = await AsyncStorage.getItem("loggedAccount");
+            const userName = await AsyncStorage.getItem("userName");
+            if (loggedAccount != null && userName != null) {
+                loggedAccountForPayload = loggedAccount;
+                userNameForScreen = userName;
+                //MOSTRAR ESSE NOME NA TELA ME AJUDA MARCELO
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function transferirViaPix() {
+        pegarIdDaConta();
+        const response = await api.post("/transfers/pix",
+            {
+                sender: loggedAccountForPayload,
+                receiver: route.params.chave,
+                value: route.params.valor,
+                message: route.params.mensagem
+            })
+            .then((response) => {
+                console.log(response);
+                console.log("FAZER POPUP DE TRANSFERENCIA FEITA COM SUCESSO E VOLTAR PRA TELA HOME : )")
+            }, (error) => {
+                console.log(error);
+            });
+    }
 
     return (
         <Background>
@@ -33,7 +69,7 @@ export function PixTransferConfirmation() {
 
 
             <View style={styles.container}>
-                
+
                 <ScreenTitle title="Transferências PIX">
                 </ScreenTitle>
 
@@ -45,7 +81,7 @@ export function PixTransferConfirmation() {
 
                 <View>
                     <Text style={styles.subtitle}>
-                        Nome: 
+                        Nome: {userNameForScreen}
                         <Text style={styles.subtitle2}> </Text>
                     </Text>
 
@@ -53,20 +89,20 @@ export function PixTransferConfirmation() {
                         Instituição:
                         <Text style={styles.subtitle2}>  Não Banco !$</Text>
                     </Text>
-                    
+
                     <Text style={styles.subtitle}>
-                        Chave:
+                        Chave: {route.params.chave}
                         <Text style={styles.subtitle2}>
                         </Text>
                     </Text>
 
                     <Text style={styles.subtitle}>
-                        Valor:
+                        Valor: {route.params.valor}
                         <Text style={styles.subtitle2}> </Text>
                     </Text>
 
                     <Text style={styles.subtitle}>
-                        Data do débito:
+                        Data do débito:{newDate}
                         <Text style={styles.subtitle2}> </Text>
                     </Text>
                 </View>
@@ -74,14 +110,14 @@ export function PixTransferConfirmation() {
                 <ButtonIcon
                     title="Cancelar"
                     activeOpacity={0.7}
-                    onPress={() => setModal(true)}
+                    onPress={cancelarTransferencia}
                     style={styles.btnBoxCancelar}
                 />
 
                 <ButtonIcon
                     title="Continuar"
                     activeOpacity={0.7}
-                    onPress={() => setModal(true)}
+                    onPress={transferirViaPix}
                     style={styles.btnBoxContinuar}
                 />
             </View>
