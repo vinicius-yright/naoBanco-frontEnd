@@ -16,6 +16,7 @@ export function PixCreateEmailKey() {
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
     var userIdForPayload = '';
+    var loggedAccountForPayload = '';
     const [txtEmail, setEmail] = useState('');
     const [txtValor, setConfirmEmail] = useState('');
 
@@ -23,30 +24,27 @@ export function PixCreateEmailKey() {
     async function pegarIdDaConta() {
         try {
             const userId = await AsyncStorage.getItem("userId");
-            if (userId != null) {
+            const loggedAccount = await AsyncStorage.getItem("loggedAccount");
+            if (userId != null && loggedAccount != null) {
                 userIdForPayload = userId
+                loggedAccountForPayload = loggedAccount
             }
         } catch (error) {
             console.log(error)
         }
     }
 
-    async function pegaNumeroContaUsuario() {
-        const response = await api.get(`accounts/user/${userIdForPayload}`)
-        return response.data.user.id;
-    }
 
     async function criarChaveEmail() {
         pegarIdDaConta();
         const response = await api.post("pixKeys/email",
             {
-                accountNumber: pegaNumeroContaUsuario(),
+                accountNumber: loggedAccountForPayload,
                 email: txtEmail
             })
             .then((response) => {
                 console.log(response);
-                pegaInformacoesSalvasUsuario();
-                //     navigation.navigate('TelaDeConfirmacaoPIX');
+                navigation.navigate('PixSelectOperation');
             }, (error) => {
                 console.log(error);
             });

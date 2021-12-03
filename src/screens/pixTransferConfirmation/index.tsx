@@ -39,7 +39,6 @@ export function PixTransferConfirmation({ route }: { route: any }) {
             if (loggedAccount != null && userName != null) {
                 loggedAccountForPayload = loggedAccount;
                 userNameForScreen = userName;
-                //MOSTRAR ESSE NOME NA TELA ME AJUDA MARCELO
             }
         } catch (error) {
             console.log(error)

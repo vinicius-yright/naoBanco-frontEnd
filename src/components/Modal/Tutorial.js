@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Button, Text, View, ScrollView, StyleSheet, Portal, Provider} from "react-native";
 import Modal from "react-native-modal";
 import GradientButton from 'react-native-gradient-buttons';
-import {theme} from '../../global/styles/theme'
+import {theme} from '../../global/styles/theme';
+import { useNavigation } from '@react-navigation/core';
 
 export const Tutorial = ({show, textTutorial, redirect}) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const containerStyle = {backgroundColor: 'white', padding: 20};
+  const navigation = useNavigation();
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
