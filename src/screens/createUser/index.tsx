@@ -12,7 +12,7 @@ import { LogoPlusName } from '../../components/LogoPlusName';
 
 export function CreateUser() {
 
-    const [firstView, setFirstView] = useState(true);
+    const [firstView, setFirstView] = useState(false);
     const [tutorial, setTutorial] = useState(true);
 
     const navigation = useNavigation();

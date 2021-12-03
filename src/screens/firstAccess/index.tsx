@@ -12,16 +12,9 @@ export function FirstAccess() {
 
     const navigation = useNavigation();
     const [tutorial, setTutorial] = useState(false);
-    const [firstView, setFirstView] = useState(true);
 
     function handleCreateUser() {
-        if (firstView){
-            setTutorial(true) 
-            setFirstView(false)
-        }
-        else{
-            navigation.navigate('CreateUser');
-        } 
+        navigation.navigate('CreateUser');
     }
 
     function handleNavigateLogin() {
@@ -64,7 +57,7 @@ export function FirstAccess() {
                     "Isso significa que são informações importântes sobre os procedimentos bancários, ou sobre o aplicativo.\n\n"+
                     "Esse aplicativo (App 'NãoBanco') tem como objetivo ajudar as pessoas que tem dúvidas sobre bancos digitais, além de trazer informações relevantes, será possível fazer simulações de procedimentos bancários, como fazer um PIX.\n\n"
                 }
-                redirect='CreateUser'
+                redirect=''
             />
         </Background>
 

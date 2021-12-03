@@ -49,19 +49,17 @@ export function AppRoutes() {
                 options={{
                     headerShown: false
                 }}
-                name="Login"
-                component={Login}
+                name="FirstAcess"
+                component={FirstAccess}
             />
-
 
             <Screen
                 options={{
                     headerShown: false
                 }}
-                name="FirstAcess"
-                component={FirstAccess}
+                name="Login"
+                component={Login}
             />
-
 
             <Screen
                 options={{

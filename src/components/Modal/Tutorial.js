@@ -6,9 +6,11 @@ import {theme} from '../../global/styles/theme';
 import { useNavigation } from '@react-navigation/core';
 
 export const Tutorial = ({show, textTutorial, redirect}) => {
+
+  const navigation = useNavigation();
+
   const [isModalVisible, setModalVisible] = useState(false);
   const containerStyle = {backgroundColor: 'white', padding: 20};
-  const navigation = useNavigation();
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
