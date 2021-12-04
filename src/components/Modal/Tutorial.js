@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Text, View, ScrollView, StyleSheet, Portal, Provider} from "react-native";
-import Modal from "react-native-modal";
-import GradientButton from 'react-native-gradient-buttons';
-import {theme} from '../../global/styles/theme';
 import { useNavigation } from '@react-navigation/core';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import GradientButton from 'react-native-gradient-buttons';
+import Modal from "react-native-modal";
+import { theme } from '../../global/styles/theme';
 
 export const Tutorial = ({show, textTutorial, redirect}) => {
 

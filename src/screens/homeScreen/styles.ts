@@ -11,6 +11,15 @@ export const styles = StyleSheet.create({
         backgroundColor: "#0F3B49",
         marginTop: -275
     },
+    balanceContainer: {
+        flexDirection: "row",
+        width: "80%",
+    },
+    visibilityButton: {
+        height: 23,
+        width: 30,
+        marginLeft: 10,
+    },
     inputSenha: {
         fontSize: 17,
         height: 50,

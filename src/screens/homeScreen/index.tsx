@@ -1,37 +1,42 @@
-import React, { Component } from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
-import { styles } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
-import { Background } from '../../components/Background';
-import { useState } from 'react';
-import { useNavigation } from '@react-navigation/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LogoPlusName } from '../../components/LogoPlusName';
-
-import { theme } from '../../global/styles/theme';
+import { useNavigation } from '@react-navigation/core';
+import React, { useEffect, useState } from 'react';
+import { Alert, Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Background } from '../../components/Background';
+import { LogoPlusName } from '../../components/LogoPlusName';
 import { Tutorial } from '../../components/Modal/Tutorial.js';
+import { styles } from './styles';
+
+import disableVisibility from '../../../assets/disableVisibility.png'
+import enableVisibility from '../../../assets/enableVisibility.png'
+import api from '../../services/api';
 
 export function Home() {
 
     const [tutorial, setTutorial] = useState(true);
+    const [visible, setVisible] = useState<boolean>(false)
+    const [balanceShown, setBalance] = useState<string>('******')
+
+    useEffect(() => {
+
+    })
 
     recebeInformacoes();
     const navigation = useNavigation();
     var userIdForPayload = '';
     var nomePessoa = ' Nome da conta';
-    var nomeConta = '';
 
     async function recebeInformacoes() {
         console.log("Conta logada: " + await AsyncStorage.getItem("loggedAccount"))
         try {
             const userId = await AsyncStorage.getItem("userId");
-            const userName = await AsyncStorage.getItem("@name");
+            const userName = await AsyncStorage.getItem("userName");
             if (userId != null && userName != null) {
                 nomePessoa = userName
                 userIdForPayload = userId
                 console.log(nomePessoa, userIdForPayload)
-                window.location.reload();
+                // window.location.reload();
             }
         } catch (error) {
             console.log(error)
@@ -51,6 +56,42 @@ export function Home() {
 
     function handlePix() {
         navigation.navigate('PixSelectOperation'); //mudar para ir para Home quando estiver pronta
+    }
+
+    async function toggleBalance() {
+        if (visible) {
+            setVisible(false)
+            setBalance("******")
+        } else {
+            const loggedAccount = await AsyncStorage.getItem('loggedAccount')
+            const balance = await api.get(`accounts/${loggedAccount}/balance`)
+                .then((res) => {
+                    return (
+                        (res.data.balance / 100).toString()
+                    )
+                })
+                .catch(err => {
+                        console.log(err)
+                        Alert.alert("Ops!", "Não foi possível recuperar seu saldo")
+                    }
+                )
+
+            if(balance) {
+                setBalance(balance)
+            }
+            
+            setVisible(true)
+        }
+    }
+
+    function renderVisibleButton() {
+        let imgSource = visible ? disableVisibility : enableVisibility
+
+        return (
+            <Image
+                source={imgSource}
+                style={styles.visibilityButton}
+            />)
     }
 
     return (
@@ -76,12 +117,17 @@ export function Home() {
                     Meu saldo
                 </Text>
 
-                <Text style={styles.subtitle}>
-                    R$ ********
-                </Text>
+                <View style={styles.balanceContainer}>
+                    <Text style={styles.subtitle}>
+                        R$ {balanceShown}
+                    </Text>
+                    <TouchableOpacity onPress={toggleBalance}>
+                        {renderVisibleButton()}
+                    </TouchableOpacity>
+                </View>
 
                 <Text style={styles.subtitle}>
-                    Resumo da conta 
+                    Resumo da conta
 
                 </Text>
             </View>
@@ -97,7 +143,7 @@ export function Home() {
                         Transferência
                     </Text>
                 </TouchableOpacity>
-                
+
                 <View >
                     <TouchableOpacity
                         onPress={() => {
@@ -143,28 +189,28 @@ export function Home() {
                         Tutoriais
                     </Text>
                 </TouchableOpacity>
-                
+
             </View>
 
             <View></View>
             <Tutorial
                 show={tutorial}
-                textTutorial = {
-                    "Aqui na tela 'Home' ficarão as informações básicas sobre a conta bancária selecionada.\n\n"+
-                    "Por exemplo:\n"+
-                    "Na parte superior da tela você encontra o campo 'Meu Saldo', ele Mostra o saldo atual da sua conta 'NãoBanco', para vizualizar ou ocultar basta clicar no ícone em formato de olho.\n\n"+
-                    "Você terá acessos rápidos para as funcionalidades abaixo de forma simplificada.\n\n"+ 
-                    "Menu de Acessos Rápidos: 🏧 \n"+
-                    "📥 Depósitos e Cobrança\n"+
-                    "📤 Transferencias\n"+
-                    "💸 Pagamentos\n"+
-                    "🧾 Extratos\n"+
-                    "💳 Cartões\n"+
-                    "💵 PIX\n"                    
+                textTutorial={
+                    "Aqui na tela 'Home' ficarão as informações básicas sobre a conta bancária selecionada.\n\n" +
+                    "Por exemplo:\n" +
+                    "Na parte superior da tela você encontra o campo 'Meu Saldo', ele Mostra o saldo atual da sua conta 'NãoBanco', para vizualizar ou ocultar basta clicar no ícone em formato de olho.\n\n" +
+                    "Você terá acessos rápidos para as funcionalidades abaixo de forma simplificada.\n\n" +
+                    "Menu de Acessos Rápidos: 🏧 \n" +
+                    "📥 Depósitos e Cobrança\n" +
+                    "📤 Transferencias\n" +
+                    "💸 Pagamentos\n" +
+                    "🧾 Extratos\n" +
+                    "💳 Cartões\n" +
+                    "💵 PIX\n"
                 }
                 redirect=''
             />
-          
+
         </Background>
     )
 
