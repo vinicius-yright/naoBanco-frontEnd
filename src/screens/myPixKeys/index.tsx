@@ -7,11 +7,13 @@ import { ScreenTitle } from '../../components/ScreenTitle';
 import api from '../../services/api';
 import { styles } from './styles';
 import { Tutorial } from '../../components/Modal/Tutorial.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function MyPixKeys() {
 
     const navigation = useNavigation();
     const [tutorial, setTutorial] = useState(true);
+    var loggedAccountForPayload = '';
 
     const [ content, setContent ] = useState("Carregando...")
 
@@ -41,6 +43,33 @@ export function MyPixKeys() {
 
         return res;
     }
+
+    async function pegarIdDaConta() {
+        try {
+            const loggedAccount = await AsyncStorage.getItem("loggedAccount");
+            if (loggedAccount != null) {
+                loggedAccountForPayload = loggedAccount
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function criarChaveAleatoria() {
+        pegarIdDaConta();
+        const response = await api.post("pixKeys/random",
+            {
+                accountNumber: loggedAccountForPayload
+            })
+            .then((response) => {
+                console.log(response);
+                console.log("FAZER POPUP CONFIRMANDO A CRIAÇÃO DA CHAVE, DEPOIS DAR UM RELOAD NA TELA PRA MOSTRAR A CHAVE CRIADA");
+              //  navigation.navigate('PixSelectOperation');
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
 
     return (
         <Background>
@@ -75,6 +104,7 @@ export function MyPixKeys() {
 
                     <TouchableOpacity style={styles.botao2}
                         onPress={() => {
+                            criarChaveAleatoria();
                         }}>
                         <Text style={styles.tituloBotao}>
                             Aleatória
