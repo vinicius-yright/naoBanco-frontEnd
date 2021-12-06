@@ -26,7 +26,6 @@ export function Login() {
                     navigation.navigate('FirstAccessBankAccount');
                 }
             }, (error) => {
-                Alert.alert("Email e/ou senha incorretos.");
                 console.log(error);
             });
         
@@ -55,6 +54,7 @@ export function Login() {
                 console.log(userId);
                 navegacaoInteligente();
             }, (error) => {
+                Alert.alert("Email e/ou senha incorretos.");
                 console.log(error);
             });
     }
