@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
+import { View, Text, TextInput, Image, Alert } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
@@ -22,6 +22,7 @@ export function CreateBankAccount() {
     const [txtSenhaBancariaC, setSenhaBancariaC] = useState('');
 
     async function enviaInformacoes() {
+        
         try {
             const userId = await AsyncStorage.getItem("userId");
             if (userId != null) {
@@ -30,6 +31,7 @@ export function CreateBankAccount() {
         } catch (error) {
             console.log(error)
         }
+        if(setSenhaBancaria == setSenhaBancariaC) {
         const response = await api.post("/accounts",
             {
                 nick: txtName,
@@ -42,6 +44,9 @@ export function CreateBankAccount() {
                 console.log(error);
                 console.log(userIdForPayload, txtName, txtSenhaBancaria)
             });
+        } else {
+            Alert.alert("Erro", "As senhas não batem!. Por favor, insira-as novamente.")
+        }
 
     }
 
