@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { Alert, BackHandler, Image, Text, View } from 'react-native';
+import { Alert, BackHandler, Image, Text, View, } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Background } from '../../components/Background';
 import { LogoPlusName } from '../../components/LogoPlusName';
@@ -135,6 +135,7 @@ export function Home() {
                 <TouchableOpacity
                     onPress={() => {
                         handleHome()
+                        Alert.alert("Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
                     }}
                     style={styles.btnPrincipal}
                 >
@@ -147,6 +148,7 @@ export function Home() {
                     <TouchableOpacity
                         onPress={() => {
                             handleHome()
+                            Alert.alert("Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
                         }}
                         style={styles.btnPrincipal}
                     >
@@ -158,6 +160,7 @@ export function Home() {
                     <TouchableOpacity
                         onPress={() => {
                             handleHome()
+                            Alert.alert("Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
                         }}
                         style={styles.btnPrincipal}
                     >
@@ -181,6 +184,7 @@ export function Home() {
                 <TouchableOpacity
                     onPress={() => {
                         handleHome()
+                        Alert.alert("Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
                     }}
                     style={styles.btnPrincipal}
                 >
