@@ -4,47 +4,37 @@ import {theme} from '../../global/styles/theme'
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-      }, 
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     content: {
         marginTop: -40,
         paddingHorizontal: 50
     },
+    title2:{
+        color: theme.colors.heading,
+        fontSize: 20,
+        textAlign: 'left',
+        fontFamily: theme.fonts.title700,
+        lineHeight: 30,
+        marginLeft: 30,
+        marginTop: 0
+    },
     input: {
         fontSize: 17,
         height: 50,
-        width: 300,
+        width: 330,
         margin: 11,
         padding: 10,
-        marginLeft: 15,
         backgroundColor:theme.colors.heading
-    },
-    inputSenha: {
-        fontSize: 17,
-        height: 50,
-        width: 150,
-        margin: 11,
-        padding: 10,
-        marginLeft: 15,
-        backgroundColor:theme.colors.heading,
-    },
-    title:{
-        color: theme.colors.heading,
-        fontSize: 30,
-        textAlign: 'center',
-        fontFamily: theme.fonts.title700,
-        lineHeight: 31,
     },
     subtitle: {
         color: theme.colors.heading,
         fontSize: 17,
         textAlign: 'center',
         fontFamily: theme.fonts.title500,
-        lineHeight: 18,
-        marginLeft: 15,
+        lineHeight: 25
     },
     logoApp: {
         justifyContent:'center',
@@ -57,17 +47,5 @@ export const styles = StyleSheet.create({
         bottom:20,
         position:'absolute',
         
-    },
-    nomeApp: {
-        color: theme.colors.heading,
-        fontSize: 28,
-        textAlign: 'center',
-        alignContent: 'center',
-        fontFamily: theme.fonts.title500,
-        fontWeight:'bold',
-        marginTop: 56,
-        marginLeft: 81,
-        width:190,
-        height:100,
-    },
+    }
   });
