@@ -19,7 +19,7 @@ export function PixCreateEmailKey() {
     var userIdForPayload = '';
     var loggedAccountForPayload = '';
     const [txtEmail, setEmail] = useState('');
-    const [txtValor, setConfirmEmail] = useState('');
+    const [txtEmailC, setConfirmEmail] = useState('');
     const [tutorial, setTutorial] = useState(false);
 
 
@@ -40,7 +40,7 @@ export function PixCreateEmailKey() {
     async function criarChaveEmail() {
         pegarIdDaConta();
 
-        if (setEmail == setConfirmEmail) {
+        if (txtEmail == txtEmailC) {
             const response = await api.post("pixKeys/email",
                 {
                     accountNumber: loggedAccountForPayload,
@@ -55,7 +55,7 @@ export function PixCreateEmailKey() {
         } else {
             Alert.alert("Erro", "As senhas não batem!. Por favor, insira-as novamente.")
         }
-        
+
     }
 
     return (
@@ -82,7 +82,7 @@ export function PixCreateEmailKey() {
                     <TextInput
                         style={styles.input}
                         keyboardType='default'
-                        maxLength={30}
+                        maxLength={50}
                         onChangeText={setEmail}
                     />
 
@@ -92,7 +92,7 @@ export function PixCreateEmailKey() {
                     <TextInput
                         style={styles.input}
                         keyboardType='default'
-                        maxLength={30}
+                        maxLength={50}
                         onChangeText={setConfirmEmail}
                     />
 
