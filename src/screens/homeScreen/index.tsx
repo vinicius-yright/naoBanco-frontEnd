@@ -17,15 +17,14 @@ export function Home() {
     const [tutorial, setTutorial] = useState(true);
     const [visible, setVisible] = useState<boolean>(false)
     const [balanceShown, setBalance] = useState<string>('******')
+    const [nomePessoa, setNome] = useState<string>('Carregando...')
 
     useEffect(() => {
-
-    })
+    }, [nomePessoa])
 
     recebeInformacoes();
     const navigation = useNavigation();
     var userIdForPayload = '';
-    var nomePessoa = ' Nome da conta';
 
     async function recebeInformacoes() {
         console.log("Conta logada: " + await AsyncStorage.getItem("loggedAccount"))
@@ -33,7 +32,7 @@ export function Home() {
             const userId = await AsyncStorage.getItem("userId");
             const userName = await AsyncStorage.getItem("userName");
             if (userId != null && userName != null) {
-                nomePessoa = userName
+                setNome(userName)
                 userIdForPayload = userId
                 console.log(nomePessoa, userIdForPayload)
                 // window.location.reload();
@@ -104,7 +103,7 @@ export function Home() {
                 <Text style={styles.saudacoes}>
                     Olá,
                     <Text style={styles.saudacoes}>
-                        {nomePessoa}
+                        {" " + nomePessoa}
                     </Text>
 
                 </Text>
