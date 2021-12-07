@@ -44,6 +44,7 @@ export function CreateBankAccount() {
 
                     .then((response) => {
                         console.log(response);
+                        redirectToPage()
                     }, (error) => {
                         console.log(error);
                         console.log(userIdForPayload, txtName, txtSenhaBancaria)
@@ -110,7 +111,6 @@ export function CreateBankAccount() {
                         <ButtonIcon title="Criar Conta Bancária"
                             onPress={() => {
                                 enviaInformacoes()
-                                redirectToPage()
                             }}
                         />
                     </View>
