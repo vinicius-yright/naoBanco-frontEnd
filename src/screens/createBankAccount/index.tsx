@@ -31,7 +31,7 @@ export function CreateBankAccount() {
         } catch (error) {
             console.log(error)
         }
-        if (setSenhaBancaria == setSenhaBancariaC) {
+        if (txtSenhaBancaria == txtSenhaBancariaC) {
             if (setApelido == undefined) {
                 const response = await api.post("/accounts",
                     {

@@ -37,7 +37,7 @@ export function CreateUser() {
 
     async function enviaInformacoes() {
 
-        if(setPassword == setPasswordC) {
+        if(txtPassword == txtPasswordC) {
             const response = await api.post("/user",
             {
                 name: txtName,
