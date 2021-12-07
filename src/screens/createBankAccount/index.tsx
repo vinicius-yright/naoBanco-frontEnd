@@ -33,8 +33,8 @@ export function CreateBankAccount() {
         } catch (error) {
             console.log(error)
         }
-        if (txtSenhaBancaria == txtSenhaBancariaC) {
-            if (setApelido == undefined) {
+        if (txtName != "" && txtSenhaBancaria != "" && txtSenhaBancariaC != "") {
+            if ((txtSenhaBancaria == txtSenhaBancariaC)) {
                 const response = await api.post("/accounts",
                     {
                         nick: txtName,
@@ -50,10 +50,10 @@ export function CreateBankAccount() {
                         console.log(userIdForPayload, txtName, txtSenhaBancaria)
                     });
             } else {
-                Alert.alert("Erro", "Apelido precisa estar vazio")
+                Alert.alert("Erro", "As senhas não estão iguais!")
             }
         } else {
-            Alert.alert("Erro", "As senhas não batem!. Por favor, insira-as novamente.")
+            Alert.alert("Erro", "Preencha todos os campos.")
         }
     }
     function redirectToPage() {

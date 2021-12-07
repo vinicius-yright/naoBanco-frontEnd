@@ -37,24 +37,28 @@ export function CreateUser() {
 
     async function enviaInformacoes() {
 
-        if(txtPassword == txtPasswordC) {
-            const response = await api.post("/user",
-            {
-                name: txtName,
-                email: txtEmail,
-                admin: true,
-                password: txtPassword
-            })
-            .then((response) => {
-                console.log(response);
-                userId = response.data.id
-                persisteInformacoesUsuario();
-                handleCreateBankAccount()
-            }, (error) => {
-                console.log(error);
-            });
+        if (txtPassword != "" && txtName != "" && txtEmail != "") {
+            if (txtPassword != txtPasswordC) {
+                Alert.alert("Erro", "As senhas não batem!. Por favor, insira-as novamente.");
+            } else {
+                const response = await api.post("/user",
+                    {
+                        name: txtName,
+                        email: txtEmail,
+                        admin: true,
+                        password: txtPassword
+                    })
+                    .then((response) => {
+                        console.log(response);
+                        userId = response.data.id
+                        persisteInformacoesUsuario();
+                        handleCreateBankAccount()
+                    }, (error) => {
+                        console.log(error);
+                    });
+            }
         } else {
-            Alert.alert("Erro", "As senhas não batem!. Por favor, insira-as novamente.")
+            Alert.alert("Erro", "Os campos não podem estar vazios. Tente novamente.")
         }
     }
 
@@ -63,8 +67,8 @@ export function CreateUser() {
     }
 
     function redirectToPage() {
-        if (firstView){
-            setTutorial(true) 
+        if (firstView) {
+            setTutorial(true)
             setFirstView(false)
         }
     }
@@ -127,9 +131,9 @@ export function CreateUser() {
                 </View>
                 <Tutorial
                     show={tutorial}
-                    textTutorial = {
-                        "Para continuar você precisará criar uma conta de usuário usando um nome de usuário e um e-mail real, pois será através dele que você acessará o seu perfil, onde serão seus dados 'bancários' da conta 'NãoBanco'.\n\n"+
-                        "Mas lembre-se todos os processos bancários desse aplicativo são simulações e não tem valor real.\n\n"+
+                    textTutorial={
+                        "Para continuar você precisará criar uma conta de usuário usando um nome de usuário e um e-mail real, pois será através dele que você acessará o seu perfil, onde serão seus dados 'bancários' da conta 'NãoBanco'.\n\n" +
+                        "Mas lembre-se todos os processos bancários desse aplicativo são simulações e não tem valor real.\n\n" +
                         "Buscamos oferecer um exemplo interativo, assim será possível interagir com outras pessoas que também tenham uma conta 'NãoBanco'.\n\n"
                     }
                     redirect=''

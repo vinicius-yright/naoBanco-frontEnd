@@ -40,20 +40,24 @@ export function PixCreateEmailKey() {
     async function criarChaveEmail() {
         pegarIdDaConta();
 
-        if (txtEmail == txtEmailC) {
-            const response = await api.post("pixKeys/email",
-                {
-                    accountNumber: loggedAccountForPayload,
-                    email: txtEmail
-                })
-                .then((response) => {
-                    console.log(response);
-                    navigation.navigate('PixSelectOperation');
-                }, (error) => {
-                    console.log(error);
-                });
+        if (txtEmail == "" || txtEmailC == "") {
+            if (txtEmail == txtEmailC) {
+                const response = await api.post("pixKeys/email",
+                    {
+                        accountNumber: loggedAccountForPayload,
+                        email: txtEmail
+                    })
+                    .then((response) => {
+                        console.log(response);
+                        navigation.navigate('PixSelectOperation');
+                    }, (error) => {
+                        console.log(error);
+                    });
+            } else {
+                Alert.alert("Erro", "Os e-mails não batem!. Por favor, insira-os novamente.")
+            }
         } else {
-            Alert.alert("Erro", "As senhas não batem!. Por favor, insira-as novamente.")
+            Alert.alert("Erro", "Preencha todos os campos e tente novamente.")
         }
 
     }
