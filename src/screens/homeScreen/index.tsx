@@ -129,11 +129,6 @@ export function Home() {
                         {renderVisibleButton()}
                     </TouchableOpacity>
                 </View>
-
-                <Text style={styles.subtitle}>
-                    Resumo da conta
-
-                </Text>
             </View>
 
             <View style={styles.bodyMainButton}>
