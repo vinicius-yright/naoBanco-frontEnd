@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { Alert, Image, Text, View } from 'react-native';
+import { Alert, BackHandler, Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Background } from '../../components/Background';
 import { LogoPlusName } from '../../components/LogoPlusName';
@@ -66,7 +66,7 @@ export function Home() {
             const balance = await api.get(`accounts/${loggedAccount}/balance`)
                 .then((res) => {
                     return (
-                        (res.data.balance / 100).toString()
+                        (res.data.balance / 100).toFixed(2).toString()
                     )
                 })
                 .catch(err => {
@@ -92,6 +92,11 @@ export function Home() {
                 style={styles.visibilityButton}
             />)
     }
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+        navigation.navigate("SelectBankAccount")
+        return true
+    })
 
     return (
 
