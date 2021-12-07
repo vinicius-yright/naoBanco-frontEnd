@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
+import { View, Text, TextInput, Image, Alert } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
@@ -36,7 +36,9 @@ export function CreateUser() {
     }
 
     async function enviaInformacoes() {
-        const response = await api.post("/user",
+
+        if(setPassword == setPasswordC) {
+            const response = await api.post("/user",
             {
                 name: txtName,
                 email: txtEmail,
@@ -47,9 +49,15 @@ export function CreateUser() {
                 console.log(response);
                 userId = response.data.id
                 persisteInformacoesUsuario();
+                handleCreateBankAccount()
             }, (error) => {
                 console.log(error);
             });
+        } else {
+            Alert.alert("Erro", "As senhas não batem!. Por favor, insira-as novamente.")
+        }
+
+        
     }
 
     function handleCreateBankAccount() {
@@ -116,7 +124,6 @@ export function CreateUser() {
                         onPress={() => {
                             enviaInformacoes()
                             setFirstView(false)
-                            handleCreateBankAccount()
                         }}
                     />
                 </View>

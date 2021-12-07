@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Alert } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
@@ -54,6 +54,7 @@ export function Login() {
                 console.log(userId);
                 navegacaoInteligente();
             }, (error) => {
+                Alert.alert("Email e/ou senha incorretos.");
                 console.log(error);
             });
     }
