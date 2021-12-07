@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Text, TouchableOpacity, View } from 'react-native';
 import { Background } from '../../components/Background';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { ScreenTitle } from '../../components/ScreenTitle';
@@ -16,16 +16,16 @@ export function MyPixKeys() {
     var loggedAccountForPayload = '';
 
     const [ content, setContent ] = useState("Carregando...")
+    const [ refresh, setRefresh ] = useState<number>(0)
 
     useEffect(() => {
         getPixKeys()
-    })
+    }, [refresh])
     
-    function getPixKeys() {
-        // const account = AsyncStorage.getItem("bankAccount");
-        const account = "5"
+    async function getPixKeys() {
+        const account = await AsyncStorage.getItem("loggedAccount")
 
-        const res = api.get(`/pixKeys/account/${account}`)
+        const res = await api.get(`/pixKeys/account/${account}`)
             .then((res) => {
                 let pixKeys = res.data
                 let content = ""
@@ -56,15 +56,15 @@ export function MyPixKeys() {
     }
 
     async function criarChaveAleatoria() {
-        pegarIdDaConta();
-        const response = await api.post("pixKeys/random",
+        await pegarIdDaConta();
+        await api.post("pixKeys/random",
             {
                 accountNumber: loggedAccountForPayload
             })
             .then((response) => {
                 console.log(response);
-                console.log("FAZER POPUP CONFIRMANDO A CRIAÇÃO DA CHAVE, DEPOIS DAR UM RELOAD NA TELA PRA MOSTRAR A CHAVE CRIADA");
-              //  navigation.navigate('PixSelectOperation');
+                setRefresh(refresh + 1)
+                Alert.alert("Sucesso!", "Chave PIX aleatória criada");
             }, (error) => {
                 console.log(error);
             });
@@ -103,8 +103,8 @@ export function MyPixKeys() {
                     <Text style={styles.emptySpace} />
 
                     <TouchableOpacity style={styles.botao2}
-                        onPress={() => {
-                            criarChaveAleatoria();
+                        onPress={async () => {
+                            await criarChaveAleatoria();
                         }}>
                         <Text style={styles.tituloBotao}>
                             Aleatória
