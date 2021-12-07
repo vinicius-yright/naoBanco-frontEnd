@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     bodyMainButton: {
         flex: 1,
         backgroundColor: "#0F3B49",
-        marginTop: -275
+        marginTop: -315
     },
     balanceContainer: {
         flexDirection: "row",
