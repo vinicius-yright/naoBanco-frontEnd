@@ -121,7 +121,6 @@ export function CreateUser() {
                             onPress={() => {
                                 enviaInformacoes()
                                 setFirstView(false)
-                                handleCreateBankAccount()
                             }}
                         />
                     </View>
