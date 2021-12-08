@@ -1,13 +1,20 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import { Alert, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import { Background } from '../../components/Background';
 import { LogoPlusName } from '../../components/LogoPlusName';
+import { Tutorial } from '../../components/Modal/Tutorial.js';
 import { ScreenTitle } from '../../components/ScreenTitle';
 import api from '../../services/api';
 import { styles } from './styles';
-import { Tutorial } from '../../components/Modal/Tutorial.js';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
+interface IPixKey {
+    key: string,
+    type: string,
+    account: number
+}
 
 export function MyPixKeys() {
 
@@ -15,31 +22,30 @@ export function MyPixKeys() {
     const [tutorial, setTutorial] = useState(true);
     var loggedAccountForPayload = '';
 
-    const [ content, setContent ] = useState("Carregando...")
-    const [ refresh, setRefresh ] = useState<number>(0)
+    const [refresh, setRefresh] = useState<number>(0)
+    const [pixKeys, setPixKeys] = useState<IPixKey[]>([])
 
     useEffect(() => {
         getPixKeys()
     }, [refresh])
-    
+
+    function verificaQtdChaves(callback: Function) {
+        if (pixKeys.length >= 5) {
+            Alert.alert("Ops!", "Você pode cadastrar no máximo 5 chaves por conta")
+            return
+        }
+
+        callback()
+    }
+
     async function getPixKeys() {
         const account = await AsyncStorage.getItem("loggedAccount")
 
         const res = await api.get(`/pixKeys/account/${account}`)
             .then((res) => {
                 let pixKeys = res.data
-                let content = ""
-
-                if(pixKeys.length){
-                    for (let i = 0; i < pixKeys.length; i++) {
-                        content += `Chave ${i + 1} (${pixKeys[i].type == 'random' ? 'aleatória' : 'email'}) \n`
-                        content += `${pixKeys[i].key} \n\n`
-                    }
-                } else {
-                    content = "Você ainda não possui chaves cadastradas."
-                }
-                setContent(content)
-            }).catch(err => console.log(err));
+                setPixKeys(pixKeys)
+            }).catch(err => console.log(err.response.data));
 
         return res;
     }
@@ -80,47 +86,71 @@ export function MyPixKeys() {
                 </ScreenTitle>
 
                 <Text style={styles.subtitle}>
-                    Cadastre suas chaves, você pode ter 1 chave email e 1 chave aleatória:
+                    Cadastre suas chaves. Você pode cadastrar no máximo 5 chaves por conta.
                 </Text>
 
-                <View style={{ paddingVertical: 60 }} >
-                    <Text style={styles.subtitle}>
-                        {content}
-                    </Text>
-                </View>
-
             </View>
-                <View style={styles.botaoContainer}>
-                    <TouchableOpacity style={styles.botao1}
-                        onPress={() => {
-                            navigation.navigate("PixCreateEmailKey");
-                        }}>
-                        <Text style={styles.tituloBotao}>
-                            Email
-                        </Text>
-                    </TouchableOpacity>
 
-                    <Text style={styles.emptySpace} />
+            <ScrollView
+                style={styles.scrollContainer}
+                contentContainerStyle={styles.contentScrollContainer}
+                alwaysBounceVertical={true}
+            >
+                <View style={{ paddingVertical: 10 }} >
+                    {
+                        pixKeys.length > 0 ?
+                            pixKeys.map((key, index) => {
+                                const indexPlusOne = index + 1
+                                const typePortuguese = key.type == 'random' ? 'aleatória' : 'email'
 
-                    <TouchableOpacity style={styles.botao2}
-                        onPress={async () => {
-                            await criarChaveAleatoria();
-                        }}>
-                        <Text style={styles.tituloBotao}>
-                            Aleatória
-                        </Text>
-                    </TouchableOpacity>
+                                return (
+                                    <View style={styles.keyContainer} key={index}>
+                                        <Text style={styles.keyTitle}>
+                                            Chave {indexPlusOne} ({typePortuguese})
+                                        </Text>
+                                        <Text style={styles.keyContent}>
+                                            {key.key}
+                                        </Text>
+                                    </View>
+                                )
+                            })
+                            :
+                            <Text>
+                                Você ainda não possui chaves cadastradas.
+                            </Text>
+                    }
                 </View>
+            </ScrollView>
 
-                <Tutorial
+            <View style={styles.botaoContainer}>
+                <TouchableOpacity style={styles.botao1}
+                    onPress={() => {
+                        verificaQtdChaves(() => navigation.navigate("PixCreateEmailKey"))
+                    }}>
+                    <Text style={styles.tituloBotao}>
+                        Email
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.botao2}
+                    onPress={async () => {
+                        verificaQtdChaves(async () => await criarChaveAleatoria())
+                    }}>
+                    <Text style={styles.tituloBotao}>
+                        Aleatória
+                    </Text>
+                </TouchableOpacity>
+            </View>
+
+            <Tutorial
                 show={tutorial}
-                textTutorial = {
-                    "As tão faladas chaves PIX são definidas pelo Banco Central como 'apelidos' utilizados para identificar a sua conta.\n"+
-                    "\nExistem 4 tipos de chaves PIX possíveis:\n"+
-                    "• CPF ou CNPJ\n"+
-                    "• E-mail\n"+
-                    "• Número de telefone celular\n"+
-                    "• Chave aleatória\n"+
+                textTutorial={
+                    "As tão faladas chaves PIX são definidas pelo Banco Central como 'apelidos' utilizados para identificar a sua conta.\n" +
+                    "\nExistem 4 tipos de chaves PIX possíveis:\n" +
+                    "• CPF ou CNPJ\n" +
+                    "• E-mail\n" +
+                    "• Número de telefone celular\n" +
+                    "• Chave aleatória\n" +
                     "\nNo caso do nosso aplicativo usaremos apenas as chaves do tipo: e-mail ou aleatória"
                 }
                 redirect=''
