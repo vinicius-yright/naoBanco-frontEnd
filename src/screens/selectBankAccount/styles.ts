@@ -13,12 +13,13 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     newAccountButton: {
+        position: "relative",
+        right: -70,
         width: 130,
         height: 53,
         alignItems: 'center',
         backgroundColor: theme.colors.purpleButton,
         borderRadius: 14,
-        marginLeft: 110,
         borderColor: "black",
         borderStyle: 'solid',
         borderWidth: 1,
@@ -62,7 +63,6 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: theme.fonts.roboto400,
         lineHeight: 55,
-        marginRight:171
     },
     btnTxt: {
         color: "white",

@@ -40,7 +40,11 @@ export function PixTransferConfirmation({ route }: { route: any }) {
                 const nick = res.data.account.nick
                 setReceiverNick(nick)
             })
-            .catch(err => console.log(err))
+            .catch(err =>{
+                console.log(err.response.data)
+                navigation.navigate('PixTransfer')
+                Alert.alert("Ops!", "A chave que você inseriu não existe. Verifique a chave e tente novamente.")
+            })
     }
 
     async function pegarIdDaConta() {

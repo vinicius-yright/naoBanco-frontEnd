@@ -76,13 +76,6 @@ export function PixTransfer() {
                         precision={2}
                     />
 
-                    {/* <TextInput
-                        style={styles.input}
-                        keyboardType='default'
-                        maxLength={30}
-                        onChangeText={setValor}
-                    /> */}
-
                     <Text style={styles.subtitle}>
                         Descrição (opcional):
                     </Text>
