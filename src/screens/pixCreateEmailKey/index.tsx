@@ -38,7 +38,7 @@ export function PixCreateEmailKey() {
 
 
     async function criarChaveEmail() {
-        pegarIdDaConta();
+        await pegarIdDaConta();
 
         if (txtEmail != "" || txtEmailC != "") {
             if (txtEmail == txtEmailC) {
