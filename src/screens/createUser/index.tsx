@@ -85,7 +85,7 @@ export function CreateUser() {
                         <TextInput
                             style={styles.input}
                             keyboardType='default'
-                            maxLength={30}
+                            maxLength={15}
                             onChangeText={setName}
                         />
 

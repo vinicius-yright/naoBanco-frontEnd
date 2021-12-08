@@ -82,7 +82,7 @@ export function CreateBankAccount() {
                     <TextInput
                         style={styles.input}
                         keyboardType='default'
-                        maxLength={30}
+                        maxLength={20}
                         onChangeText={setApelido}
                     />
 
