@@ -50,7 +50,7 @@ export function CreateBankAccount() {
                     })
                     .catch((error) => {
                         console.log(error.response.data);
-                        console.log(userIdForPayload, txtName, txtSenhaBancaria);
+                        Alert.alert("Ops!", "Você já possui uma conta com esse apelido!")
                     })
             } else {
                 Alert.alert("Erro", "As senhas não estão iguais!")
