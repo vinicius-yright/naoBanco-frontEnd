@@ -40,7 +40,7 @@ export function PixCreateEmailKey() {
     async function criarChaveEmail() {
         pegarIdDaConta();
 
-        if (txtEmail == "" || txtEmailC == "") {
+        if (txtEmail != "" || txtEmailC != "") {
             if (txtEmail == txtEmailC) {
                 const response = await api.post("pixKeys/email",
                     {
