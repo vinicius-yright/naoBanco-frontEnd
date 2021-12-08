@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Alert } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
@@ -13,11 +13,28 @@ export function Login() {
 
     const navigation = useNavigation();
 
-    async function pegaInformacoesSalvasUsuario() {
+    let userId = ''
+    let userName = ''
+
+    async function navegacaoInteligente() {
+        const response = await api.get(`accounts/user/${userId}`)
+            .then((response) => {
+                console.log(response);
+                if(response.data.length) {
+                    navigation.navigate('SelectBankAccount');
+                } else {
+                    navigation.navigate('FirstAccessBankAccount');
+                }
+            }, (error) => {
+                console.log(error);
+            });
+        
+    }
+
+    async function persisteInformacoesUsuario() {
         try {
-            const nomeUsuario = await AsyncStorage.getItem('@name')
-            const emailUsuario = await AsyncStorage.getItem('@email')
-            const senhaUsuario = await AsyncStorage.getItem('@password')
+            await AsyncStorage.setItem('userId', (userId))
+            await AsyncStorage.setItem('userName', (userName))
         } catch (error) {
             console.log(error);
         }
@@ -31,9 +48,13 @@ export function Login() {
             })
             .then((response) => {
                 console.log(response);
-                pegaInformacoesSalvasUsuario();
-                navigation.navigate('FirstAccessBankAccount');
+                userId = response.data.user.id
+                userName = response.data.user.name
+                persisteInformacoesUsuario();
+                console.log(userId);
+                navegacaoInteligente();
             }, (error) => {
+                Alert.alert("Email e/ou senha incorretos.");
                 console.log(error);
             });
     }
@@ -64,6 +85,7 @@ export function Login() {
                     <TextInput
                         style={styles.input}
                         keyboardType='default'
+                        secureTextEntry={true}
                         maxLength={50}
                         onChangeText={setPassword}
                     />

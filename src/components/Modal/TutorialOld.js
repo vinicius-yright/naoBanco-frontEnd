@@ -1,31 +1,29 @@
-//npm install --save react-animated-modal
-
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions } from 'react-native'
-
-//teste chamar screen com modal
+import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/core';
 
-export const ModalFirstAccess = ({ show, close }) => {
+export const Tutorial = ({ show, close, textTutorial, redirect}) => {
 
 
   //teste inicio
   const navigation = useNavigation();
 
-  function handleFirstAccess() {
+  function Redirect(redirectFlag) {
     closeModal();
-    navigation.navigate('CreateUser');
+    if(redirect !='')
+    {navigation.navigate(redirect);}
   }
+
   //teste fim
 
   const { height } = Dimensions.get('window')
-
+  
   const [state, setState] = useState({
     opacity: new Animated.Value(0),
     container: new Animated.Value(height),
     modal: new Animated.Value(height)
   })
-
+  
   const openModal = () => {
     Animated.sequence([
       Animated.timing(state.container, { toValue: 0, duration: 100, useNativeDriver: true }),
@@ -33,7 +31,7 @@ export const ModalFirstAccess = ({ show, close }) => {
       Animated.spring(state.modal, { toValue: 0, bounciness: 5, useNativeDriver: true })
     ]).start()
   }
-
+  
   const closeModal = () => {
     Animated.sequence([
       Animated.timing(state.modal, { toValue: height, duration: 250, useNativeDriver: true }),
@@ -41,14 +39,9 @@ export const ModalFirstAccess = ({ show, close }) => {
       Animated.timing(state.container, { toValue: height, duration: 100, useNativeDriver: true }),
     ]).start()
   }
-
-  useEffect(() => {
-    if (show) {
-      openModal()
-    } else {
-      closeModal()
-    }
-  }, [show])
+  
+  //Active or Desactive Modal
+  useEffect(() => { show ? openModal() : closeModal() }, [show])
 
   return (
     <Animated.View
@@ -67,17 +60,18 @@ export const ModalFirstAccess = ({ show, close }) => {
         }]}
       >
         <View style={styles.indicator} />
-
-        <Text style={styles.text}>
-          Toda vez que uma pop-up como esta aparecer, significa que é uma mensagem com informações importantes! {`\n`}
-          Para que você oompreenda, é necessário que leia com muita atenção! E se mesmo após vê-lâ você continuar com dúvidas, poderá acessar as configurações e reve-lás quando quiser!!
-        </Text>
+        
+        <ScrollView>
+          <Text style={styles.text}>
+              {textTutorial}
+          </Text>
+        </ScrollView>
 
         <TouchableOpacity
           style={styles.btn}
-          onPress={handleFirstAccess}
+          onPress={Redirect}
         >
-          <Text style={{ color: '#fff' }}>Close</Text>
+          <Text style={{ color: '#fff' }}>Continuar</Text>
         </TouchableOpacity>
       </Animated.View>
     </Animated.View>
@@ -94,7 +88,7 @@ const styles = StyleSheet.create({
   modal: {
     bottom: 0,
     position: 'absolute',
-    height: '65%',
+    height: '85%',
     backgroundColor: '#fff',
     width: '100%',
     borderTopLeftRadius: 20,
@@ -112,7 +106,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 50,
-    textAlign: 'center',
+    textAlign: 'justify',
     fontSize: 19
   },
   btn: {
@@ -122,6 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#9b59b6',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 30
+    marginTop: 15,
+    marginBottom: 10
   }
 })

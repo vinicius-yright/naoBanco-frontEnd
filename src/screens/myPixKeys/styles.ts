@@ -1,49 +1,53 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../global/styles/theme'
 
+
 export const styles = StyleSheet.create({
     container: {
-        marginTop: 240,
-        marginBottom: 225,
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
-       
-    },
-    content: {
-        marginTop: -40,
-        paddingHorizontal: 50
-    },
-    title: {
-        flex: 1,
-        color: theme.colors.heading,
-        fontSize: 60,
-        textAlign: 'center',
-        alignContent: 'center',
-        fontFamily: theme.fonts.title700,
-        lineHeight: 60
+        paddingHorizontal: 20,
     },
     subtitle: {
         color: theme.colors.heading,
-        fontSize: 15,
+        fontSize: 20,
         textAlign: 'center',
-        marginBottom: 64,
-        fontFamily: theme.fonts.title500,
-        lineHeight: 25
-    }, 
-    botao: {
-        width: '60%',
+        fontFamily: theme.fonts.title700,
+        lineHeight: 20,
+        margin:10,
+        marginTop: -10,
+    },
+    botao1: {
+        flex: 1,
         height: 50,
-        marginTop: 15,
         backgroundColor: theme.colors.purpleGay,
         borderRadius: 14,
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    botao2: {
+        flex: 1,
+        height: 50,
+        backgroundColor: theme.colors.purpleButton,
+        borderRadius: 14,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    botaoContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        top: 200,
+        justifyContent: 'space-between',
+        marginHorizontal: 40
     },
     tituloBotao: {
         flex: 1,
         color: theme.colors.heading,
         fontSize: 17,
         textAlign: 'center'
+    },
+    emptySpace: {
+        fontSize: 35,
+        width: 56
     }
 });

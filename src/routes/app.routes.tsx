@@ -14,8 +14,14 @@ import { TesteModal } from '../screens/testeModal';
 import { Login } from '../screens/login';
 import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
 import { CreateBankAccount } from '../screens/createBankAccount'
-import { SelectBankAccount } from '../screens/selectBankAccount'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { PixTransfer } from '../screens/pixTransfer';
+import { PixSelectOperation } from '../screens/pixSelectOperation';
+import { Home } from '../screens/homeScreen';
+import { SelectBankAccount } from '../screens/selectBankAccount';
+import { MyPixKeys } from '../screens/myPixKeys';
+import { PixTransferConfirmation } from '../screens/pixTransferConfirmation';
+import { PixCreateEmailKey } from '../screens/pixCreateEmailKey';
 
 //import { theme } from '../global/styles/theme';
 //CreateBankAccount
@@ -38,27 +44,38 @@ export function AppRoutes() {
     return (
 
         <Navigator>
+
             <Screen
                 options={{
-                    headerShown: false,
+                    headerShown: false
                 }}
-                name="SelectBankAccount"
-                component={SelectBankAccount}
-            />
-            <Screen
-                options={{
-                    headerShown: false,
-                }}
-                name="FirstAccess"
+                name="FirstAcess"
                 component={FirstAccess}
             />
 
             <Screen
                 options={{
-                    headerShown: false,
+                    headerShown: false
+                }}
+                name="Home"
+                component={Home}
+            />
+
+
+
+            <Screen
+                options={{
+                    headerShown: false
                 }}
                 name="Login"
                 component={Login}
+            />
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixTransferConfirmation"
+                component={PixTransferConfirmation}
             />
 
             <Screen
@@ -73,8 +90,16 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="FirstAccessBankAccount"
-                component={FirstAccessBankAccount}
+                name="PixTransfer"
+                component={PixTransfer}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="SelectBankAccount"
+                component={SelectBankAccount}
             />
 
             <Screen
@@ -89,14 +114,35 @@ export function AppRoutes() {
                 options={{
                     headerShown: false,
                 }}
-                name="TesteModal"
-                component={TesteModal}
+                name="MyPixKeys"
+                component={MyPixKeys}
             />
 
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixSelectOperation"
+                component={PixSelectOperation}
+            />
 
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="PixCreateEmailKey"
+                component={PixCreateEmailKey}
+            />
 
+            <Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="FirstAccessBankAccount"
+                component={FirstAccessBankAccount}
+            />
 
-        </Navigator>
+        </Navigator >
 
 
     )
