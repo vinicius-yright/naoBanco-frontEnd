@@ -17,10 +17,10 @@ export function Home() {
     const [tutorial, setTutorial] = useState(true);
     const [visible, setVisible] = useState<boolean>(false)
     const [balanceShown, setBalance] = useState<string>('******')
-    const [nomePessoa, setNome] = useState<string>('Carregando...')
+    const [contaNick, setNick] = useState<string>('Carregando...')
 
     useEffect(() => {
-    }, [nomePessoa])
+    }, [contaNick])
 
     recebeInformacoes();
     const navigation = useNavigation();
@@ -30,27 +30,15 @@ export function Home() {
         console.log("Conta logada: " + await AsyncStorage.getItem("loggedAccount"))
         try {
             const userId = await AsyncStorage.getItem("userId");
-            const userName = await AsyncStorage.getItem("userName");
-            if (userId != null && userName != null) {
-                setNome(userName)
+            const accountNick = await AsyncStorage.getItem("loggedAccountNick");
+            if (userId != null && accountNick != null) {
+                setNick(accountNick)
                 userIdForPayload = userId
-                console.log(nomePessoa, userIdForPayload)
-                // window.location.reload();
+                console.log(contaNick, userIdForPayload)
             }
         } catch (error) {
             console.log(error)
         }
-        /* const response = await api.get("/accounts/user/" + userIdForPayload)
-            .then((response) => {
-                nomePessoa = response.data[0].nick;
-                console.log(response);
-            }, (error) => {
-                console.log(error);
-                console.log(userIdForPayload, txtName, txtSenhaBancaria)
-            }); */
-    }
-    function handleHome() {
-        //navigation.navigate('Login'); //mudar para ir para Home quando estiver pronta
     }
 
     function handlePix() {
@@ -108,7 +96,7 @@ export function Home() {
                 <Text style={styles.saudacoes}>
                     Olá,
                     <Text style={styles.saudacoes}>
-                        {" " + nomePessoa}
+                        {" " + contaNick}
                     </Text>
 
                 </Text>

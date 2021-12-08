@@ -34,6 +34,7 @@ export function SelectBankAccount() {
     const [user, setUser] = useState<IUser>({ id: "", name: "" })
     const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false)
     const [selectedAccount, setSelectedAccount] = useState("")
+    const [selectedAccountNick, setNick] = useState("")
 
     useEffect(() => {
         if (user.name == "") {
@@ -76,6 +77,7 @@ export function SelectBankAccount() {
             })
             .then(async (response) => {
                 await AsyncStorage.setItem("loggedAccount", selectedAccount)
+                await AsyncStorage.setItem("loggedAccountNick", selectedAccountNick)
                 handleHome()
             })
             .catch(err => {
@@ -132,6 +134,7 @@ export function SelectBankAccount() {
                                         onPress={() => {
                                             setShowPasswordModal(true)
                                             setSelectedAccount(account.accountNumber.toString())
+                                            setNick(account.nick.toString())
                                         }}
                                     />
                                 )
