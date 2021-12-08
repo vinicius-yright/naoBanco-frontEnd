@@ -19,7 +19,6 @@ export function Login() {
     async function navegacaoInteligente() {
         const response = await api.get(`accounts/user/${userId}`)
             .then((response) => {
-                console.log(response);
                 if(response.data.length) {
                     navigation.navigate('SelectBankAccount');
                 } else {
@@ -41,13 +40,12 @@ export function Login() {
     }
 
     async function login() {
-        const response = await api.post("/login",
+        await api.post("/login",
             {
                 email: txtEmail,
                 password: txtPassword
             })
             .then((response) => {
-                console.log(response);
                 userId = response.data.user.id
                 userName = response.data.user.name
                 persisteInformacoesUsuario();

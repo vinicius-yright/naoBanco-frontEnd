@@ -58,7 +58,7 @@ export function Home() {
                     )
                 })
                 .catch(err => {
-                        console.log(err)
+                        console.log(err.response.data)
                         Alert.alert("Ops!", "Não foi possível recuperar seu saldo")
                     }
                 )
