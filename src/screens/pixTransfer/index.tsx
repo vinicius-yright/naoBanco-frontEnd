@@ -1,7 +1,7 @@
 //apenas design da pagina, falta conexão com api
 
 import React, { Component } from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
+import { View, Text, TextInput, Image, Alert } from 'react-native';
 import { styles } from './styles';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { Background } from '../../components/Background';
@@ -23,16 +23,20 @@ export function PixTransfer() {
     const [txtDescricao, setDescricao] = useState('');
     const [txtData, setData] = useState('');
     const [tutorial, setTutorial] = useState(true);
-    
+
 
     function handleTransferConfirm() {
-        
-        navigation.navigate('PixTransferConfirmation', {
-            chave: txtChave,
-            valor: txtValor,
-            mensagem: txtDescricao
-            
-        }); 
+
+        if (txtChave != "" && txtValor != "") {
+            navigation.navigate('PixTransferConfirmation', {
+                chave: txtChave,
+                valor: txtValor,
+                mensagem: txtDescricao
+
+            });
+        } else {
+            Alert.alert("Erro", "Preencha os campos obrigatórios antes de continuar.")
+        }
     }
 
     return (
@@ -58,7 +62,6 @@ export function PixTransfer() {
                     <TextInput
                         style={styles.input}
                         keyboardType='default'
-                        maxLength={30}
                         onChangeText={setChave}
                     />
 
