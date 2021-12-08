@@ -9,7 +9,10 @@ export const styles = StyleSheet.create({
     bodyMainButton: {
         flex: 1,
         backgroundColor: "#0F3B49",
-        marginTop: -315
+        marginTop: -300,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        paddingTop: 20
     },
     balanceContainer: {
         flexDirection: "row",
@@ -55,16 +58,17 @@ export const styles = StyleSheet.create({
         fontFamily: theme.fonts.title500,
         lineHeight: 25,
         marginLeft: 30,
-        marginBottom: 10
+        marginBottom: 1
     },
     btnPrincipal: {
         width: '80%',
-        height: 50,
+        height: 60,
         backgroundColor: "#117F7B",
         borderRadius: 14,
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 10,
+        marginBottom: 5,
         marginLeft: '10%'
     },
     btnSecundario: {
@@ -83,6 +87,7 @@ export const styles = StyleSheet.create({
         textAlign: 'center'
     },
     linha: {
+        textAlign: "center",
         marginTop: -40,
         color: theme.colors.heading,
     }

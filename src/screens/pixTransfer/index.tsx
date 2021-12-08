@@ -1,36 +1,32 @@
 //apenas design da pagina, falta conexão com api
 
-import React, { Component } from 'react';
-import { View, Text, TextInput, Image, Alert } from 'react-native';
-import { styles } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
-import { Background } from '../../components/Background';
-import { useState } from 'react';
-import api from '../../services/api';
 import { useNavigation } from '@react-navigation/core';
-import { Modal } from '../Modal';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from 'react';
+import { Alert, Text, TextInput, View } from 'react-native';
+import { Background } from '../../components/Background';
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { LogoPlusName } from '../../components/LogoPlusName';
-import { ScreenTitle } from '../../components/ScreenTitle';
 import { Tutorial } from '../../components/Modal/Tutorial.js';
+import { ScreenTitle } from '../../components/ScreenTitle';
+import { styles } from './styles';
+import CurrencyInput from 'react-native-currency-input'
 
 export function PixTransfer() {
 
     const navigation = useNavigation();
     const [modal, setModal] = useState(false);
     const [txtChave, setChave] = useState('');
-    const [txtValor, setValor] = useState('');
+    const [txtValor, setValor] = useState<number>(0);
     const [txtDescricao, setDescricao] = useState('');
     const [txtData, setData] = useState('');
     const [tutorial, setTutorial] = useState(true);
 
-
     function handleTransferConfirm() {
 
-        if (txtChave != "" && txtValor != "") {
+        if (txtChave != "" && txtValor != 0) {
             navigation.navigate('PixTransferConfirmation', {
                 chave: txtChave,
-                valor: txtValor,
+                valor: (txtValor * 100).toString(),
                 mensagem: txtDescricao
 
             });
@@ -55,7 +51,7 @@ export function PixTransfer() {
                     </Text>
                 </View>
 
-                <View>
+                <View  style={{ marginTop: 15, marginBottom: 50 }}>
                     <Text style={styles.subtitle}>
                         Chave do Destinatário:
                     </Text>
@@ -68,12 +64,24 @@ export function PixTransfer() {
                     <Text style={styles.subtitle}>
                         Valor:
                     </Text>
-                    <TextInput
+
+                    <CurrencyInput
+                        value={txtValor}
+                        style={styles.input}
+                        prefix="R$ "
+                        delimiter="."
+                        separator=","
+                        onChangeValue={setValor}
+                        minValue={0}
+                        precision={2}
+                    />
+
+                    {/* <TextInput
                         style={styles.input}
                         keyboardType='default'
                         maxLength={30}
                         onChangeText={setValor}
-                    />
+                    /> */}
 
                     <Text style={styles.subtitle}>
                         Descrição (opcional):

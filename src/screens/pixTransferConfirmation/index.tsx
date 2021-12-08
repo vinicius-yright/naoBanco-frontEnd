@@ -1,17 +1,15 @@
 //apenas design da pagina, falta conexão com api
 
-import React, { Component, FC, useEffect } from 'react';
-import { View, Text, TextInput, Image, Route, Alert } from 'react-native';
-import { styles } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
-import { Background } from '../../components/Background';
-import { useState } from 'react';
-import api from '../../services/api';
-import { useNavigation } from '@react-navigation/core';
-import { Modal } from '../Modal';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/core';
+import React, { useEffect, useState } from 'react';
+import { Alert, Text, View } from 'react-native';
+import { Background } from '../../components/Background';
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { ScreenTitle } from '../../components/ScreenTitle';
+import api from '../../services/api';
+import { styles } from './styles';
 
 
 
@@ -21,9 +19,10 @@ export function PixTransferConfirmation({ route }: { route: any }) {
     const navigation = useNavigation();
     const [receiverNick, setReceiverNick] = useState<string>('')
 
+    const valor = (parseInt(route.params.valor)/100).toFixed(2).toString().replace('.', ',')
+
     var loggedAccountForPayload = '';
     let newDate = new Date().toDateString();
-    console.log(newDate);
 
     useEffect(() => {
         pegaInformacoesDestinatario()
@@ -40,7 +39,6 @@ export function PixTransferConfirmation({ route }: { route: any }) {
             .then(res => {
                 const nick = res.data.account.nick
                 setReceiverNick(nick)
-                console.log(nick)
             })
             .catch(err => console.log(err))
     }
@@ -105,7 +103,7 @@ export function PixTransferConfirmation({ route }: { route: any }) {
                     </Text>
 
                     <Text style={styles.subtitle}>
-                        Valor: R$ {route.params.valor}
+                        Valor: R$ {valor}
                         <Text style={styles.subtitle2}> </Text>
                     </Text>
 

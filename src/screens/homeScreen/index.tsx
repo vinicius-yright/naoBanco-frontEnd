@@ -122,8 +122,7 @@ export function Home() {
             <View style={styles.bodyMainButton}>
                 <TouchableOpacity
                     onPress={() => {
-                        handleHome()
-                        Alert.alert("Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
+                        Alert.alert("WIP", "Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
                     }}
                     style={styles.btnPrincipal}
                 >
@@ -135,8 +134,7 @@ export function Home() {
                 <View >
                     <TouchableOpacity
                         onPress={() => {
-                            handleHome()
-                            Alert.alert("Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
+                            Alert.alert("WIP", "Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
                         }}
                         style={styles.btnPrincipal}
                     >
@@ -147,8 +145,7 @@ export function Home() {
 
                     <TouchableOpacity
                         onPress={() => {
-                            handleHome()
-                            Alert.alert("Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
+                            Alert.alert("WIP", "Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
                         }}
                         style={styles.btnPrincipal}
                     >
@@ -171,8 +168,7 @@ export function Home() {
 
                 <TouchableOpacity
                     onPress={() => {
-                        handleHome()
-                        Alert.alert("Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
+                        Alert.alert("WIP", "Essa funcionalidade ainda não foi implementada. Por favor aguarde.")
                     }}
                     style={styles.btnPrincipal}
                 >

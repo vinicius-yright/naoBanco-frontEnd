@@ -8,10 +8,11 @@ export const styles = StyleSheet.create({
       },
     content: {
         width: "90%",
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        height: 300
     },
     btnContainer: {
-        marginTop: -30,
+        top: -60,
         flexDirection: "column"
     },
     input: {
@@ -47,8 +48,8 @@ export const styles = StyleSheet.create({
         textAlign: 'left',
         fontFamily: theme.fonts.title500,
         lineHeight: 25,
-        fontWeight: 'bold'
-
+        fontWeight: 'bold',
+        marginBottom: 10
     },
     subtitle2: {
         color: theme.colors.heading,
