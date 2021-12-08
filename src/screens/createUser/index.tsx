@@ -25,7 +25,7 @@ export function CreateUser() {
 
     async function persisteInformacoesUsuario() {
         try {
-            await AsyncStorage.setItem('@name', txtName)
+            await AsyncStorage.setItem('userName', txtName)
             await AsyncStorage.setItem('@email', JSON.stringify(txtEmail))
             await AsyncStorage.setItem('@password', JSON.stringify(txtPassword))
             await AsyncStorage.setItem('userId', (userId))

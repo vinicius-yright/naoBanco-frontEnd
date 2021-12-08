@@ -66,7 +66,11 @@ export function PixTransferConfirmation({ route }: { route: any }) {
                 Alert.alert("Sucesso!", "Transferência realizada");
                 navigation.navigate("Home");
             }, (error) => {
-                console.log(error);
+                const errorMesage = error.response.data.error
+                console.log("Erro: ", errorMesage);
+                if(errorMesage == 'Sender has insufficient funds'){
+                    Alert.alert("Ops!", "Você não tem saldo suficiente para essa transação!")
+                }
             });
     }
 
