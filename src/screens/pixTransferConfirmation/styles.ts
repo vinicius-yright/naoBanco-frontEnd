@@ -4,10 +4,16 @@ import {theme} from '../../global/styles/theme'
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        /* justifyContent: 'center',
-        position: 'absolute', */
-      }, 
+        alignItems: 'center'
+      },
+    content: {
+        width: "90%",
+        paddingHorizontal: 10
+    },
+    btnContainer: {
+        marginTop: -30,
+        flexDirection: "column"
+    },
     input: {
         fontSize: 17,
         height: 50,
@@ -41,9 +47,6 @@ export const styles = StyleSheet.create({
         textAlign: 'left',
         fontFamily: theme.fonts.title500,
         lineHeight: 25,
-        marginLeft: -75,
-        marginTop: 30,
-        marginBottom: -10,
         fontWeight: 'bold'
 
     },
@@ -53,9 +56,6 @@ export const styles = StyleSheet.create({
         textAlign: 'left',
         fontFamily: theme.fonts.title500,
         lineHeight: 25,
-        marginLeft: -5,
-        marginTop: 20,
-        marginBottom: -10
     },
     logoApp: {
         justifyContent:'center',
