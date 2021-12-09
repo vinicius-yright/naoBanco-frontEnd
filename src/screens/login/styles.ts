@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
-import {theme} from '../../global/styles/theme'
+import { theme } from '../../global/styles/theme'
 
 
 export const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginBottom: 100
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: 100,
     },
     input: {
         fontSize: 17,
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
         width: 330,
         margin: 11,
         padding: 10,
-        backgroundColor:theme.colors.heading
+        backgroundColor: theme.colors.heading
     },
     subtitle: {
         color: theme.colors.heading,
@@ -23,5 +23,8 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily: theme.fonts.title500,
         lineHeight: 25
+    },
+    btnEntrar: {
+        marginTop: 20
     }
-  });
+});

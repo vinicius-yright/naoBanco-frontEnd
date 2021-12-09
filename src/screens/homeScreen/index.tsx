@@ -81,15 +81,10 @@ export function Home() {
             />)
     }
 
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-        navigation.navigate("SelectBankAccount")
-        return true
-    })
-
     return (
 
         <Background>
-            <LogoPlusName>
+            <LogoPlusName backToScreen='FirstAccess'>
             </LogoPlusName>
 
             <View style={styles.container}>

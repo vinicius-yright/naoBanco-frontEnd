@@ -75,7 +75,7 @@ export function CreateUser() {
 
     return (
         <Background>
-            <LogoPlusName></LogoPlusName>
+            <LogoPlusName backToScreen='FirstAccess'/>
             <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
                 <View style={styles.container}>
                     <View>

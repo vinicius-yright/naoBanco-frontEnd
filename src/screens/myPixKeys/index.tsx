@@ -79,7 +79,7 @@ export function MyPixKeys() {
 
     return (
         <Background>
-            <LogoPlusName />
+            <LogoPlusName backToScreen='PixSelectOperation' />
             <View style={styles.container}>
 
                 <ScreenTitle title="Minhas Chaves PIX">

@@ -91,7 +91,7 @@ export function SelectBankAccount() {
     return (
 
         <Background>
-            <LogoPlusName />
+            <LogoPlusName backToScreen='FirstAccess'/>
 
             <View style={styles.header}>
                 <Text style={styles.title}>

@@ -80,7 +80,7 @@ export function PixTransferConfirmation({ route }: { route: any }) {
 
     return (
         <Background>
-            <LogoPlusName />
+            <LogoPlusName backToScreen='PixTransfer' />
 
             <View style={styles.container}>
 

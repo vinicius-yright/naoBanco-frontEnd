@@ -37,7 +37,7 @@ export function PixTransfer() {
 
     return (
         <Background>
-            <LogoPlusName />
+            <LogoPlusName backToScreen='PixSelectOperation' />
 
             <View style={styles.container}>
 

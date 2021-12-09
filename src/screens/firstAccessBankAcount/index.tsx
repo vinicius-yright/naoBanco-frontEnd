@@ -28,9 +28,8 @@ export function FirstAccessBankAccount() {
 
     return (
         <Background>
-            <LogoPlusName>
+            <LogoPlusName backToScreen='FirstAccess'/>
 
-            </LogoPlusName>
             <View style={styles.container}>
 
                 <View>
@@ -42,7 +41,6 @@ export function FirstAccessBankAccount() {
                 <View>
                     <ButtonIcon title="Criar 1ª Conta Bancária!"
                         onPress={() => handleCreateBankAccount()}
-                        
                     />
                 </View>
             </View>

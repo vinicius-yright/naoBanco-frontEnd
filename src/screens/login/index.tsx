@@ -63,7 +63,7 @@ export function Login() {
     return (
         <Background>
 
-            <LogoPlusName>
+            <LogoPlusName backToScreen="FirstAccess">
 
             </LogoPlusName>
             <View style={styles.container}>
@@ -90,7 +90,7 @@ export function Login() {
 
                 </View>
 
-                <View>
+                <View style={styles.btnEntrar}>
                     <ButtonIcon title="Entrar"
                         onPress={login}
                     />

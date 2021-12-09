@@ -16,7 +16,7 @@ export function PixSelectOperation() {
     return (
 
         <Background>
-            <LogoPlusName>
+            <LogoPlusName backToScreen='Home'>
 
             </LogoPlusName>
             <View style={styles.container}>
