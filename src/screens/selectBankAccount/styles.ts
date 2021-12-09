@@ -11,10 +11,10 @@ export const styles = StyleSheet.create({
     },
     header: {
         flexDirection: 'row',
+        width: '100%'
     },
     newAccountButton: {
-        position: "relative",
-        right: -70,
+        right: -25,
         width: 130,
         height: 53,
         alignItems: 'center',
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
         borderColor: "black",
         borderStyle: 'solid',
         borderWidth: 1,
-        paddingTop: 10
+        paddingTop: 10,
     },
     scrollContainer: {
         flex: 1,
@@ -54,8 +54,9 @@ export const styles = StyleSheet.create({
         textAlign: 'left',
         fontFamily: theme.fonts.roboto700,
         lineHeight: 68,
-        margin: 10,
         marginLeft:30,
+        marginBottom: 10,
+        width: "50%"
     },
     title2:{
         color: theme.colors.heading,
