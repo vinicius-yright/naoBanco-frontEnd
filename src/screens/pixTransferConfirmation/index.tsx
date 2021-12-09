@@ -69,6 +69,7 @@ export function PixTransferConfirmation({ route }: { route: any }) {
             .then((response) => {
                 Alert.alert("Sucesso!", "Transferência realizada");
                 navigation.navigate("Home");
+                console.log(response.data)
             }, (error) => {
                 const errorMesage = error.response.data.error
                 console.log("Erro: ", errorMesage);
