@@ -72,10 +72,16 @@ export function MyReceipts() {
 
     function sortTransaction(transaction: ITransaction[]) {
         const transactionSorted = transaction.sort((a, b) => {
-            const dateA = a.created_at.split(' ')[0].split('/').reverse().join('-')
-            const dateB = b.created_at.split(' ')[0].split('/').reverse().join('-')
-            
-            return new Date(dateB).getTime() - new Date(dateA).getTime()
+            const completeDateA = a.created_at.split(' ')
+            const completeDateB = b.created_at.split(' ')
+
+            const timeA = completeDateA[1]
+            const timeB = completeDateB[1]
+
+            const dateA = completeDateA[0].split('/').reverse().join('-')
+            const dateB = completeDateB[0].split('/').reverse().join('-')
+
+            return new Date(`${dateB}T${timeB}`).getTime() - new Date(`${dateA}T${timeA}`).getTime()
         })
         setTransactions(transactionSorted)
     }
