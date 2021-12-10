@@ -38,9 +38,8 @@ export const styles = StyleSheet.create({
         textAlign: 'left',
         fontFamily: theme.fonts.title700,
         lineHeight: 68,
-        margin:10,
         marginLeft:30,
-        marginTop: -50
+        marginTop: -55
     },
     title2:{
         color: theme.colors.heading,
@@ -86,9 +85,8 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center'
     },
-    linha: {
-        textAlign: "center",
-        marginTop: -40,
-        color: theme.colors.heading,
+    line: {
+        borderBottomColor: 'white',
+        borderBottomWidth: 1,
     }
   });

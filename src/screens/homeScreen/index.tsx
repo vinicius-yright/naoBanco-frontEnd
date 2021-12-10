@@ -58,15 +58,15 @@ export function Home() {
                     )
                 })
                 .catch(err => {
-                        console.log(err.response.data)
-                        Alert.alert("Ops!", "Não foi possível recuperar seu saldo")
-                    }
+                    console.log(err.response.data)
+                    Alert.alert("Ops!", "Não foi possível recuperar seu saldo")
+                }
                 )
 
-            if(balance) {
+            if (balance) {
                 setBalance(balance)
             }
-            
+
             setVisible(true)
         }
     }
@@ -96,9 +96,9 @@ export function Home() {
 
                 </Text>
 
-                <Text style={styles.linha}>
-                    ______________________________________________________________
-                </Text>
+                <View
+                    style={styles.line}
+                />
 
                 <Text style={styles.title2}>
                     Meu saldo
