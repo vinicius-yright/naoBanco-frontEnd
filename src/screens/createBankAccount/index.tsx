@@ -65,7 +65,7 @@ export function CreateBankAccount() {
     }
     return (
         <Background>
-            <LogoPlusName></LogoPlusName>
+            <LogoPlusName backToScreen='SelectBankAccount'></LogoPlusName>
             <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
                 <View style={styles.container}>
 
