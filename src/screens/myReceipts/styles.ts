@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         alignContent: 'center',
         marginHorizontal: 15,
         height: "100%",
-        marginVertical: 20
+        marginVertical: 10
     },
     contentScrollContainer: {
         paddingVertical: 10,
@@ -73,5 +73,47 @@ export const styles = StyleSheet.create({
         marginTop: 10,
         borderBottomColor: 'white',
         borderBottomWidth: 1,
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+        justifyContent: 'space-evenly',
+        marginHorizontal: "4%",
+        marginTop: 20
+    },
+    buttonStart: {
+        height: 50,
+        width: "20%",
+        backgroundColor: theme.colors.purpleGay,
+        borderTopLeftRadius: 14,
+        borderBottomLeftRadius: 14,
+        alignItems: 'center',
+        borderColor: theme.colors.heading,
+        borderWidth: 1.5,
+    },
+    buttonMiddle: {
+        height: 50,
+        width: "20%",
+        backgroundColor: theme.colors.purpleGay,
+        alignItems: 'center',
+        borderColor: theme.colors.heading,
+        borderWidth: 1.5
+    },
+    buttonEnd: {
+        height: 50,
+        width: "20%",
+        backgroundColor: theme.colors.purpleGay,
+        borderTopRightRadius: 14,
+        borderBottomRightRadius: 14,
+        alignItems: 'center',
+        borderColor: theme.colors.heading,
+        borderWidth: 1.5
+    },
+    btnText: {
+        color: theme.colors.heading,
+        fontFamily: theme.fonts.title700,
+        fontSize: 20,
+        textAlign: 'center',
+        paddingVertical: 10
     }
 });

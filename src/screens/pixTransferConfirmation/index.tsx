@@ -22,7 +22,7 @@ export function PixTransferConfirmation({ route }: { route: any }) {
     const valor = (parseInt(route.params.valor)/100).toFixed(2).toString().replace('.', ',')
 
     var loggedAccountForPayload = '';
-    let newDate = new Date().toDateString();
+    let newDate = new Date().toISOString().split('T')[0].split('-').reverse().join(' / ');
 
     useEffect(() => {
         pegaInformacoesDestinatario()

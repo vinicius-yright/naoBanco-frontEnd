@@ -58,7 +58,9 @@ export function PixTransfer() {
                     <TextInput
                         style={styles.input}
                         keyboardType='default'
-                        onChangeText={setChave}
+                        onChangeText={(content) => {
+                            setChave(content.trim())
+                        }}
                     />
 
                     <Text style={styles.subtitle}>

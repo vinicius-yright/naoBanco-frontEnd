@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
 import { Alert, Text, TouchableOpacity, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { Background } from '../../components/Background';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { Tutorial } from '../../components/Modal/Tutorial.js';
@@ -19,6 +19,11 @@ interface ITransaction {
     message: string
 }
 
+interface ITimeCourse {
+    start: number,
+    end: number
+}
+
 export function MyReceipts() {
 
     const navigation = useNavigation();
@@ -27,21 +32,36 @@ export function MyReceipts() {
     const [transactions, setTransactions] = useState<ITransaction[]>([])
     const [loggedAccount, setAccount] = useState<string>('')
 
-    let startDate = '2021-12-07'
-    let endDate = '2021-12-09'
+    const startState = new Date().setDate(new Date().getDate() - 5)
+    const endState = new Date().getTime()
+
+    const [timeCourse, setTimeCourse] = useState<ITimeCourse>({ start: startState, end: endState })
 
     useEffect(() => {
+        getPixTransactions()
         if (refresh == 0) {
-            getPixTransactions()
             setRefresh(1)
         }
-    }, [transactions])
+    }, [timeCourse])
+
+    function dateForPayload(days: number) {
+        let start:number
+
+        if(days == 0){
+            start = new Date(0).getTime()
+        } else {
+            start = new Date().setDate(new Date().getDate() - days)
+        }
+        
+        const end = new Date().getTime()
+
+        setTimeCourse({ start, end })
+    }
 
     async function getPixTransactions() {
-        const account = '5' //await AsyncStorage.getItem("loggedAccount")
+        const account = await AsyncStorage.getItem("loggedAccount")
         setAccount(account)
-        console.log("ta repetindo")
-        const res = await api.get(`/transactions/${account}/${startDate}/${endDate}`)
+        const res = await api.get(`/transactions/${account}/${timeCourse.start}/${timeCourse.end}`)
             .then((res) => {
                 let transactionsArray = res.data
                 sortTransaction(transactionsArray)
@@ -50,22 +70,14 @@ export function MyReceipts() {
         return res;
     }
 
-    function sortTransaction(transaction: ITransaction[]){
+    function sortTransaction(transaction: ITransaction[]) {
         const transactionSorted = transaction.sort((a, b) => {
-            return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+            const dateA = a.created_at.split(' ')[0].split('/').reverse().join('-')
+            const dateB = b.created_at.split(' ')[0].split('/').reverse().join('-')
+            
+            return new Date(dateB).getTime() - new Date(dateA).getTime()
         })
-
         setTransactions(transactionSorted)
-    }
-
-    async function getUserByAccount(accountNumber: number) {
-        return await api.get(`/user/account/${accountNumber}`)
-            .then(res => {
-                return res.data.name
-            })
-            .catch(err => {
-                console.log("Aqui: ", err.data)
-            })
     }
 
     return (
@@ -74,6 +86,60 @@ export function MyReceipts() {
             <View style={styles.container}>
                 <ScreenTitle title="Extrato PIX">
                 </ScreenTitle>
+            </View>
+
+            <View style={styles.inputContainer}>
+                <TouchableOpacity
+                    style={styles.buttonStart}
+                    activeOpacity={0.8}
+                    onPress={() => {
+                        dateForPayload(5)
+
+                    }}>
+                    <Text style={styles.btnText}>
+                        5 dias
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonMiddle}
+                    activeOpacity={0.8}
+                    onPress={() => {
+                        dateForPayload(15)
+                    }}>
+                    <Text style={styles.btnText}>
+                        15 dias
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonMiddle}
+                    activeOpacity={0.8}
+                    onPress={() => {
+                        dateForPayload(30)
+                    }}>
+                    <Text style={styles.btnText}>
+                        30 dias
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonMiddle}
+                    activeOpacity={0.8}
+                    onPress={() => {
+                        dateForPayload(60)
+                    }}>
+                    <Text style={styles.btnText}>
+                        60 dias
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonEnd}
+                    activeOpacity={0.8}
+                    onPress={() => {
+                        dateForPayload(0)
+                    }}>
+                    <Text style={styles.btnText}>
+                        Início
+                    </Text>
+                </TouchableOpacity>
             </View>
 
             <ScrollView
@@ -104,6 +170,9 @@ export function MyReceipts() {
                                             {transaction.created_at}
                                         </Text>
                                         <Text style={styles.type}>
+                                            Mensagem: {transaction.message}
+                                        </Text>
+                                        <Text style={styles.type}>
                                             PIX
                                         </Text>
                                         <View
@@ -113,7 +182,7 @@ export function MyReceipts() {
                                 )
                             })
                             :
-                            <Text>
+                            <Text style={styles.btnText}>
                                 Você ainda não possui um histórico de transações.
                             </Text>
                     }

@@ -56,7 +56,7 @@ export function PixSelectOperation() {
 
                 <ButtonIcon title="Extrato PIX"
                     onPress={() => {
-                        // navigation.navigate('PixExtract')
+                        navigation.navigate('MyReceipts')
                     }}
                 />
             </View>

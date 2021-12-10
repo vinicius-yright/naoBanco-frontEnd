@@ -51,6 +51,14 @@ export function AppRoutes() {
                 options={{
                     headerShown: false
                 }}
+                name="MyReceipts"
+                component={MyReceipts}
+            />
+
+            <Screen
+                options={{
+                    headerShown: false
+                }}
                 name="Home"
                 component={Home}
             />
@@ -134,13 +142,7 @@ export function AppRoutes() {
                 component={FirstAccessBankAccount}
             />
 
-            <Screen
-                options={{
-                    headerShown: false
-                }}
-                name="MyReceipts"
-                component={MyReceipts}
-            />
+
         </Navigator >
 
 
