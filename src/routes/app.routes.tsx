@@ -5,26 +5,22 @@
 //npm install react-native-gesture-handler
 //npm install @react-native-async-storage/async-storage
 
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import { FirstAccess } from '../screens/firstAccess';
-import { CreateUser } from '../screens/createUser';
-import { TesteModal } from '../screens/testeModal';
-import { Login } from '../screens/login';
-import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
-import { CreateBankAccount } from '../screens/createBankAccount'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { PixTransfer } from '../screens/pixTransfer';
-import { PixSelectOperation } from '../screens/pixSelectOperation';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { CreateBankAccount } from '../screens/createBankAccount';
+import { CreateUser } from '../screens/createUser';
+import { FirstAccess } from '../screens/firstAccess';
+import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
 import { Home } from '../screens/homeScreen';
-import { SelectBankAccount } from '../screens/selectBankAccount';
+import { Login } from '../screens/login';
 import { MyPixKeys } from '../screens/myPixKeys';
-import { PixTransferConfirmation } from '../screens/pixTransferConfirmation';
 import { PixCreateEmailKey } from '../screens/pixCreateEmailKey';
-
-//import { theme } from '../global/styles/theme';
-//CreateBankAccount
+import { PixSelectOperation } from '../screens/pixSelectOperation';
+import { PixTransfer } from '../screens/pixTransfer';
+import { PixTransferConfirmation } from '../screens/pixTransferConfirmation';
+import { SelectBankAccount } from '../screens/selectBankAccount';
+import { MyReceipts } from '../screens/myReceipts'
 
 const { Navigator, Screen } = createStackNavigator();
 var firstScreen = ''
@@ -36,15 +32,13 @@ async function checkFirstAccess() {
     } else {
         firstScreen = 'FirstAccess'
     }
-
-
 }
+
 export function AppRoutes() {
     checkFirstAccess()
     return (
 
         <Navigator>
-
             <Screen
                 options={{
                     headerShown: false
@@ -140,6 +134,13 @@ export function AppRoutes() {
                 component={FirstAccessBankAccount}
             />
 
+            <Screen
+                options={{
+                    headerShown: false
+                }}
+                name="MyReceipts"
+                component={MyReceipts}
+            />
         </Navigator >
 
 

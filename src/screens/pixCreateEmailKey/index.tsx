@@ -64,7 +64,6 @@ export function PixCreateEmailKey() {
         <Background>
             <LogoPlusName backToScreen='MyPixKeys'/>
 
-
             <View style={styles.container}>
 
                 <ScreenTitle title="Criar Chaves PIX">
