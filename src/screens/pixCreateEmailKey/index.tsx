@@ -50,6 +50,9 @@ export function PixCreateEmailKey() {
                         navigation.navigate('PixSelectOperation');
                     }, (error) => {
                         console.log(error.response.data);
+                        if(error.response.data.error == 'Email already used'){
+                            Alert.alert("Ops!", "Esse email já está sendo usado por alguém. Tente um email diferente.")
+                        }
                     });
             } else {
                 Alert.alert("Erro", "Os e-mails não batem!. Por favor, insira-os novamente.")
