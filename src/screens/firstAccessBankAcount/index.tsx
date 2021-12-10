@@ -1,13 +1,11 @@
-import React, { Children, ReactNode } from 'react';
-import { View, Text, Image } from 'react-native';
-import { styles } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
-import { Background } from '../../components/Background';
-import api from '../../services/api';
 import { useNavigation } from '@react-navigation/core';
+import React, { useState } from 'react';
+import { Text, View } from 'react-native';
+import { Background } from '../../components/Background';
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { Tutorial } from '../../components/Modal/Tutorial.js';
-import { useState } from 'react';
+import { styles } from './styles';
 
 
 export function FirstAccessBankAccount() {

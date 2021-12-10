@@ -1,15 +1,15 @@
 //apenas design da pagina, falta conexão com api
 
 import { useNavigation } from '@react-navigation/core';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, Text, TextInput, View } from 'react-native';
+import CurrencyInput from 'react-native-currency-input';
 import { Background } from '../../components/Background';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { Tutorial } from '../../components/Modal/Tutorial.js';
 import { ScreenTitle } from '../../components/ScreenTitle';
 import { styles } from './styles';
-import CurrencyInput from 'react-native-currency-input'
 
 export function PixTransfer() {
 

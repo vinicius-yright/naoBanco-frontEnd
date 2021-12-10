@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
-import { Modal } from '../Modal';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Background } from '../../components/Background';
+import { Modal } from '../Modal';
+import { styles } from './styles';
 
 
 export function TesteModal() {

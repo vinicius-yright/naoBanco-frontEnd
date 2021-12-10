@@ -1,11 +1,10 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native';
-import { styles } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
-import { Background } from '../../components/Background';
 import { useNavigation } from '@react-navigation/core';
+import React, { useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { Background } from '../../components/Background';
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { Tutorial } from '../../components/Modal/Tutorial.js';
-import { useState } from 'react';
+import { styles } from './styles';
 
 
 export function FirstAccess() {

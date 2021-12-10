@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, Animated, Dimensions, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/core';
+import React, { useEffect, useState } from 'react';
+import { Animated, Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export const Tutorial = ({ show, close, textTutorial, redirect}) => {
 

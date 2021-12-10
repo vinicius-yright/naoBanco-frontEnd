@@ -1,16 +1,16 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { Alert, BackHandler, Image, Text, View, } from 'react-native';
+import { Alert, Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import disableVisibility from '../../../assets/disableVisibility.png';
+import enableVisibility from '../../../assets/enableVisibility.png';
 import { Background } from '../../components/Background';
 import { LogoPlusName } from '../../components/LogoPlusName';
 import { Tutorial } from '../../components/Modal/Tutorial.js';
+import api from '../../services/api';
 import { styles } from './styles';
 
-import disableVisibility from '../../../assets/disableVisibility.png'
-import enableVisibility from '../../../assets/enableVisibility.png'
-import api from '../../services/api';
 
 export function Home() {
 

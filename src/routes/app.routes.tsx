@@ -15,12 +15,12 @@ import { FirstAccessBankAccount } from '../screens/firstAccessBankAcount';
 import { Home } from '../screens/homeScreen';
 import { Login } from '../screens/login';
 import { MyPixKeys } from '../screens/myPixKeys';
+import { MyReceipts } from '../screens/myReceipts';
 import { PixCreateEmailKey } from '../screens/pixCreateEmailKey';
 import { PixSelectOperation } from '../screens/pixSelectOperation';
 import { PixTransfer } from '../screens/pixTransfer';
 import { PixTransferConfirmation } from '../screens/pixTransferConfirmation';
 import { SelectBankAccount } from '../screens/selectBankAccount';
-import { MyReceipts } from '../screens/myReceipts'
 
 const { Navigator, Screen } = createStackNavigator();
 var firstScreen = ''

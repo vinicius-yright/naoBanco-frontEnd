@@ -1,13 +1,12 @@
-import React from 'react';
-import { View, Text, TextInput, Alert } from 'react-native';
-import { styles } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
-import { Background } from '../../components/Background';
-import { useState } from 'react';
-import { useNavigation } from '@react-navigation/core';
-import { LogoPlusName } from '../../components/LogoPlusName';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/core';
+import React, { useState } from 'react';
+import { Alert, Text, TextInput, View } from 'react-native';
+import { Background } from '../../components/Background';
+import { ButtonIcon } from '../../components/ButtonIcon';
+import { LogoPlusName } from '../../components/LogoPlusName';
 import api from '../../services/api';
+import { styles } from './styles';
 
 export function Login() {
 

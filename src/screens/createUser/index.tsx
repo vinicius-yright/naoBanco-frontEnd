@@ -1,14 +1,13 @@
-import React from 'react';
-import { View, Text, TextInput, Image, Alert, ScrollView } from 'react-native';
-import { styles } from './styles';
-import { ButtonIcon } from '../../components/ButtonIcon';
-import { Background } from '../../components/Background';
-import { useState } from 'react';
-import api from '../../services/api';
-import { useNavigation } from '@react-navigation/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Tutorial } from '../../components/Modal/Tutorial.js';
+import { useNavigation } from '@react-navigation/core';
+import React, { useState } from 'react';
+import { Alert, ScrollView, Text, TextInput, View } from 'react-native';
+import { Background } from '../../components/Background';
+import { ButtonIcon } from '../../components/ButtonIcon';
 import { LogoPlusName } from '../../components/LogoPlusName';
+import { Tutorial } from '../../components/Modal/Tutorial.js';
+import api from '../../services/api';
+import { styles } from './styles';
 
 export function CreateUser() {
 

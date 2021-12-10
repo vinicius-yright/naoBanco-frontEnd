@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Text, Image, View, TouchableOpacity, TouchableOpacityProps } from 'react-native';
+import { Image, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native';
 import { styles } from './styles';
 
 type Props = TouchableOpacityProps &{
