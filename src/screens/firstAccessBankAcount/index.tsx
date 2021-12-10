@@ -47,7 +47,7 @@ export function FirstAccessBankAccount() {
                 textTutorial = {
                     "Crie sua primeira conta bancária. \n\nVai ser um sucesso."
                 }
-                redirect='CreateBankAccount'
+                redirect=''
             />
         </Background>
     );

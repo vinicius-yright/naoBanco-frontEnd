@@ -62,7 +62,7 @@ export function CreateUser() {
     }
 
     function handleCreateBankAccount() {
-        navigation.navigate('CreateBankAccount');
+        navigation.navigate('FirstAccessBankAccount');
     }
 
     function redirectToPage() {
