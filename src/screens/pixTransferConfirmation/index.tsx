@@ -59,16 +59,23 @@ export function PixTransferConfirmation({ route }: { route: any }) {
     }
 
     async function transferirViaPix() {
+        console.log({
+            sender: loggedAccountForPayload,
+            pixKey: route.params.chave,
+            value: route.params.valor,
+            message: route.params.mensagem
+        })
         await api.post("/transfers/pix",
             {
                 sender: loggedAccountForPayload,
-                receiver: route.params.chave,
+                pixKey: route.params.chave,
                 value: route.params.valor,
                 message: route.params.mensagem
             })
             .then((response) => {
                 Alert.alert("Sucesso!", "Transferência realizada");
                 navigation.navigate("Home");
+                console.log(response.data)
             }, (error) => {
                 const errorMesage = error.response.data.error
                 console.log("Erro: ", errorMesage);

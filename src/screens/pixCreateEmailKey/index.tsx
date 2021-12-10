@@ -62,7 +62,7 @@ export function PixCreateEmailKey() {
 
     return (
         <Background>
-            <LogoPlusName />
+            <LogoPlusName backToScreen='MyPixKeys'/>
 
 
             <View style={styles.container}>
