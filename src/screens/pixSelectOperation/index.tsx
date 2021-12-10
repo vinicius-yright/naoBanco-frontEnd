@@ -63,7 +63,7 @@ export function PixSelectOperation() {
             <Tutorial
                 show={tutorial}
                 textTutorial = {
-                    "PIX(Pagamento Instantaneo Brasileiro) é uma modalidade de transações onde qualquer valor pode ser transferido de uma conta para outra em poucos segundos.\n"+
+                    "PIX (Pagamento Instantaneo Brasileiro) é uma modalidade de transações onde qualquer valor pode ser transferido de uma conta para outra em poucos segundos.\n"+
                     "\nPara identificar as contas é utilizado uma “Chave”, em bancos reais  as chaves podem ser: Email, Telefone, Aleatória ou o CPF."
                 }
                 redirect=''

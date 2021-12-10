@@ -111,9 +111,9 @@ export function PixCreateEmailKey() {
                 textTutorial={
                     "Agora você irá criar uma chave do Pix com base no seu e-mail !\n\n" +
                     "Normalmente, é possível cadastrar um e-mail por conta bancário, não sendo possível ou recomendado cadastrá-lo em outro banco.\n\n" +
-                    "Mas como esse aplicativo é apenas para aprendizado, você pode cadastrar qualquer e-mail (Válidos ou não).\n" +
-                    "Porém vale lembrar, que ele poderá ser usado para receber transferências bancárias do NãoBanco, de outro usuário que também tenha esse aplicativo instalado.\n\n" +
-                    "A chave pix por e-mail é uma boa forma de receber depósitos bancários sem precisar compartilhar os seus dados bancários.\n"
+                    "Mas como esse aplicativo é apenas para aprendizado, você pode cadastrar qualquer e-mail (válido ou não).\n\n" +
+                    "Porém, vale lembrar que ele poderá ser usado para receber transferências bancárias do NãoBanco, de outro usuário que também tenha esse aplicativo instalado.\n\n" +
+                    "A chave pix 'e-mail' é uma boa forma de receber depósitos bancários sem precisar compartilhar os seus dados bancários.\n"
                 }
                 redirect=''
             />

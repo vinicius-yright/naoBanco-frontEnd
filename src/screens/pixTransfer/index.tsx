@@ -97,10 +97,11 @@ export function PixTransfer() {
             <Tutorial
                 show={tutorial}
                 textTutorial={
-                    "Transferências via sistema PIX são bem diferentes das transferências convencionais: Não possuem nenhuma taxa e são feitas INSTANTÂNEAMENTE!\n" +
-                    "Para realizar uma, são necessários os seguintes campos: [Chave do Destinatário], [Valor], [Descrição].\n" +
-                    "No campo chave se insere a chave do destinatário que receberá sua transferência; " +
-                    "No campo valor se insere a quantia que será transferida e na Descrição se insere uma mensagem opcional que será lida pela pessoa que receber sua transferência.\n"
+                    "Transferências via sistema PIX são bem diferentes das transferências convencionais: Não possuem nenhuma taxa e são feitas INSTANTÂNEAMENTE!\n\n" +
+                    "Para realizar uma, são necessários os seguintes campos: [Chave do Destinatário], [Valor], [Descrição].\n\n" +
+                    "No campo chave se insere a chave do destinatário que receberá sua transferência.\n" +
+                    "No campo valor se insere a quantia que será transferida.\n" +
+                    "E na Descrição se insere uma mensagem opcional que será lida pela pessoa que receber sua transferência.\n"
                 }
                 redirect=''
             />
