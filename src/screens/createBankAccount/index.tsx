@@ -121,19 +121,19 @@ export function CreateBankAccount() {
                 </View>
                 <Tutorial
                     show={tutorial}
-                    textTutorial={
-                        "Agora você deverá criar uma Conta Bancária, com esta conta você poderá simular as transações e aprender mais sobre cada uma.\n\n" +
-                        "Voce devera criar para a sua conta:\n" +
-                        "[Apelido] - Para facilitar a Identificação de multiplas contas por você.\n" +
-                        "[Senha] - 4 Digitos Numéricos 0-9 , será utilizado para acessar a conta bancária.\n\n" +
-                        "Alem das informações que você criar a sua conta terá:\n\n" +
-                        "N° da Conta - É um numero identificador da Conta Bancária, sera gerado automaticamente e será utilizado para as transações financeiras.\n\n" +
-                        "N° da Agência - É o identificador da agência em que a conta é criada, diferente dos bancos físicos, os bancos digitais por não possuirem uma agencia fisica utilizam o identificador 001\n\n" +
-                        "Em Bancos Normais existem vários tipos de contas, sendo elas:\n" +
-                        "Corrente - Tipo de conta mais comun, permite a realização de várias transações, mas costuman cobrar uma taxa fixa mensal.\n\n" +
-                        "Poupança - Conta que rende juros mensais, não cobram taxas, mas possuem algumas limitações.\n\n" +
-                        "Pagamentos - Conta para os bancos Digitais, possuem as mesmas funcionalidades que uma conta corrente.\n\n" +
-                        "Investimentos - Conta para serviços especiais como compra e venda de Ações, titulos do tesouro e afins.\n\n" +
+                    textTutorial = {
+                        "Agora você deverá criar uma Conta Bancária, com esta conta você poderá simular as transações e aprender mais sobre cada uma.\n\n"+
+                        "Voce devera criar para a sua conta:\n"+
+                        "[Apelido] - Para facilitar a Identificação de multiplas contas por você.\n"+
+                        "[Senha] - 4 Dígitos Numéricos (entre 0-9), será utilizado para acessar a conta bancária.\n\n"+
+                        "Alem das informações que você criar a sua conta terá:\n\n"+
+                        "N° da Conta - É um numero identificador da Conta Bancária, sera gerado automaticamente e será utilizado para as transações financeiras.\n\n"+
+                        "N° da Agência - É o identificador da agência em que a conta é criada, diferente dos bancos físicos, os bancos digitais por não possuírem uma agencia fisica utilizam o identificador 001\n\n"+
+                        "Em Bancos Normais existem vários tipos de contas, sendo elas:\n\n"+
+                        "Corrente - Tipo de conta mais comun, permite a realização de várias transações, mas costuman cobrar uma taxa fixa mensal.\n\n"+
+                        "Poupança - Conta que rende juros mensais, não cobram taxas, mas possuem algumas limitações.\n\n"+
+                        "Pagamentos - Conta para os bancos Digitais, possuem as mesmas funcionalidades que uma conta corrente.\n\n"+
+                        "Investimentos - Conta para serviços especiais como compra e venda de Ações, titulos do tesouro e afins.\n\n"+
                         "Salário - Modalidade de conta mais simples, permite apenas compras com cartão de débito e limita os saques.\n"
                     }
                     redirect=''

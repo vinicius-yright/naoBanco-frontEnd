@@ -198,13 +198,14 @@ export function MyReceipts() {
             <Tutorial
                 show={tutorial}
                 textTutorial={
-                    "As tão faladas chaves PIX são definidas pelo Banco Central como 'apelidos' utilizados para identificar a sua conta.\n" +
-                    "\nExistem 4 tipos de chaves PIX possíveis:\n" +
-                    "• CPF ou CNPJ\n" +
-                    "• E-mail\n" +
-                    "• Número de telefone celular\n" +
-                    "• Chave aleatória\n" +
-                    "\nNo caso do nosso aplicativo usaremos apenas as chaves do tipo: e-mail ou aleatória"
+                    "Nesta tela, você pode ter acesso as transações realizadas na sua conta através do PIX.\n\n" +
+                    "Isso significa que você pode visualizar todo dinheiro que saiu e entrou na sua conta.\n\n" +
+                    "Assim, é possível manter o controle do seu dinheiro e garantir o controle das suas finanças para sempre gastar menos do que ganha.\n\n" +
+                    "É possível ver o extrato da sua conta em alguns períodos já especificados para que você tenha o controle da movimentação de sua conta naquele período específico. São eles:\n" +
+                    "• 5 dias\n" +
+                    "• 15 dias\n" +
+                    "• 30 dias\n" +
+                    "• 60 dias\n"
                 }
                 redirect=''
             />
